@@ -1,0 +1,1230 @@
+2024-09-09 00:01:41,290 [alvaro_agent_code] INFO: Loading model from saved state.
+2024-09-09 00:01:41,364 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:41,366 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:41,367 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 1
+2024-09-09 00:01:41,367 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:41,368 [alvaro_agent_code] INFO: Old entry for UP: 15.228162777150182
+2024-09-09 00:01:41,370 [alvaro_agent_code] INFO: New entry for UP: 10.212121212217221
+2024-09-09 00:01:41,461 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:41,462 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:41,462 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 2
+2024-09-09 00:01:41,464 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:41,465 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121221722227
+2024-09-09 00:01:41,467 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212217223
+2024-09-09 00:01:41,561 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:41,561 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:41,562 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 3
+2024-09-09 00:01:41,563 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:41,565 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212217221
+2024-09-09 00:01:41,566 [alvaro_agent_code] INFO: New entry for UP: 10.212121212122172
+2024-09-09 00:01:41,661 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:41,662 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:41,662 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 4
+2024-09-09 00:01:41,663 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:41,664 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212217223
+2024-09-09 00:01:41,665 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212122172
+2024-09-09 00:01:41,762 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:41,762 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:41,763 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 5
+2024-09-09 00:01:41,764 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:41,765 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212122172
+2024-09-09 00:01:41,765 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121222
+2024-09-09 00:01:41,866 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:41,867 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:41,868 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 6
+2024-09-09 00:01:41,868 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:41,870 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212122172
+2024-09-09 00:01:41,871 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121222
+2024-09-09 00:01:41,964 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:41,964 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:41,965 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 7
+2024-09-09 00:01:41,966 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:41,966 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121222
+2024-09-09 00:01:41,968 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:42,068 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:42,068 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:42,069 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 8
+2024-09-09 00:01:42,070 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:42,071 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121222
+2024-09-09 00:01:42,072 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:42,168 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:42,170 [alvaro_agent_code] DEBUG: Encountered game event(s) 'INVALID_ACTION' in step 9
+2024-09-09 00:01:42,171 [alvaro_agent_code] INFO: Awarded -15 for events INVALID_ACTION
+2024-09-09 00:01:42,173 [alvaro_agent_code] INFO: Old entry for LEFT: -23.277777277778355
+2024-09-09 00:01:42,175 [alvaro_agent_code] INFO: New entry for LEFT: -13.878787878787879
+2024-09-09 00:01:42,266 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:42,268 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:42,268 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 10
+2024-09-09 00:01:42,268 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:42,269 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:42,270 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:42,368 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:42,368 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:42,369 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 11
+2024-09-09 00:01:42,370 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:42,371 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:42,371 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:42,471 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:42,472 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:42,473 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 12
+2024-09-09 00:01:42,474 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:42,476 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:42,478 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:42,569 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:42,569 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:42,570 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 13
+2024-09-09 00:01:42,571 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:42,571 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:42,572 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:42,673 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:42,674 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:42,675 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 14
+2024-09-09 00:01:42,676 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:42,677 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:42,678 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:42,772 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:42,773 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:42,773 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 15
+2024-09-09 00:01:42,774 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:42,775 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:42,776 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:42,872 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:42,873 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:42,873 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 16
+2024-09-09 00:01:42,874 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:42,875 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:42,876 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:42,974 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:42,974 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:42,975 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 17
+2024-09-09 00:01:42,975 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:42,976 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:42,976 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:43,075 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:43,075 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:43,076 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 18
+2024-09-09 00:01:43,077 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:43,077 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:43,078 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:43,175 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:43,175 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:43,176 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 19
+2024-09-09 00:01:43,176 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:43,177 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:43,178 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:43,276 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:43,276 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:43,276 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 20
+2024-09-09 00:01:43,278 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:43,279 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:43,281 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:43,378 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:43,378 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:43,379 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 21
+2024-09-09 00:01:43,380 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:43,382 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:43,382 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:43,481 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:43,482 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:43,482 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 22
+2024-09-09 00:01:43,484 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:43,486 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:43,488 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:43,582 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:43,583 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:43,584 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 23
+2024-09-09 00:01:43,585 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:43,587 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:43,587 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:43,679 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:43,680 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:43,680 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 24
+2024-09-09 00:01:43,681 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:43,682 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:43,683 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:43,781 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:43,781 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:43,782 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 25
+2024-09-09 00:01:43,783 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:43,784 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:43,785 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:43,882 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:43,883 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:43,883 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 26
+2024-09-09 00:01:43,884 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:43,885 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:43,886 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:43,984 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:43,984 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:43,985 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 27
+2024-09-09 00:01:43,985 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:43,986 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:43,987 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:44,084 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:44,085 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:44,086 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 28
+2024-09-09 00:01:44,086 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:44,087 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:44,088 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:44,189 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:44,189 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:44,189 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 29
+2024-09-09 00:01:44,191 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:44,191 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:44,192 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:44,287 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:44,287 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:44,288 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 30
+2024-09-09 00:01:44,288 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:44,289 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:44,290 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:44,387 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:44,388 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:44,388 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 31
+2024-09-09 00:01:44,389 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:44,390 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:44,391 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:44,488 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:44,489 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:44,490 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 32
+2024-09-09 00:01:44,490 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:44,491 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:44,492 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:44,589 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:44,590 [alvaro_agent_code] DEBUG: Encountered game event(s) 'INVALID_ACTION' in step 33
+2024-09-09 00:01:44,591 [alvaro_agent_code] INFO: Awarded -15 for events INVALID_ACTION
+2024-09-09 00:01:44,593 [alvaro_agent_code] INFO: Old entry for LEFT: -14.787878787878789
+2024-09-09 00:01:44,594 [alvaro_agent_code] INFO: New entry for LEFT: -14.787878787878789
+2024-09-09 00:01:44,690 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:44,690 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:44,690 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 34
+2024-09-09 00:01:44,691 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:44,692 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:44,693 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:44,792 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:44,793 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:44,795 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 35
+2024-09-09 00:01:44,796 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:44,798 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:44,799 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:44,890 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:44,891 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:44,891 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 36
+2024-09-09 00:01:44,892 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:44,893 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:44,893 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:44,991 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:44,991 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:44,991 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 37
+2024-09-09 00:01:44,993 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:44,993 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:44,995 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:45,091 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:45,092 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:45,093 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 38
+2024-09-09 00:01:45,093 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:45,094 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:45,095 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:45,191 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:45,192 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:45,193 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 39
+2024-09-09 00:01:45,194 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:45,195 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:45,195 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:45,294 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:45,294 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:45,294 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 40
+2024-09-09 00:01:45,295 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:45,296 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:45,297 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:45,394 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:45,394 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:45,395 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 41
+2024-09-09 00:01:45,396 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:45,397 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:45,398 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:45,494 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:45,495 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:45,495 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 42
+2024-09-09 00:01:45,497 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:45,498 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:45,499 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:45,595 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:45,596 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:45,597 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 43
+2024-09-09 00:01:45,598 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:45,600 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:45,601 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:45,697 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:45,697 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:45,698 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 44
+2024-09-09 00:01:45,700 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:45,701 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:45,702 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:45,797 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:45,798 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:45,799 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 45
+2024-09-09 00:01:45,800 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:45,802 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:45,803 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:45,897 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:45,898 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:45,898 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 46
+2024-09-09 00:01:45,899 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:45,900 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:45,900 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:45,999 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:45,999 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:46,000 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 47
+2024-09-09 00:01:46,001 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:46,002 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:46,003 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:46,101 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:46,102 [alvaro_agent_code] DEBUG: Encountered game event(s) 'INVALID_ACTION' in step 48
+2024-09-09 00:01:46,103 [alvaro_agent_code] INFO: Awarded -15 for events INVALID_ACTION
+2024-09-09 00:01:46,104 [alvaro_agent_code] INFO: Old entry for LEFT: -14.787878787878789
+2024-09-09 00:01:46,105 [alvaro_agent_code] INFO: New entry for LEFT: -14.787878787878789
+2024-09-09 00:01:46,200 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:46,201 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:46,201 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 49
+2024-09-09 00:01:46,202 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:46,203 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:46,203 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:46,300 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:46,301 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:46,302 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 50
+2024-09-09 00:01:46,304 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:46,305 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:46,306 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:46,401 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:46,402 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:46,403 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 51
+2024-09-09 00:01:46,404 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:46,406 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:46,406 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:46,504 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:46,505 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:46,506 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 52
+2024-09-09 00:01:46,506 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:46,509 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:46,510 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:46,605 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:46,606 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:46,607 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 53
+2024-09-09 00:01:46,608 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:46,609 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:46,610 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:46,705 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:46,706 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:46,706 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 54
+2024-09-09 00:01:46,708 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:46,710 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:46,711 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:46,806 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:46,806 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:46,808 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 55
+2024-09-09 00:01:46,809 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:46,811 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:46,812 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:46,907 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:46,908 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:46,908 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 56
+2024-09-09 00:01:46,909 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:46,910 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:46,911 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:47,008 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:47,009 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:47,009 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 57
+2024-09-09 00:01:47,010 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:47,011 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:47,011 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:47,110 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:47,111 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:47,111 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 58
+2024-09-09 00:01:47,113 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:47,114 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:47,115 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:47,211 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:47,211 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:47,212 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 59
+2024-09-09 00:01:47,213 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:47,215 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:47,216 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:47,312 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:47,313 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:47,313 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 60
+2024-09-09 00:01:47,314 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:47,315 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:47,316 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:47,416 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:47,416 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:47,417 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 61
+2024-09-09 00:01:47,418 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:47,419 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:47,421 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:47,516 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:47,517 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:47,517 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 62
+2024-09-09 00:01:47,518 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:47,520 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:47,521 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:47,615 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:47,615 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:47,616 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 63
+2024-09-09 00:01:47,616 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:47,617 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:47,618 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:47,716 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:47,716 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:47,717 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 64
+2024-09-09 00:01:47,717 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:47,718 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:47,719 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:47,817 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:47,817 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:47,818 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 65
+2024-09-09 00:01:47,818 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:47,819 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:47,819 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:47,916 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:47,918 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 66
+2024-09-09 00:01:47,919 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_RIGHT
+2024-09-09 00:01:47,920 [alvaro_agent_code] INFO: Old entry for RIGHT: 1.641226593337743
+2024-09-09 00:01:47,921 [alvaro_agent_code] INFO: New entry for RIGHT: 0.21212121212121215
+2024-09-09 00:01:48,018 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:48,019 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:48,019 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 67
+2024-09-09 00:01:48,020 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_LEFT, FOLLOWED
+2024-09-09 00:01:48,022 [alvaro_agent_code] INFO: Old entry for LEFT: 11.171622772721083
+2024-09-09 00:01:48,023 [alvaro_agent_code] INFO: New entry for LEFT: -14.222277787223277
+2024-09-09 00:01:48,119 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:48,120 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:48,120 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 68
+2024-09-09 00:01:48,121 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:48,122 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:48,124 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:48,220 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:48,221 [alvaro_agent_code] DEBUG: Encountered game event(s) 'INVALID_ACTION' in step 69
+2024-09-09 00:01:48,222 [alvaro_agent_code] INFO: Awarded -15 for events INVALID_ACTION
+2024-09-09 00:01:48,222 [alvaro_agent_code] INFO: Old entry for LEFT: -14.787878787878789
+2024-09-09 00:01:48,223 [alvaro_agent_code] INFO: New entry for LEFT: -14.787878787878789
+2024-09-09 00:01:48,321 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:48,322 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:48,322 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 70
+2024-09-09 00:01:48,323 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:48,324 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:48,325 [alvaro_agent_code] INFO: New entry for DOWN: 1.1212121212121213
+2024-09-09 00:01:48,424 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:48,425 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:48,425 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 71
+2024-09-09 00:01:48,427 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:48,428 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:01:48,429 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:01:48,523 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:48,524 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 72
+2024-09-09 00:01:48,525 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:48,525 [alvaro_agent_code] INFO: Old entry for UP: -129.9
+2024-09-09 00:01:48,526 [alvaro_agent_code] INFO: New entry for UP: 11.717772272876175
+2024-09-09 00:01:48,624 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:48,624 [alvaro_agent_code] DEBUG: Suitable target found at (1, 12)
+2024-09-09 00:01:48,625 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP', 'COIN_COLLECTED' in step 73
+2024-09-09 00:01:48,625 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_UP, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:48,626 [alvaro_agent_code] INFO: Old entry for UP: 16.177722728761722
+2024-09-09 00:01:48,626 [alvaro_agent_code] INFO: New entry for UP: 61.27722204675264
+2024-09-09 00:01:48,726 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:48,727 [alvaro_agent_code] DEBUG: Suitable target found at (1, 11)
+2024-09-09 00:01:48,728 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP', 'COIN_COLLECTED' in step 74
+2024-09-09 00:01:48,728 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_UP, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:48,729 [alvaro_agent_code] INFO: Old entry for UP: 11.772220467526417
+2024-09-09 00:01:48,730 [alvaro_agent_code] INFO: New entry for UP: 66.71277227287618
+2024-09-09 00:01:48,827 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:48,827 [alvaro_agent_code] DEBUG: Suitable target found at (1, 10)
+2024-09-09 00:01:48,828 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP', 'COIN_COLLECTED' in step 75
+2024-09-09 00:01:48,829 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_UP, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:48,829 [alvaro_agent_code] INFO: Old entry for UP: 66.12772272876171
+2024-09-09 00:01:48,830 [alvaro_agent_code] INFO: New entry for UP: 61.23282782363127
+2024-09-09 00:01:48,925 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:48,925 [alvaro_agent_code] DEBUG: Suitable target found at (1, 8)
+2024-09-09 00:01:48,926 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 76
+2024-09-09 00:01:48,926 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:48,928 [alvaro_agent_code] INFO: Old entry for UP: 11.328278236312649
+2024-09-09 00:01:48,928 [alvaro_agent_code] INFO: New entry for UP: 16.72692547623754
+2024-09-09 00:01:49,027 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:49,027 [alvaro_agent_code] DEBUG: Suitable target found at (1, 8)
+2024-09-09 00:01:49,027 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP', 'COIN_COLLECTED' in step 77
+2024-09-09 00:01:49,028 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_UP, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:49,028 [alvaro_agent_code] INFO: Old entry for UP: 66.2692547623754
+2024-09-09 00:01:49,029 [alvaro_agent_code] INFO: New entry for UP: 61.711223087704596
+2024-09-09 00:01:49,128 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:49,128 [alvaro_agent_code] DEBUG: Suitable target found at (2, 7)
+2024-09-09 00:01:49,128 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 78
+2024-09-09 00:01:49,129 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:49,130 [alvaro_agent_code] INFO: Old entry for UP: 16.11223087704594
+2024-09-09 00:01:49,131 [alvaro_agent_code] INFO: New entry for UP: 16.272727272491267
+2024-09-09 00:01:49,229 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:49,230 [alvaro_agent_code] DEBUG: Suitable target found at (2, 7)
+2024-09-09 00:01:49,230 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT', 'COIN_COLLECTED' in step 79
+2024-09-09 00:01:49,231 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_RIGHT, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:49,231 [alvaro_agent_code] INFO: Old entry for RIGHT: 61.72727272491266
+2024-09-09 00:01:49,232 [alvaro_agent_code] INFO: New entry for RIGHT: 61.97341299232219
+2024-09-09 00:01:49,330 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:49,331 [alvaro_agent_code] DEBUG: Suitable target found at (3, 8)
+2024-09-09 00:01:49,331 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 80
+2024-09-09 00:01:49,332 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_RIGHT, FOLLOWED
+2024-09-09 00:01:49,333 [alvaro_agent_code] INFO: Old entry for RIGHT: 18.734129923221843
+2024-09-09 00:01:49,333 [alvaro_agent_code] INFO: New entry for RIGHT: 11.227227772772222
+2024-09-09 00:01:49,435 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:49,435 [alvaro_agent_code] DEBUG: Suitable target found at (3, 8)
+2024-09-09 00:01:49,436 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN', 'COIN_COLLECTED' in step 81
+2024-09-09 00:01:49,436 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_DOWN, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:49,438 [alvaro_agent_code] INFO: Old entry for DOWN: 11.272277727722226
+2024-09-09 00:01:49,438 [alvaro_agent_code] INFO: New entry for DOWN: 60.22727277277223
+2024-09-09 00:01:49,532 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:49,533 [alvaro_agent_code] DEBUG: Suitable target found at (3, 9)
+2024-09-09 00:01:49,533 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN', 'COIN_COLLECTED' in step 82
+2024-09-09 00:01:49,534 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_DOWN, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:49,535 [alvaro_agent_code] INFO: Old entry for DOWN: 1.2727277277222697
+2024-09-09 00:01:49,535 [alvaro_agent_code] INFO: New entry for DOWN: 61.77271777842407
+2024-09-09 00:01:49,634 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:49,634 [alvaro_agent_code] DEBUG: Suitable target found at (5, 8)
+2024-09-09 00:01:49,635 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 83
+2024-09-09 00:01:49,636 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_RIGHT, FOLLOWED
+2024-09-09 00:01:49,637 [alvaro_agent_code] INFO: Old entry for RIGHT: 16.727177784240666
+2024-09-09 00:01:49,639 [alvaro_agent_code] INFO: New entry for RIGHT: 11.22217177919041
+2024-09-09 00:01:49,735 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:49,735 [alvaro_agent_code] DEBUG: Suitable target found at (5, 8)
+2024-09-09 00:01:49,736 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 84
+2024-09-09 00:01:49,736 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_RIGHT, FOLLOWED
+2024-09-09 00:01:49,737 [alvaro_agent_code] INFO: Old entry for RIGHT: 11.22171779190409
+2024-09-09 00:01:49,737 [alvaro_agent_code] INFO: New entry for RIGHT: 16.2221900918272
+2024-09-09 00:01:49,836 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:49,837 [alvaro_agent_code] DEBUG: Suitable target found at (5, 8)
+2024-09-09 00:01:49,838 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP', 'COIN_COLLECTED' in step 85
+2024-09-09 00:01:49,839 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_UP, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:49,841 [alvaro_agent_code] INFO: Old entry for UP: 61.22190091827203
+2024-09-09 00:01:49,842 [alvaro_agent_code] INFO: New entry for UP: 49.75142802081597
+2024-09-09 00:01:49,937 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:49,937 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:49,938 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 86
+2024-09-09 00:01:49,939 [alvaro_agent_code] INFO: Awarded -21 for events MOVED_UP, OPPOSITE
+2024-09-09 00:01:49,940 [alvaro_agent_code] INFO: Old entry for UP: 15.962121212121213
+2024-09-09 00:01:49,941 [alvaro_agent_code] INFO: New entry for UP: -103.48571979184032
+2024-09-09 00:01:50,041 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:50,042 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:50,042 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 87
+2024-09-09 00:01:50,043 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:50,045 [alvaro_agent_code] INFO: Old entry for UP: 6.222722776967217
+2024-09-09 00:01:50,046 [alvaro_agent_code] INFO: New entry for UP: 61.39879670751622
+2024-09-09 00:01:50,139 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:50,140 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:50,140 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 88
+2024-09-09 00:01:50,141 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:50,141 [alvaro_agent_code] INFO: Old entry for DOWN: 0.21212121212121213
+2024-09-09 00:01:50,141 [alvaro_agent_code] INFO: New entry for DOWN: 1.112121212121212
+2024-09-09 00:01:50,239 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:50,240 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:50,240 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 89
+2024-09-09 00:01:50,241 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:50,241 [alvaro_agent_code] INFO: Old entry for UP: 61.39879670751622
+2024-09-09 00:01:50,242 [alvaro_agent_code] INFO: New entry for UP: 61.48879670751622
+2024-09-09 00:01:50,340 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:50,341 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:50,341 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 90
+2024-09-09 00:01:50,342 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:50,342 [alvaro_agent_code] INFO: Old entry for DOWN: 1.112121212121212
+2024-09-09 00:01:50,342 [alvaro_agent_code] INFO: New entry for DOWN: 6.248879670751622
+2024-09-09 00:01:50,441 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:50,442 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:50,442 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 91
+2024-09-09 00:01:50,443 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_UP
+2024-09-09 00:01:50,443 [alvaro_agent_code] INFO: Old entry for UP: 10.121212121212121
+2024-09-09 00:01:50,444 [alvaro_agent_code] INFO: New entry for UP: 52.09247255337927
+2024-09-09 00:01:50,541 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:50,542 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:50,542 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 92
+2024-09-09 00:01:50,543 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:50,543 [alvaro_agent_code] INFO: Old entry for DOWN: 6.248879670751622
+2024-09-09 00:01:50,543 [alvaro_agent_code] INFO: New entry for DOWN: 1.1121212121212114
+2024-09-09 00:01:50,643 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:50,644 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:50,644 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 93
+2024-09-09 00:01:50,645 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:50,645 [alvaro_agent_code] INFO: Old entry for UP: 10.121212121212121
+2024-09-09 00:01:50,646 [alvaro_agent_code] INFO: New entry for UP: 52.18247255337927
+2024-09-09 00:01:50,747 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:50,747 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:50,748 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 94
+2024-09-09 00:01:50,749 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:50,750 [alvaro_agent_code] INFO: Old entry for DOWN: 1.1121212121212114
+2024-09-09 00:01:50,750 [alvaro_agent_code] INFO: New entry for DOWN: 5.318247255337927
+2024-09-09 00:01:50,845 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:50,845 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:50,846 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 95
+2024-09-09 00:01:50,846 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:50,847 [alvaro_agent_code] INFO: Old entry for UP: 52.18247255337927
+2024-09-09 00:01:50,848 [alvaro_agent_code] INFO: New entry for UP: -31.429435706633353
+2024-09-09 00:01:50,946 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:50,946 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:50,946 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 96
+2024-09-09 00:01:50,947 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:50,947 [alvaro_agent_code] INFO: Old entry for DOWN: 5.318247255337927
+2024-09-09 00:01:50,948 [alvaro_agent_code] INFO: New entry for DOWN: -0.9742788479080717
+2024-09-09 00:01:51,048 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:51,049 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:51,050 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 97
+2024-09-09 00:01:51,050 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_UP
+2024-09-09 00:01:51,052 [alvaro_agent_code] INFO: Old entry for UP: 52.18247255337927
+2024-09-09 00:01:51,052 [alvaro_agent_code] INFO: New entry for UP: 83.61448037522182
+2024-09-09 00:01:51,150 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:51,151 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:51,152 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 98
+2024-09-09 00:01:51,153 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:51,154 [alvaro_agent_code] INFO: Old entry for DOWN: -0.9742788479080717
+2024-09-09 00:01:51,155 [alvaro_agent_code] INFO: New entry for DOWN: -3.0429435706633354
+2024-09-09 00:01:51,252 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:51,253 [alvaro_agent_code] DEBUG: Suitable target found at (7, 7)
+2024-09-09 00:01:51,254 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 99
+2024-09-09 00:01:51,255 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_LEFT
+2024-09-09 00:01:51,256 [alvaro_agent_code] INFO: Old entry for LEFT: 3.5639022756008387
+2024-09-09 00:01:51,258 [alvaro_agent_code] INFO: New entry for LEFT: 3.5639022756008387
+2024-09-09 00:01:51,354 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:51,355 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:51,356 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 100
+2024-09-09 00:01:51,358 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_RIGHT, FOLLOWED
+2024-09-09 00:01:51,360 [alvaro_agent_code] INFO: Old entry for RIGHT: 16.23987967075162
+2024-09-09 00:01:51,362 [alvaro_agent_code] INFO: New entry for RIGHT: 6.957056429336664
+2024-09-09 00:01:51,454 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:51,455 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:51,455 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 101
+2024-09-09 00:01:51,456 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:51,457 [alvaro_agent_code] INFO: Old entry for UP: 83.61448037522182
+2024-09-09 00:01:51,457 [alvaro_agent_code] INFO: New entry for UP: -31.429435706633353
+2024-09-09 00:01:51,554 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:51,555 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:51,556 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 102
+2024-09-09 00:01:51,556 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:51,558 [alvaro_agent_code] INFO: Old entry for DOWN: -3.0429435706633354
+2024-09-09 00:01:51,559 [alvaro_agent_code] INFO: New entry for DOWN: 4.6350112169959345
+2024-09-09 00:01:51,653 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:51,654 [alvaro_agent_code] DEBUG: Suitable target found at (5, 5)
+2024-09-09 00:01:51,654 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 103
+2024-09-09 00:01:51,655 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_RIGHT
+2024-09-09 00:01:51,657 [alvaro_agent_code] INFO: Old entry for RIGHT: 45.350112169959345
+2024-09-09 00:01:51,658 [alvaro_agent_code] INFO: New entry for RIGHT: 45.350112169959345
+2024-09-09 00:01:51,755 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:51,755 [alvaro_agent_code] DEBUG: Suitable target found at (7, 7)
+2024-09-09 00:01:51,756 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT', 'COIN_COLLECTED' in step 104
+2024-09-09 00:01:51,756 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_RIGHT, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:51,756 [alvaro_agent_code] INFO: Old entry for RIGHT: 16.67817848403138
+2024-09-09 00:01:51,758 [alvaro_agent_code] INFO: New entry for RIGHT: 61.22272127222223
+2024-09-09 00:01:51,856 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:51,856 [alvaro_agent_code] DEBUG: Suitable target found at (7, 5)
+2024-09-09 00:01:51,857 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 105
+2024-09-09 00:01:51,857 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:51,857 [alvaro_agent_code] INFO: Old entry for UP: 11.227212722222278
+2024-09-09 00:01:51,858 [alvaro_agent_code] INFO: New entry for UP: 11.772376276196445
+2024-09-09 00:01:51,956 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:51,956 [alvaro_agent_code] DEBUG: Suitable target found at (7, 5)
+2024-09-09 00:01:51,957 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP', 'COIN_COLLECTED' in step 106
+2024-09-09 00:01:51,958 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_UP, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:51,958 [alvaro_agent_code] INFO: Old entry for UP: 16.72376276196446
+2024-09-09 00:01:51,958 [alvaro_agent_code] INFO: New entry for UP: 66.27154298946002
+2024-09-09 00:01:52,057 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:52,057 [alvaro_agent_code] DEBUG: Suitable target found at (7, 4)
+2024-09-09 00:01:52,058 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP', 'COIN_COLLECTED' in step 107
+2024-09-09 00:01:52,059 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_UP, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:52,060 [alvaro_agent_code] INFO: Old entry for UP: 61.71542989460004
+2024-09-09 00:01:52,060 [alvaro_agent_code] INFO: New entry for UP: 66.27728883314398
+2024-09-09 00:01:52,159 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:52,159 [alvaro_agent_code] DEBUG: Suitable target found at (8, 3)
+2024-09-09 00:01:52,160 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 108
+2024-09-09 00:01:52,161 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:52,161 [alvaro_agent_code] INFO: Old entry for UP: 61.77288833143987
+2024-09-09 00:01:52,162 [alvaro_agent_code] INFO: New entry for UP: 16.722727212272225
+2024-09-09 00:01:52,259 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:52,260 [alvaro_agent_code] DEBUG: Suitable target found at (8, 3)
+2024-09-09 00:01:52,261 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT', 'COIN_COLLECTED' in step 109
+2024-09-09 00:01:52,261 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_RIGHT, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:52,262 [alvaro_agent_code] INFO: Old entry for RIGHT: 66.22727212272224
+2024-09-09 00:01:52,262 [alvaro_agent_code] INFO: New entry for RIGHT: 61.77172270891352
+2024-09-09 00:01:52,362 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:52,363 [alvaro_agent_code] DEBUG: Suitable target found at (10, 3)
+2024-09-09 00:01:52,363 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 110
+2024-09-09 00:01:52,364 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_RIGHT, FOLLOWED
+2024-09-09 00:01:52,365 [alvaro_agent_code] INFO: Old entry for RIGHT: 16.717227089135207
+2024-09-09 00:01:52,366 [alvaro_agent_code] INFO: New entry for RIGHT: 11.277881421222538
+2024-09-09 00:01:52,464 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:52,465 [alvaro_agent_code] DEBUG: Suitable target found at (9, 4)
+2024-09-09 00:01:52,466 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN', 'COIN_COLLECTED' in step 111
+2024-09-09 00:01:52,467 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_DOWN, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:52,467 [alvaro_agent_code] INFO: Old entry for DOWN: 11.778814212225388
+2024-09-09 00:01:52,468 [alvaro_agent_code] INFO: New entry for DOWN: 11.778814212225388
+2024-09-09 00:01:52,565 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:52,566 [alvaro_agent_code] DEBUG: Suitable target found at (10, 3)
+2024-09-09 00:01:52,566 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 112
+2024-09-09 00:01:52,568 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:52,570 [alvaro_agent_code] INFO: Old entry for UP: 11.22712622171212
+2024-09-09 00:01:52,571 [alvaro_agent_code] INFO: New entry for UP: 16.667599008202586
+2024-09-09 00:01:52,664 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:52,665 [alvaro_agent_code] DEBUG: Suitable target found at (10, 3)
+2024-09-09 00:01:52,665 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 113
+2024-09-09 00:01:52,666 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:52,667 [alvaro_agent_code] INFO: Old entry for DOWN: 65.67599008202585
+2024-09-09 00:01:52,668 [alvaro_agent_code] INFO: New entry for DOWN: 1.7667599008202544
+2024-09-09 00:01:52,766 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:52,766 [alvaro_agent_code] DEBUG: Encountered game event(s) 'INVALID_ACTION' in step 114
+2024-09-09 00:01:52,767 [alvaro_agent_code] INFO: Awarded -15 for events INVALID_ACTION
+2024-09-09 00:01:52,769 [alvaro_agent_code] INFO: Old entry for LEFT: -13.877779887942893
+2024-09-09 00:01:52,770 [alvaro_agent_code] INFO: New entry for LEFT: -13.233240099179742
+2024-09-09 00:01:52,869 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:52,870 [alvaro_agent_code] DEBUG: Suitable target found at (10, 3)
+2024-09-09 00:01:52,871 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 115
+2024-09-09 00:01:52,872 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:52,873 [alvaro_agent_code] INFO: Old entry for UP: 16.667599008202586
+2024-09-09 00:01:52,873 [alvaro_agent_code] INFO: New entry for UP: 11.202539721173284
+2024-09-09 00:01:52,966 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:52,968 [alvaro_agent_code] DEBUG: Suitable target found at (10, 3)
+2024-09-09 00:01:52,969 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT', 'COIN_COLLECTED' in step 116
+2024-09-09 00:01:52,970 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_RIGHT, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:52,971 [alvaro_agent_code] INFO: Old entry for RIGHT: 11.025397211732844
+2024-09-09 00:01:52,972 [alvaro_agent_code] INFO: New entry for RIGHT: 66.72838299828575
+2024-09-09 00:01:53,068 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:53,068 [alvaro_agent_code] DEBUG: Suitable target found at (11, 2)
+2024-09-09 00:01:53,069 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 117
+2024-09-09 00:01:53,069 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_RIGHT, FOLLOWED
+2024-09-09 00:01:53,071 [alvaro_agent_code] INFO: Old entry for RIGHT: 66.28382998285754
+2024-09-09 00:01:53,072 [alvaro_agent_code] INFO: New entry for RIGHT: 15.96272153972118
+2024-09-09 00:01:53,168 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:53,169 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 118
+2024-09-09 00:01:53,169 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_LEFT
+2024-09-09 00:01:53,170 [alvaro_agent_code] INFO: Old entry for LEFT: 11.777272153972117
+2024-09-09 00:01:53,171 [alvaro_agent_code] INFO: New entry for LEFT: 1.6962721539721173
+2024-09-09 00:01:53,270 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:53,270 [alvaro_agent_code] DEBUG: Suitable target found at (11, 2)
+2024-09-09 00:01:53,271 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 119
+2024-09-09 00:01:53,271 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_RIGHT, FOLLOWED
+2024-09-09 00:01:53,272 [alvaro_agent_code] INFO: Old entry for RIGHT: 15.96272153972118
+2024-09-09 00:01:53,273 [alvaro_agent_code] INFO: New entry for RIGHT: 15.962721539721175
+2024-09-09 00:01:53,370 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:53,371 [alvaro_agent_code] DEBUG: Suitable target found at (11, 2)
+2024-09-09 00:01:53,372 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP', 'COIN_COLLECTED' in step 120
+2024-09-09 00:01:53,373 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_UP, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:53,374 [alvaro_agent_code] INFO: Old entry for UP: 58.627215397211735
+2024-09-09 00:01:53,374 [alvaro_agent_code] INFO: New entry for UP: 61.27691227129251
+2024-09-09 00:01:53,471 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:53,471 [alvaro_agent_code] DEBUG: Suitable target found at (11, 1)
+2024-09-09 00:01:53,472 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP', 'COIN_COLLECTED' in step 121
+2024-09-09 00:01:53,473 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_UP, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:53,474 [alvaro_agent_code] INFO: Old entry for UP: 11.769122712925098
+2024-09-09 00:01:53,474 [alvaro_agent_code] INFO: New entry for UP: 60.27777722272728
+2024-09-09 00:01:53,573 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:53,573 [alvaro_agent_code] DEBUG: Suitable target found at (11, 5)
+2024-09-09 00:01:53,574 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 122
+2024-09-09 00:01:53,575 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:01:53,576 [alvaro_agent_code] INFO: Old entry for DOWN: 61.365531173554174
+2024-09-09 00:01:53,578 [alvaro_agent_code] INFO: New entry for DOWN: 11.221227712641268
+2024-09-09 00:01:53,674 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:53,675 [alvaro_agent_code] DEBUG: Suitable target found at (11, 5)
+2024-09-09 00:01:53,676 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 123
+2024-09-09 00:01:53,678 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:01:53,679 [alvaro_agent_code] INFO: Old entry for DOWN: 16.772272122727223
+2024-09-09 00:01:53,681 [alvaro_agent_code] INFO: New entry for DOWN: 11.22121212121212
+2024-09-09 00:01:53,777 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:53,777 [alvaro_agent_code] DEBUG: Suitable target found at (11, 5)
+2024-09-09 00:01:53,778 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 124
+2024-09-09 00:01:53,779 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:01:53,779 [alvaro_agent_code] INFO: Old entry for DOWN: 11.212121212121211
+2024-09-09 00:01:53,780 [alvaro_agent_code] INFO: New entry for DOWN: 16.126768973817313
+2024-09-09 00:01:53,878 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:53,879 [alvaro_agent_code] DEBUG: Suitable target found at (11, 5)
+2024-09-09 00:01:53,880 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN', 'COIN_COLLECTED' in step 125
+2024-09-09 00:01:53,880 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_DOWN, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:53,882 [alvaro_agent_code] INFO: Old entry for DOWN: 60.26768973817312
+2024-09-09 00:01:53,882 [alvaro_agent_code] INFO: New entry for DOWN: 60.27272727312153
+2024-09-09 00:01:53,977 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:53,978 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 126
+2024-09-09 00:01:53,979 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_LEFT
+2024-09-09 00:01:53,980 [alvaro_agent_code] INFO: Old entry for LEFT: -19.16321204233452
+2024-09-09 00:01:53,981 [alvaro_agent_code] INFO: New entry for LEFT: -38.46939012766528
+2024-09-09 00:01:54,080 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:54,081 [alvaro_agent_code] DEBUG: Suitable target found at (11, 7)
+2024-09-09 00:01:54,082 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 127
+2024-09-09 00:01:54,084 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_RIGHT, FOLLOWED
+2024-09-09 00:01:54,086 [alvaro_agent_code] INFO: Old entry for RIGHT: 73.4973449185332
+2024-09-09 00:01:54,086 [alvaro_agent_code] INFO: New entry for RIGHT: 10.272727273121532
+2024-09-09 00:01:54,182 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:54,182 [alvaro_agent_code] DEBUG: Suitable target found at (11, 7)
+2024-09-09 00:01:54,183 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 128
+2024-09-09 00:01:54,184 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:01:54,185 [alvaro_agent_code] INFO: Old entry for DOWN: 1.7272727312153275
+2024-09-09 00:01:54,186 [alvaro_agent_code] INFO: New entry for DOWN: 1.1828227921919816
+2024-09-09 00:01:54,280 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:54,280 [alvaro_agent_code] DEBUG: Suitable target found at (11, 7)
+2024-09-09 00:01:54,281 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN', 'COIN_COLLECTED' in step 129
+2024-09-09 00:01:54,281 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_DOWN, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:54,282 [alvaro_agent_code] INFO: Old entry for DOWN: 11.27272286188771
+2024-09-09 00:01:54,282 [alvaro_agent_code] INFO: New entry for DOWN: 60.76912777221212
+2024-09-09 00:01:54,382 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:54,382 [alvaro_agent_code] DEBUG: Suitable target found at (12, 7)
+2024-09-09 00:01:54,383 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT', 'COIN_COLLECTED' in step 130
+2024-09-09 00:01:54,383 [alvaro_agent_code] INFO: Awarded 50 for events MOVED_RIGHT, COIN_COLLECTED
+2024-09-09 00:01:54,383 [alvaro_agent_code] INFO: Old entry for RIGHT: 16.727227777272226
+2024-09-09 00:01:54,384 [alvaro_agent_code] INFO: New entry for RIGHT: 45.60172578237864
+2024-09-09 00:01:54,481 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:54,482 [alvaro_agent_code] DEBUG: Suitable target found at (13, 7)
+2024-09-09 00:01:54,482 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT', 'COIN_COLLECTED' in step 131
+2024-09-09 00:01:54,483 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_RIGHT, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:54,483 [alvaro_agent_code] INFO: Old entry for RIGHT: 10.212812767726206
+2024-09-09 00:01:54,484 [alvaro_agent_code] INFO: New entry for RIGHT: 61.71767227722222
+2024-09-09 00:01:54,582 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:54,583 [alvaro_agent_code] DEBUG: Suitable target found at (13, 5)
+2024-09-09 00:01:54,584 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 132
+2024-09-09 00:01:54,585 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:54,586 [alvaro_agent_code] INFO: Old entry for UP: 16.176722772222206
+2024-09-09 00:01:54,589 [alvaro_agent_code] INFO: New entry for UP: 16.272167484898844
+2024-09-09 00:01:54,683 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:54,683 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP', 'COIN_COLLECTED' in step 133
+2024-09-09 00:01:54,684 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_UP, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:54,684 [alvaro_agent_code] INFO: Old entry for UP: 61.72167484898844
+2024-09-09 00:01:54,685 [alvaro_agent_code] INFO: New entry for UP: 66.77272722724722
+2024-09-09 00:01:54,785 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:54,785 [alvaro_agent_code] DEBUG: Suitable target found at (14, 5)
+2024-09-09 00:01:54,785 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT', 'COIN_COLLECTED' in step 134
+2024-09-09 00:01:54,786 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_RIGHT, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:54,786 [alvaro_agent_code] INFO: Old entry for RIGHT: 0.7277690121212121
+2024-09-09 00:01:54,787 [alvaro_agent_code] INFO: New entry for RIGHT: 61.72272271525723
+2024-09-09 00:01:54,885 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:54,885 [alvaro_agent_code] DEBUG: Suitable target found at (15, 5)
+2024-09-09 00:01:54,886 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT', 'COIN_COLLECTED' in step 135
+2024-09-09 00:01:54,886 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_RIGHT, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:54,886 [alvaro_agent_code] INFO: Old entry for RIGHT: 16.227227152572226
+2024-09-09 00:01:54,887 [alvaro_agent_code] INFO: New entry for RIGHT: 61.22150518657396
+2024-09-09 00:01:54,988 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:54,988 [alvaro_agent_code] DEBUG: Suitable target found at (15, 6)
+2024-09-09 00:01:54,989 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN', 'COIN_COLLECTED' in step 136
+2024-09-09 00:01:54,991 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_DOWN, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:54,992 [alvaro_agent_code] INFO: Old entry for DOWN: 11.21505186573954
+2024-09-09 00:01:54,993 [alvaro_agent_code] INFO: New entry for DOWN: 61.777272722222726
+2024-09-09 00:01:55,086 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:55,087 [alvaro_agent_code] DEBUG: Suitable target found at (13, 4)
+2024-09-09 00:01:55,087 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 137
+2024-09-09 00:01:55,088 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:55,089 [alvaro_agent_code] INFO: Old entry for UP: 16.772727222227218
+2024-09-09 00:01:55,090 [alvaro_agent_code] INFO: New entry for UP: -25.277277180923043
+2024-09-09 00:01:55,190 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:55,191 [alvaro_agent_code] DEBUG: Suitable target found at (13, 4)
+2024-09-09 00:01:55,192 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 138
+2024-09-09 00:01:55,193 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_LEFT, FOLLOWED
+2024-09-09 00:01:55,195 [alvaro_agent_code] INFO: Old entry for LEFT: 11.727273228236823
+2024-09-09 00:01:55,197 [alvaro_agent_code] INFO: New entry for LEFT: 11.719806883753064
+2024-09-09 00:01:55,290 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:55,291 [alvaro_agent_code] DEBUG: Suitable target found at (13, 4)
+2024-09-09 00:01:55,291 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 139
+2024-09-09 00:01:55,292 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_LEFT, FOLLOWED
+2024-09-09 00:01:55,293 [alvaro_agent_code] INFO: Old entry for LEFT: 16.19806883753065
+2024-09-09 00:01:55,294 [alvaro_agent_code] INFO: New entry for LEFT: 11.423137729366982
+2024-09-09 00:01:55,390 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:55,390 [alvaro_agent_code] DEBUG: Suitable target found at (13, 4)
+2024-09-09 00:01:55,391 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP', 'COIN_COLLECTED' in step 140
+2024-09-09 00:01:55,392 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_UP, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:55,393 [alvaro_agent_code] INFO: Old entry for UP: 13.231377293669823
+2024-09-09 00:01:55,393 [alvaro_agent_code] INFO: New entry for UP: 61.22467277227222
+2024-09-09 00:01:55,491 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:55,492 [alvaro_agent_code] DEBUG: Suitable target found at (15, 1)
+2024-09-09 00:01:55,492 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 141
+2024-09-09 00:01:55,494 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:55,496 [alvaro_agent_code] INFO: Old entry for UP: 11.24672772272222
+2024-09-09 00:01:55,499 [alvaro_agent_code] INFO: New entry for UP: 14.06117790064079
+2024-09-09 00:01:55,591 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:55,592 [alvaro_agent_code] DEBUG: Suitable target found at (15, 1)
+2024-09-09 00:01:55,592 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 142
+2024-09-09 00:01:55,593 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_UP
+2024-09-09 00:01:55,595 [alvaro_agent_code] INFO: Old entry for UP: 6.72727272427224
+2024-09-09 00:01:55,596 [alvaro_agent_code] INFO: New entry for UP: 11.777725212317087
+2024-09-09 00:01:55,693 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:55,693 [alvaro_agent_code] DEBUG: Suitable target found at (15, 1)
+2024-09-09 00:01:55,694 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 143
+2024-09-09 00:01:55,695 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:55,696 [alvaro_agent_code] INFO: Old entry for UP: 66.22710311
+2024-09-09 00:01:55,697 [alvaro_agent_code] INFO: New entry for UP: 11.272722272221273
+2024-09-09 00:01:55,794 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:55,794 [alvaro_agent_code] DEBUG: Suitable target found at (15, 1)
+2024-09-09 00:01:55,795 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 144
+2024-09-09 00:01:55,796 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:55,798 [alvaro_agent_code] INFO: Old entry for DOWN: 11.727222722212723
+2024-09-09 00:01:55,798 [alvaro_agent_code] INFO: New entry for DOWN: 1.2272722272221266
+2024-09-09 00:01:55,894 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:55,895 [alvaro_agent_code] DEBUG: Suitable target found at (15, 1)
+2024-09-09 00:01:55,895 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 145
+2024-09-09 00:01:55,896 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:01:55,898 [alvaro_agent_code] INFO: Old entry for UP: 11.272722272221273
+2024-09-09 00:01:55,898 [alvaro_agent_code] INFO: New entry for UP: 11.272526985947277
+2024-09-09 00:01:55,995 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:55,996 [alvaro_agent_code] DEBUG: Suitable target found at (15, 1)
+2024-09-09 00:01:55,996 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 146
+2024-09-09 00:01:55,997 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_RIGHT, FOLLOWED
+2024-09-09 00:01:55,997 [alvaro_agent_code] INFO: Old entry for RIGHT: 11.725269859472768
+2024-09-09 00:01:55,998 [alvaro_agent_code] INFO: New entry for RIGHT: 16.22227772727762
+2024-09-09 00:01:56,097 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:56,097 [alvaro_agent_code] DEBUG: Suitable target found at (15, 1)
+2024-09-09 00:01:56,098 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT', 'COIN_COLLECTED' in step 147
+2024-09-09 00:01:56,100 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_RIGHT, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:56,103 [alvaro_agent_code] INFO: Old entry for RIGHT: 61.22277727277622
+2024-09-09 00:01:56,103 [alvaro_agent_code] INFO: New entry for RIGHT: 61.772727720917715
+2024-09-09 00:01:56,198 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:56,199 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 148
+2024-09-09 00:01:56,201 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_DOWN
+2024-09-09 00:01:56,206 [alvaro_agent_code] INFO: Old entry for DOWN: -17.403549334788394
+2024-09-09 00:01:56,209 [alvaro_agent_code] INFO: New entry for DOWN: 6.1222727331786615
+2024-09-09 00:01:56,300 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:56,302 [alvaro_agent_code] DEBUG: Suitable target found at (15, 10)
+2024-09-09 00:01:56,302 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 149
+2024-09-09 00:01:56,306 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:01:56,310 [alvaro_agent_code] INFO: Old entry for DOWN: 60.22272733178661
+2024-09-09 00:01:56,313 [alvaro_agent_code] INFO: New entry for DOWN: 11.722772275821725
+2024-09-09 00:01:56,403 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:56,403 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 150
+2024-09-09 00:01:56,407 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:01:56,413 [alvaro_agent_code] INFO: Old entry for DOWN: 16.227722758217265
+2024-09-09 00:01:56,415 [alvaro_agent_code] INFO: New entry for DOWN: 11.772727227209627
+2024-09-09 00:01:56,501 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:56,501 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 151
+2024-09-09 00:01:56,504 [alvaro_agent_code] INFO: Awarded -21 for events MOVED_UP, OPPOSITE
+2024-09-09 00:01:56,506 [alvaro_agent_code] INFO: Old entry for UP: -19.27722772417829
+2024-09-09 00:01:56,509 [alvaro_agent_code] INFO: New entry for UP: -19.722727277279034
+2024-09-09 00:01:56,605 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:56,607 [alvaro_agent_code] DEBUG: Suitable target found at (15, 10)
+2024-09-09 00:01:56,608 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 152
+2024-09-09 00:01:56,612 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:01:56,617 [alvaro_agent_code] INFO: Old entry for DOWN: 11.772727227209627
+2024-09-09 00:01:56,622 [alvaro_agent_code] INFO: New entry for DOWN: 11.772727227209627
+2024-09-09 00:01:56,703 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:56,704 [alvaro_agent_code] DEBUG: Suitable target found at (15, 10)
+2024-09-09 00:01:56,705 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 153
+2024-09-09 00:01:56,706 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:01:56,709 [alvaro_agent_code] INFO: Old entry for DOWN: 16.727272272096272
+2024-09-09 00:01:56,712 [alvaro_agent_code] INFO: New entry for DOWN: 16.277727272222275
+2024-09-09 00:01:56,803 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:56,804 [alvaro_agent_code] DEBUG: Suitable target found at (15, 10)
+2024-09-09 00:01:56,804 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 154
+2024-09-09 00:01:56,805 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:01:56,808 [alvaro_agent_code] INFO: Old entry for DOWN: 61.777272722222726
+2024-09-09 00:01:56,809 [alvaro_agent_code] INFO: New entry for DOWN: 11.727777725423728
+2024-09-09 00:01:56,903 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:56,904 [alvaro_agent_code] DEBUG: Suitable target found at (15, 10)
+2024-09-09 00:01:56,904 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 155
+2024-09-09 00:01:56,905 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:01:56,906 [alvaro_agent_code] INFO: Old entry for DOWN: 16.27777725423727
+2024-09-09 00:01:56,908 [alvaro_agent_code] INFO: New entry for DOWN: 16.277227222222223
+2024-09-09 00:01:57,005 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:57,006 [alvaro_agent_code] DEBUG: Suitable target found at (15, 10)
+2024-09-09 00:01:57,006 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 156
+2024-09-09 00:01:57,007 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:01:57,007 [alvaro_agent_code] INFO: Old entry for DOWN: 61.77227222222223
+2024-09-09 00:01:57,008 [alvaro_agent_code] INFO: New entry for DOWN: 16.722121212121216
+2024-09-09 00:01:57,105 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:57,106 [alvaro_agent_code] DEBUG: Suitable target found at (15, 10)
+2024-09-09 00:01:57,106 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 157
+2024-09-09 00:01:57,106 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:01:57,108 [alvaro_agent_code] INFO: Old entry for DOWN: 66.22121212121212
+2024-09-09 00:01:57,108 [alvaro_agent_code] INFO: New entry for DOWN: 11.722222386226896
+2024-09-09 00:01:57,206 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:57,206 [alvaro_agent_code] DEBUG: Suitable target found at (15, 10)
+2024-09-09 00:01:57,208 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN', 'COIN_COLLECTED' in step 158
+2024-09-09 00:01:57,208 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_DOWN, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:57,209 [alvaro_agent_code] INFO: Old entry for DOWN: 16.222223862268912
+2024-09-09 00:01:57,209 [alvaro_agent_code] INFO: New entry for DOWN: 66.7226176176822
+2024-09-09 00:01:57,308 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:57,308 [alvaro_agent_code] DEBUG: Encountered game event(s) 'INVALID_ACTION' in step 159
+2024-09-09 00:01:57,309 [alvaro_agent_code] INFO: Awarded -15 for events INVALID_ACTION
+2024-09-09 00:01:57,310 [alvaro_agent_code] INFO: Old entry for RIGHT: -13.272227777727016
+2024-09-09 00:01:57,311 [alvaro_agent_code] INFO: New entry for RIGHT: -8.277382382317791
+2024-09-09 00:01:57,410 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:57,411 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 160
+2024-09-09 00:01:57,411 [alvaro_agent_code] INFO: Awarded -21 for events MOVED_UP, OPPOSITE
+2024-09-09 00:01:57,412 [alvaro_agent_code] INFO: Old entry for UP: -14.27777761377311
+2024-09-09 00:01:57,413 [alvaro_agent_code] INFO: New entry for UP: -19.727889772060827
+2024-09-09 00:01:57,511 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:57,511 [alvaro_agent_code] DEBUG: Suitable target found at (12, 9)
+2024-09-09 00:01:57,512 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 161
+2024-09-09 00:01:57,513 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_LEFT, FOLLOWED
+2024-09-09 00:01:57,514 [alvaro_agent_code] INFO: Old entry for LEFT: 11.721102279391758
+2024-09-09 00:01:57,515 [alvaro_agent_code] INFO: New entry for LEFT: 11.727222222722721
+2024-09-09 00:01:57,612 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:57,613 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 162
+2024-09-09 00:01:57,613 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_LEFT, FOLLOWED
+2024-09-09 00:01:57,614 [alvaro_agent_code] INFO: Old entry for LEFT: 16.272222227227225
+2024-09-09 00:01:57,614 [alvaro_agent_code] INFO: New entry for LEFT: 11.368231180744921
+2024-09-09 00:01:57,713 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:57,713 [alvaro_agent_code] DEBUG: Suitable target found at (12, 9)
+2024-09-09 00:01:57,714 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT', 'COIN_COLLECTED' in step 163
+2024-09-09 00:01:57,714 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_LEFT, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:57,715 [alvaro_agent_code] INFO: Old entry for LEFT: 12.682311807449217
+2024-09-09 00:01:57,715 [alvaro_agent_code] INFO: New entry for LEFT: 61.22227212121253
+2024-09-09 00:01:57,814 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:57,814 [alvaro_agent_code] DEBUG: Suitable target found at (11, 8)
+2024-09-09 00:01:57,814 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 164
+2024-09-09 00:01:57,815 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_LEFT, FOLLOWED
+2024-09-09 00:01:57,816 [alvaro_agent_code] INFO: Old entry for LEFT: 11.222721212125222
+2024-09-09 00:01:57,816 [alvaro_agent_code] INFO: New entry for LEFT: 16.72272777192324
+2024-09-09 00:01:57,917 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:57,917 [alvaro_agent_code] DEBUG: Suitable target found at (11, 8)
+2024-09-09 00:01:57,918 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP', 'COIN_COLLECTED' in step 165
+2024-09-09 00:01:57,919 [alvaro_agent_code] INFO: Awarded 29 for events MOVED_UP, COIN_COLLECTED, OPPOSITE
+2024-09-09 00:01:57,919 [alvaro_agent_code] INFO: Old entry for UP: 61.22722772727374
+2024-09-09 00:01:57,920 [alvaro_agent_code] INFO: New entry for UP: 61.22722772727374
+2024-09-09 00:01:58,018 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:01:58,018 [alvaro_agent_code] DEBUG: Encountered game event(s) 'INVALID_ACTION' in step 166
+2024-09-09 00:01:58,019 [alvaro_agent_code] INFO: Awarded -15 for events INVALID_ACTION
+2024-09-09 00:01:58,020 [alvaro_agent_code] INFO: Old entry for RIGHT: -13.777727872029864
+2024-09-09 00:01:58,021 [alvaro_agent_code] INFO: New entry for RIGHT: -13.777727872029864
+2024-09-09 00:01:58,116 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:58,116 [alvaro_agent_code] DEBUG: Suitable target found at (11, 10)
+2024-09-09 00:01:58,118 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 167
+2024-09-09 00:01:58,118 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:01:58,119 [alvaro_agent_code] INFO: Old entry for DOWN: -9.17878287739407
+2024-09-09 00:01:58,119 [alvaro_agent_code] INFO: New entry for DOWN: 9.717738606455754
+2024-09-09 00:01:58,217 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:58,218 [alvaro_agent_code] DEBUG: Suitable target found at (11, 10)
+2024-09-09 00:01:58,219 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN', 'COIN_COLLECTED' in step 168
+2024-09-09 00:01:58,219 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_DOWN, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:58,220 [alvaro_agent_code] INFO: Old entry for DOWN: 66.2272777192324
+2024-09-09 00:01:58,220 [alvaro_agent_code] INFO: New entry for DOWN: 61.222121212121216
+2024-09-09 00:01:58,318 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:58,318 [alvaro_agent_code] DEBUG: Suitable target found at (11, 13)
+2024-09-09 00:01:58,319 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 169
+2024-09-09 00:01:58,320 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:01:58,321 [alvaro_agent_code] INFO: Old entry for DOWN: 11.221212121212119
+2024-09-09 00:01:58,321 [alvaro_agent_code] INFO: New entry for DOWN: 11.272775779114
+2024-09-09 00:01:58,419 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:58,419 [alvaro_agent_code] DEBUG: Suitable target found at (11, 13)
+2024-09-09 00:01:58,420 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 170
+2024-09-09 00:01:58,420 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:01:58,421 [alvaro_agent_code] INFO: Old entry for DOWN: 11.72775779114
+2024-09-09 00:01:58,421 [alvaro_agent_code] INFO: New entry for DOWN: 17.417704945916903
+2024-09-09 00:01:58,520 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:58,520 [alvaro_agent_code] DEBUG: Suitable target found at (11, 13)
+2024-09-09 00:01:58,521 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN', 'COIN_COLLECTED' in step 171
+2024-09-09 00:01:58,521 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_DOWN, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:58,522 [alvaro_agent_code] INFO: Old entry for DOWN: 73.17704945916904
+2024-09-09 00:01:58,522 [alvaro_agent_code] INFO: New entry for DOWN: 60.21772227272778
+2024-09-09 00:01:58,621 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:58,621 [alvaro_agent_code] DEBUG: Suitable target found at (8, 13)
+2024-09-09 00:01:58,622 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 172
+2024-09-09 00:01:58,622 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_LEFT, FOLLOWED
+2024-09-09 00:01:58,623 [alvaro_agent_code] INFO: Old entry for LEFT: 66.22252121212122
+2024-09-09 00:01:58,624 [alvaro_agent_code] INFO: New entry for LEFT: 66.22252121212122
+2024-09-09 00:01:58,721 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:58,722 [alvaro_agent_code] DEBUG: Suitable target found at (8, 13)
+2024-09-09 00:01:58,723 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 173
+2024-09-09 00:01:58,723 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_LEFT, FOLLOWED
+2024-09-09 00:01:58,724 [alvaro_agent_code] INFO: Old entry for LEFT: 11.70238116782749
+2024-09-09 00:01:58,725 [alvaro_agent_code] INFO: New entry for LEFT: 11.271722272768171
+2024-09-09 00:01:58,822 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:58,823 [alvaro_agent_code] DEBUG: Suitable target found at (8, 13)
+2024-09-09 00:01:58,823 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT', 'COIN_COLLECTED' in step 174
+2024-09-09 00:01:58,824 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_LEFT, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:58,824 [alvaro_agent_code] INFO: Old entry for LEFT: 11.717222727681708
+2024-09-09 00:01:58,825 [alvaro_agent_code] INFO: New entry for LEFT: 61.72277772722777
+2024-09-09 00:01:58,922 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:58,923 [alvaro_agent_code] DEBUG: Suitable target found at (5, 13)
+2024-09-09 00:01:58,923 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 175
+2024-09-09 00:01:58,924 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_LEFT, FOLLOWED
+2024-09-09 00:01:58,925 [alvaro_agent_code] INFO: Old entry for LEFT: 16.227777272277724
+2024-09-09 00:01:58,926 [alvaro_agent_code] INFO: New entry for LEFT: 10.267235971071223
+2024-09-09 00:01:59,023 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:59,024 [alvaro_agent_code] DEBUG: Suitable target found at (5, 13)
+2024-09-09 00:01:59,025 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 176
+2024-09-09 00:01:59,026 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_LEFT
+2024-09-09 00:01:59,027 [alvaro_agent_code] INFO: Old entry for LEFT: 11.772272277222228
+2024-09-09 00:01:59,027 [alvaro_agent_code] INFO: New entry for LEFT: 1.7712727272772224
+2024-09-09 00:01:59,123 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:59,123 [alvaro_agent_code] DEBUG: Suitable target found at (5, 13)
+2024-09-09 00:01:59,124 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT', 'COIN_COLLECTED' in step 177
+2024-09-09 00:01:59,124 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_LEFT, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:59,125 [alvaro_agent_code] INFO: Old entry for LEFT: 16.712727272772224
+2024-09-09 00:01:59,125 [alvaro_agent_code] INFO: New entry for LEFT: 60.22275833955831
+2024-09-09 00:01:59,227 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:59,227 [alvaro_agent_code] DEBUG: Suitable target found at (5, 14)
+2024-09-09 00:01:59,228 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 178
+2024-09-09 00:01:59,229 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_RIGHT
+2024-09-09 00:01:59,230 [alvaro_agent_code] INFO: Old entry for RIGHT: 1.2275833955831699
+2024-09-09 00:01:59,230 [alvaro_agent_code] INFO: New entry for RIGHT: 61.713050862720884
+2024-09-09 00:01:59,325 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:59,326 [alvaro_agent_code] DEBUG: Suitable target found at (4, 13)
+2024-09-09 00:01:59,326 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 179
+2024-09-09 00:01:59,326 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_LEFT, FOLLOWED
+2024-09-09 00:01:59,328 [alvaro_agent_code] INFO: Old entry for LEFT: 60.22275833955831
+2024-09-09 00:01:59,328 [alvaro_agent_code] INFO: New entry for LEFT: 14.756768116771731
+2024-09-09 00:01:59,426 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:59,426 [alvaro_agent_code] DEBUG: Suitable target found at (5, 14)
+2024-09-09 00:01:59,426 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 180
+2024-09-09 00:01:59,428 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_RIGHT
+2024-09-09 00:01:59,428 [alvaro_agent_code] INFO: Old entry for RIGHT: 61.713050862720884
+2024-09-09 00:01:59,428 [alvaro_agent_code] INFO: New entry for RIGHT: 61.713050862720884
+2024-09-09 00:01:59,527 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:59,527 [alvaro_agent_code] DEBUG: Suitable target found at (4, 13)
+2024-09-09 00:01:59,528 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 181
+2024-09-09 00:01:59,529 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_LEFT, FOLLOWED
+2024-09-09 00:01:59,529 [alvaro_agent_code] INFO: Old entry for LEFT: 14.756768116771731
+2024-09-09 00:01:59,530 [alvaro_agent_code] INFO: New entry for LEFT: 14.756768116771726
+2024-09-09 00:01:59,629 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:59,629 [alvaro_agent_code] DEBUG: Suitable target found at (5, 14)
+2024-09-09 00:01:59,629 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 182
+2024-09-09 00:01:59,630 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_RIGHT
+2024-09-09 00:01:59,630 [alvaro_agent_code] INFO: Old entry for RIGHT: 61.713050862720884
+2024-09-09 00:01:59,630 [alvaro_agent_code] INFO: New entry for RIGHT: 1.5756768116771767
+2024-09-09 00:01:59,730 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:59,730 [alvaro_agent_code] DEBUG: Suitable target found at (5, 14)
+2024-09-09 00:01:59,731 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 183
+2024-09-09 00:01:59,732 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_LEFT, FOLLOWED
+2024-09-09 00:01:59,733 [alvaro_agent_code] INFO: Old entry for LEFT: 14.756768116771726
+2024-09-09 00:01:59,733 [alvaro_agent_code] INFO: New entry for LEFT: 15.912777147774092
+2024-09-09 00:01:59,831 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:59,832 [alvaro_agent_code] DEBUG: Suitable target found at (4, 13)
+2024-09-09 00:01:59,832 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT', 'COIN_COLLECTED' in step 184
+2024-09-09 00:01:59,833 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_LEFT, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:01:59,833 [alvaro_agent_code] INFO: Old entry for LEFT: 46.567681167717254
+2024-09-09 00:01:59,833 [alvaro_agent_code] INFO: New entry for LEFT: 46.567681167717254
+2024-09-09 00:01:59,932 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:01:59,933 [alvaro_agent_code] DEBUG: Suitable target found at (5, 14)
+2024-09-09 00:01:59,933 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 185
+2024-09-09 00:01:59,934 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_RIGHT, FOLLOWED
+2024-09-09 00:01:59,934 [alvaro_agent_code] INFO: Old entry for RIGHT: 16.772227272227227
+2024-09-09 00:01:59,935 [alvaro_agent_code] INFO: New entry for RIGHT: 15.912777147774092
+2024-09-09 00:02:00,033 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:00,033 [alvaro_agent_code] DEBUG: Suitable target found at (5, 14)
+2024-09-09 00:02:00,034 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN', 'COIN_COLLECTED' in step 186
+2024-09-09 00:02:00,035 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_DOWN, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:02:00,035 [alvaro_agent_code] INFO: Old entry for DOWN: 58.12777147774093
+2024-09-09 00:02:00,035 [alvaro_agent_code] INFO: New entry for DOWN: 61.27777272277722
+2024-09-09 00:02:00,136 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:00,137 [alvaro_agent_code] DEBUG: Suitable target found at (5, 11)
+2024-09-09 00:02:00,137 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 187
+2024-09-09 00:02:00,139 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:02:00,141 [alvaro_agent_code] INFO: Old entry for UP: 11.777727227772226
+2024-09-09 00:02:00,142 [alvaro_agent_code] INFO: New entry for UP: 16.205229663313922
+2024-09-09 00:02:00,234 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:00,234 [alvaro_agent_code] DEBUG: Suitable target found at (5, 11)
+2024-09-09 00:02:00,235 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 188
+2024-09-09 00:02:00,235 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:02:00,236 [alvaro_agent_code] INFO: Old entry for UP: 61.05229663313925
+2024-09-09 00:02:00,236 [alvaro_agent_code] INFO: New entry for UP: 16.722277721105506
+2024-09-09 00:02:00,335 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:00,335 [alvaro_agent_code] DEBUG: Suitable target found at (5, 11)
+2024-09-09 00:02:00,336 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP', 'COIN_COLLECTED' in step 189
+2024-09-09 00:02:00,336 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_UP, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:02:00,337 [alvaro_agent_code] INFO: Old entry for UP: 66.22277721105502
+2024-09-09 00:02:00,337 [alvaro_agent_code] INFO: New entry for UP: 61.26572012712993
+2024-09-09 00:02:00,438 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:00,438 [alvaro_agent_code] DEBUG: Suitable target found at (6, 11)
+2024-09-09 00:02:00,439 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT', 'COIN_COLLECTED' in step 190
+2024-09-09 00:02:00,440 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_RIGHT, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:02:00,441 [alvaro_agent_code] INFO: Old entry for RIGHT: 11.657201271299293
+2024-09-09 00:02:00,441 [alvaro_agent_code] INFO: New entry for RIGHT: 61.77183875904908
+2024-09-09 00:02:00,538 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:00,538 [alvaro_agent_code] DEBUG: Suitable target found at (7, 11)
+2024-09-09 00:02:00,538 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT', 'COIN_COLLECTED' in step 191
+2024-09-09 00:02:00,539 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_RIGHT, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:02:00,539 [alvaro_agent_code] INFO: Old entry for RIGHT: 16.7183875904908
+2024-09-09 00:02:00,539 [alvaro_agent_code] INFO: New entry for RIGHT: 61.121212121212125
+2024-09-09 00:02:00,640 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:00,641 [alvaro_agent_code] DEBUG: Suitable target found at (7, 10)
+2024-09-09 00:02:00,641 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP', 'COIN_COLLECTED' in step 192
+2024-09-09 00:02:00,642 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_UP, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:02:00,642 [alvaro_agent_code] INFO: Old entry for UP: 1.8335611261146028
+2024-09-09 00:02:00,642 [alvaro_agent_code] INFO: New entry for UP: 10.212121212121211
+2024-09-09 00:02:00,740 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:02:00,740 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 193
+2024-09-09 00:02:00,741 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:02:00,741 [alvaro_agent_code] INFO: Old entry for DOWN: 16.272712722723043
+2024-09-09 00:02:00,742 [alvaro_agent_code] INFO: New entry for DOWN: 16.27272712722723
+2024-09-09 00:02:00,840 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:00,841 [alvaro_agent_code] DEBUG: Suitable target found at (8, 11)
+2024-09-09 00:02:00,841 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 194
+2024-09-09 00:02:00,842 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_UP
+2024-09-09 00:02:00,842 [alvaro_agent_code] INFO: Old entry for UP: 61.727271272272304
+2024-09-09 00:02:00,842 [alvaro_agent_code] INFO: New entry for UP: 1.7272727127227228
+2024-09-09 00:02:00,942 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:00,943 [alvaro_agent_code] DEBUG: Suitable target found at (8, 11)
+2024-09-09 00:02:00,944 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_DOWN' in step 195
+2024-09-09 00:02:00,944 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_DOWN, FOLLOWED
+2024-09-09 00:02:00,945 [alvaro_agent_code] INFO: Old entry for DOWN: 16.27272712722723
+2024-09-09 00:02:00,946 [alvaro_agent_code] INFO: New entry for DOWN: 11.227026222728123
+2024-09-09 00:02:01,042 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:01,042 [alvaro_agent_code] DEBUG: Suitable target found at (8, 11)
+2024-09-09 00:02:01,044 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT', 'COIN_COLLECTED' in step 196
+2024-09-09 00:02:01,044 [alvaro_agent_code] INFO: Awarded 60 for events MOVED_RIGHT, COIN_COLLECTED, FOLLOWED
+2024-09-09 00:02:01,046 [alvaro_agent_code] INFO: Old entry for RIGHT: 11.270262227281233
+2024-09-09 00:02:01,046 [alvaro_agent_code] INFO: New entry for RIGHT: 62.72849146892696
+2024-09-09 00:02:01,143 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:01,145 [alvaro_agent_code] DEBUG: Suitable target found at (10, 7)
+2024-09-09 00:02:01,145 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 197
+2024-09-09 00:02:01,147 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_RIGHT, FOLLOWED
+2024-09-09 00:02:01,151 [alvaro_agent_code] INFO: Old entry for RIGHT: 26.284914689269705
+2024-09-09 00:02:01,154 [alvaro_agent_code] INFO: New entry for RIGHT: 15.844444444444443
+2024-09-09 00:02:01,244 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:01,245 [alvaro_agent_code] DEBUG: Suitable target found at (10, 7)
+2024-09-09 00:02:01,246 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 198
+2024-09-09 00:02:01,247 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:02:01,249 [alvaro_agent_code] INFO: Old entry for UP: 57.44444444444444
+2024-09-09 00:02:01,252 [alvaro_agent_code] INFO: New entry for UP: 16.772222727222122
+2024-09-09 00:02:01,347 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:01,348 [alvaro_agent_code] DEBUG: Suitable target found at (10, 7)
+2024-09-09 00:02:01,349 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 199
+2024-09-09 00:02:01,351 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:02:01,353 [alvaro_agent_code] INFO: Old entry for UP: 66.7222272722212
+2024-09-09 00:02:01,355 [alvaro_agent_code] INFO: New entry for UP: 11.221212121212126
+2024-09-09 00:02:01,446 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:01,447 [alvaro_agent_code] DEBUG: Suitable target found at (10, 7)
+2024-09-09 00:02:01,447 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_RIGHT' in step 200
+2024-09-09 00:02:01,447 [alvaro_agent_code] INFO: Awarded 0 for events MOVED_RIGHT
+2024-09-09 00:02:01,449 [alvaro_agent_code] INFO: Old entry for RIGHT: 11.212121212121211
+2024-09-09 00:02:01,450 [alvaro_agent_code] INFO: New entry for RIGHT: 1.7110000000000003
+2024-09-09 00:02:01,547 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:01,548 [alvaro_agent_code] DEBUG: Suitable target found at (10, 7)
+2024-09-09 00:02:01,548 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_LEFT' in step 201
+2024-09-09 00:02:01,549 [alvaro_agent_code] INFO: Awarded -21 for events MOVED_LEFT, OPPOSITE
+2024-09-09 00:02:01,551 [alvaro_agent_code] INFO: Old entry for LEFT: 9.70261517227928
+2024-09-09 00:02:01,552 [alvaro_agent_code] INFO: New entry for LEFT: 16.110000000000003
+2024-09-09 00:02:01,652 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:01,653 [alvaro_agent_code] DEBUG: Suitable target found at (10, 7)
+2024-09-09 00:02:01,653 [alvaro_agent_code] DEBUG: Encountered game event(s) 'MOVED_UP' in step 202
+2024-09-09 00:02:01,655 [alvaro_agent_code] INFO: Awarded 10 for events MOVED_UP, FOLLOWED
+2024-09-09 00:02:01,657 [alvaro_agent_code] INFO: Old entry for UP: 10.212121212121211
+2024-09-09 00:02:01,658 [alvaro_agent_code] INFO: New entry for UP: 9.327122705364696
+2024-09-09 00:02:01,749 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:01,749 [alvaro_agent_code] DEBUG: Suitable target found at (10, 7)
+2024-09-09 00:02:01,750 [alvaro_agent_code] DEBUG: Encountered game event(s) 'INVALID_ACTION' in step 203
+2024-09-09 00:02:01,751 [alvaro_agent_code] INFO: Awarded -15 for events INVALID_ACTION
+2024-09-09 00:02:01,753 [alvaro_agent_code] INFO: Old entry for LEFT: -7.7287729463530415
+2024-09-09 00:02:01,753 [alvaro_agent_code] INFO: New entry for LEFT: -15.672877294635304
+2024-09-09 00:02:01,849 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:01,850 [alvaro_agent_code] DEBUG: Suitable target found at (10, 7)
+2024-09-09 00:02:01,850 [alvaro_agent_code] DEBUG: Encountered game event(s) 'BOMB_DROPPED' in step 204
+2024-09-09 00:02:01,851 [alvaro_agent_code] INFO: Awarded -9 for events BOMB_DROPPED, NOT_FLEED
+2024-09-09 00:02:01,851 [alvaro_agent_code] INFO: Old entry for BOMB: -8.287276872761694
+2024-09-09 00:02:01,852 [alvaro_agent_code] INFO: New entry for BOMB: -9.72872768727617
+2024-09-09 00:02:01,951 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:01,952 [alvaro_agent_code] DEBUG: Suitable target found at (10, 7)
+2024-09-09 00:02:01,952 [alvaro_agent_code] DEBUG: Encountered game event(s) 'INVALID_ACTION' in step 205
+2024-09-09 00:02:01,953 [alvaro_agent_code] INFO: Awarded -25 for events INVALID_ACTION, NOT_FLEED
+2024-09-09 00:02:01,953 [alvaro_agent_code] INFO: Old entry for BOMB: -9.72872768727617
+2024-09-09 00:02:01,954 [alvaro_agent_code] INFO: New entry for BOMB: -25.872872768727614
+2024-09-09 00:02:02,052 [alvaro_agent_code] DEBUG: Choosing action purely at random.
+2024-09-09 00:02:02,053 [alvaro_agent_code] DEBUG: Encountered game event(s) 'INVALID_ACTION' in step 206
+2024-09-09 00:02:02,054 [alvaro_agent_code] INFO: Awarded -25 for events INVALID_ACTION, NOT_FLEED
+2024-09-09 00:02:02,054 [alvaro_agent_code] INFO: Old entry for LEFT: -15.672877294635304
+2024-09-09 00:02:02,055 [alvaro_agent_code] INFO: New entry for LEFT: -25.87878787787728
+2024-09-09 00:02:02,153 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:02,153 [alvaro_agent_code] DEBUG: Suitable target found at (10, 7)
+2024-09-09 00:02:02,154 [alvaro_agent_code] DEBUG: Encountered game event(s) 'WAITED' in step 207
+2024-09-09 00:02:02,154 [alvaro_agent_code] INFO: Awarded -20 for events WAITED, NOT_FLEED
+2024-09-09 00:02:02,155 [alvaro_agent_code] INFO: Old entry for WAIT: -9.787878778772773
+2024-09-09 00:02:02,156 [alvaro_agent_code] INFO: New entry for WAIT: -20.87878787787728
+2024-09-09 00:02:02,254 [alvaro_agent_code] DEBUG: Querying model for action.
+2024-09-09 00:02:02,254 [alvaro_agent_code] DEBUG: Suitable target found at (10, 7)
+2024-09-09 00:02:02,255 [alvaro_agent_code] DEBUG: Encountered event(s) 'INVALID_ACTION', 'BOMB_EXPLODED', 'KILLED_SELF', 'GOT_KILLED' in final step
+2024-09-09 00:02:02,255 [alvaro_agent_code] INFO: Awarded -195 for events INVALID_ACTION, BOMB_EXPLODED, KILLED_SELF, GOT_KILLED
+2024-09-09 00:02:02,256 [alvaro_agent_code] INFO: New entry for RIGHT: -14.787878787877878
+2024-09-09 00:02:02,256 [alvaro_agent_code] INFO: Old entry for RIGHT: -194.9
