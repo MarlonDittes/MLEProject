@@ -67,17 +67,15 @@ def value_of_bomb(location, grid, others):
     :param others: The location of the other players.
     """
     value = 0
-    if (location[0] == 0 or location[0] == 15) or (location[1] == 0 or location[1] == 15):
-        return 0
-    if grid[location[0]+1][location[1]] or grid[location[0][location[1]+1]] == 1:
+    if grid[location[0]+1][location[1]] or grid[location[0]][location[1]+1] == 1:
         value += 1
-    elif grid[location[0]-1][location[1]] or grid[location[0][location[1]-1]] == 1:
+    elif grid[location[0]-1][location[1]] or grid[location[0]][location[1]-1] == 1:
         if (value == 1):
             value += 1
         value +=1
-    elif grid[location[0]+1][location[1]] or grid[location[0][location[1]+1]] == 0:
+    elif grid[location[0]+1][location[1]] or grid[location[0]][location[1]+1] == 0:
         value -= 1
-    elif grid[location[0]-1][location[1]] or grid[location[0][location[1]-1]] == 0:
+    elif grid[location[0]-1][location[1]] or grid[location[0]][location[1]-1] == 0:
         if (value == -1):
             value = 0
         value -= 1
@@ -91,6 +89,8 @@ def value_of_bomb(location, grid, others):
         if other[0] == location[0]+3 or other[0] == location[0]-3 or other[1] == location[1]+3 or other[1] == location[1]-3:
             value += 1
     return value
+
+    
 
 def setup(self):
     """
