@@ -59,6 +59,39 @@ def look_for_targets(free_space, start, targets, logger=None):
         if parent_dict[current] == start: return current
         current = parent_dict[current]
 
+def value_of_bomb(location, grid, others):
+    """
+    This function calculates the value of a bomb at a certain location.
+    :param location: The location of the bomb.
+    :param grid: The current state of the game.
+    :param others: The location of the other players.
+    """
+    value = 0
+    if (location[0] == 0 or location[0] == 15) or (location[1] == 0 or location[1] == 15):
+        return 0
+    if grid[location[0]+1][location[1]] or grid[location[0][location[1]+1]] == 1:
+        value += 1
+    elif grid[location[0]-1][location[1]] or grid[location[0][location[1]-1]] == 1:
+        if (value == 1):
+            value += 1
+        value +=1
+    elif grid[location[0]+1][location[1]] or grid[location[0][location[1]+1]] == 0:
+        value -= 1
+    elif grid[location[0]-1][location[1]] or grid[location[0][location[1]-1]] == 0:
+        if (value == -1):
+            value = 0
+        value -= 1
+    if grid[location[0]][location[1]] == 0:
+        return 0
+    for other in others[3]:
+        if other[0] == location[0]+1 or other[0] == location[0]-1 or other[1] == location[1]+1 or other[1] == location[1]-1:
+            value += 5
+        if other[0] == location[0]+2 or other[0] == location[0]-2 or other[1] == location[1]+2 or other[1] == location[1]-2:
+            value += 3
+        if other[0] == location[0]+3 or other[0] == location[0]-3 or other[1] == location[1]+3 or other[1] == location[1]-3:
+            value += 1
+    return value
+
 def setup(self):
     """
     Setup your code. This is called once when loading each agent.
@@ -168,6 +201,7 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
         left = 0
     if game_state['field'][game_state['self'][3][0]][game_state['self'][3][1]-1] == -1:
         left = -1
+    bomb_value = value_of_bomb(game_state['self'][3], game_state['field'], game_state['others'])
 
     # map of bombs, work in progress
     # bomb_map = np.ones((20, 20))
@@ -230,8 +264,8 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
             # bomb_map[bomb[0][0], bomb[0][1] - 3] = 0
 
 
-    # features consist of current position, direction of nearest coin and info about surrounding tiles
-    features = (game_state['self'][3], d, up, down, right, left)
+    # features consist of current position, direction of nearest coin, info about surrounding tiles and value of dropping a bomb
+    features = (game_state['self'][3], d, up, down, right, left, bomb_value)
     return features
 
 def default_action_probabilities():
