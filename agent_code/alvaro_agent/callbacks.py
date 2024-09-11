@@ -143,8 +143,95 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
 
     d = look_for_targets(free_space, game_state['self'][3], game_state["coins"], logger)
 
-    # features consist of current position and direction of nearest coin
-    features = (game_state['self'][3], d)
+    # This will let the agent know if there is a crate or wall in front of it
+    if game_state['field'][game_state['self'][3][0]+1][game_state['self'][3][1]] == 1:
+        up = 1
+    if game_state['field'][game_state['self'][3][0]+1][game_state['self'][3][1]] == 0:
+        up = 0
+    if game_state['field'][game_state['self'][3][0]+1][game_state['self'][3][1]] == -1:
+        up = -1
+    if game_state['field'][game_state['self'][3][0]-1][game_state['self'][3][1]] == 1:
+        down = 1
+    if game_state['field'][game_state['self'][3][0]-1][game_state['self'][3][1]] == 0:
+        down = 0
+    if game_state['field'][game_state['self'][3][0]-1][game_state['self'][3][1]] == -1:
+        down = -1
+    if game_state['field'][game_state['self'][3][0]][game_state['self'][3][1]+1] == 1:
+        right = 1
+    if game_state['field'][game_state['self'][3][0]][game_state['self'][3][1]+1] == 0:
+        right = 0
+    if game_state['field'][game_state['self'][3][0]][game_state['self'][3][1]+1] == -1:
+        right = -1
+    if game_state['field'][game_state['self'][3][0]][game_state['self'][3][1]-1] == 1:
+        left = 1
+    if game_state['field'][game_state['self'][3][0]][game_state['self'][3][1]-1] == 0:
+        left = 0
+    if game_state['field'][game_state['self'][3][0]][game_state['self'][3][1]-1] == -1:
+        left = -1
+
+    # map of bombs, work in progress
+    # bomb_map = np.ones((20, 20))
+
+    # for bomb in game_state['bombs']:
+        # if bomb[1] == 3:
+            # bomb_map[bomb[0]] = -3
+            # bomb_map[bomb[0][0] + 1, bomb[0][1]] = -3
+            # bomb_map[bomb[0][0] - 1, bomb[0][1]] = -3
+            # bomb_map[bomb[0][0], bomb[0][1] + 1] = -3
+            # bomb_map[bomb[0][0], bomb[0][1] - 1] = -3
+            # bomb_map[bomb[0][0] + 2, bomb[0][1]] = -3
+            # bomb_map[bomb[0][0] - 2, bomb[0][1]] = -3
+            # bomb_map[bomb[0][0], bomb[0][1] + 2] = -3
+            # bomb_map[bomb[0][0], bomb[0][1] - 2] = -3
+            # bomb_map[bomb[0][0] + 3, bomb[0][1]]
+        # elif bomb[1] == 2:
+            # bomb_map[bomb[0]] = -2
+            # bomb_map[bomb[0][0] + 1, bomb[0][1]] = -2
+            # bomb_map[bomb[0][0] - 1, bomb[0][1]] = -2
+            # bomb_map[bomb[0][0], bomb[0][1] + 1] = -2
+            # bomb_map[bomb[0][0], bomb[0][1] - 1] = -2
+            # bomb_map[bomb[0][0] + 2, bomb[0][1]] = -2
+            # bomb_map[bomb[0][0] - 2, bomb[0][1]] = -2
+            # bomb_map[bomb[0][0], bomb[0][1] + 2] = -2
+            # bomb_map[bomb[0][0], bomb[0][1] - 2] = -2
+            # bomb_map[bomb[0][0] + 3, bomb[0][1]] = -2
+            # bomb_map[bomb[0][0] - 3, bomb[0][1]] = -2
+            # bomb_map[bomb[0][0], bomb[0][1] + 3] = -2
+            # bomb_map[bomb[0][0], bomb[0][1] - 3] = -2
+
+        # elif bomb[1] == 1:
+            # bomb_map[bomb[0]] = -1
+            # bomb_map[bomb[0][0] + 1, bomb[0][1]] = -1
+            # bomb_map[bomb[0][0] - 1, bomb[0][1]] = -1
+            # bomb_map[bomb[0][0], bomb[0][1] + 1] = -1
+            # bomb_map[bomb[0][0], bomb[0][1] - 1] = -1
+            # bomb_map[bomb[0][0] + 2, bomb[0][1]] = -1
+            # bomb_map[bomb[0][0] - 2, bomb[0][1]] = -1
+            # bomb_map[bomb[0][0], bomb[0][1] + 2] = -1
+            # bomb_map[bomb[0][0], bomb[0][1] - 2] = -1
+            # bomb_map[bomb[0][0] + 3, bomb[0][1]] = -1
+            # bomb_map[bomb[0][0] - 3, bomb[0][1]] = -1
+            # bomb_map[bomb[0][0], bomb[0][1] + 3] = -1
+            # bomb_map[bomb[0][0], bomb[0][1] - 3] = -1
+
+        # elif bomb[1] == 0:
+            # bomb_map[bomb[0]] = 0
+            # bomb_map[bomb[0][0] + 1, bomb[0][1]] = 0
+            # bomb_map[bomb[0][0] - 1, bomb[0][1]] = 0
+            # bomb_map[bomb[0][0], bomb[0][1] + 1] = 0
+            # bomb_map[bomb[0][0], bomb[0][1] - 1] = 0
+            # bomb_map[bomb[0][0] + 2, bomb[0][1]] = 0
+            # bomb_map[bomb[0][0] - 2, bomb[0][1]] = 0
+            # bomb_map[bomb[0][0], bomb[0][1] + 2] = 0
+            # bomb_map[bomb[0][0], bomb[0][1] - 2] = 0
+            # bomb_map[bomb[0][0] + 3, bomb[0][1]] = 0
+            # bomb_map[bomb[0][0] - 3, bomb[0][1]] = 0
+            # bomb_map[bomb[0][0], bomb[0][1] + 3] = 0
+            # bomb_map[bomb[0][0], bomb[0][1] - 3] = 0
+
+
+    # features consist of current position, direction of nearest coin and info about surrounding tiles
+    features = (game_state['self'][3], d, up, down, right, left)
     return features
 
 def default_action_probabilities():
