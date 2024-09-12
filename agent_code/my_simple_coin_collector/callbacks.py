@@ -79,16 +79,16 @@ def setup(self):
     self.epsilon = 0.1 # Exploration rate
 
     #RESET = True
-    RESET = False
+    #RESET = False
+    #print(self.train)
 
-
-    if not os.path.isfile("my-saved-model.pt") or RESET:
+    if not os.path.isfile("model.pt") or self.train:
         self.logger.info("Setting up model from scratch.")
         q_table = defaultdict(default_action_probabilities)
         self.model = q_table
     else:
         self.logger.info("Loading model from saved state.")
-        with open("my-saved-model.pt", "rb") as file:
+        with open("model.pt", "rb") as file:
             self.model = pickle.load(file)
 
 
@@ -109,7 +109,7 @@ def act(self, game_state: dict) -> str:
         return np.random.choice(ACTIONS, p=[.2, .2, .2, .2, .1, .1])
 
     self.logger.debug("Querying model for action.")
-    features = state_to_features(game_state, self.logger)
+    features = state_to_features(game_state)
     return ACTIONS[np.argmax(self.model[features])]
 
    
@@ -143,10 +143,17 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
 
     d = look_for_targets(free_space, game_state['self'][3], game_state["coins"], logger)
 
-    # features consist of current position and direction of nearest coin
-    features = (game_state['self'][3], d)
+    # only feature is the direction of nearest coin
+    if d is not None:
+        difference = tuple(a - b for a,b in zip(d, game_state["self"][3]))
+        features = (difference)
+    else:
+        features = (0,0)
     return features
 
 def default_action_probabilities():
-    weights = np.random.rand(len(ACTIONS))
-    return weights / weights.sum()
+    #weights = np.random.rand(len(ACTIONS))
+    #return weights / weights.sum()
+
+    weights = np.zeros(len(ACTIONS))
+    return weights
