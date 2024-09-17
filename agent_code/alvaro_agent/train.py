@@ -71,41 +71,31 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
         if difference[0] == 2 or difference[1] == 2:
             events.append(OPPOSITE_TO_INSTRUCTION)
     
-    # Escape from own bomb
-    global bomb_dropped
-    global counter
-    global distance_to_bomb
-    global bomb_position
-    if counter is None:
-        counter = -1
+    # Detect if agent is fleeing from bombs
+    old_position = old_game_state['self'][3]
+    new_position = new_game_state['self'][3]
     
-    if counter==-1:
-        bomb_dropped = False
+    # Check for bombs in the environment
+    bomb_positions = [bomb[0] for bomb in old_game_state['bombs']]
     
-    
-    if e.BOMB_DROPPED in events:
-        bomb_dropped = True
-        counter = 0
-        bomb_position = new_game_state['self'][3]
-        distance_to_bomb = 0
-    if counter is not None:
-        if counter >= 0:
-            old_distance_to_bomb = distance_to_bomb
-            distance_to_bomb = np.abs(new_game_state['self'][3][0] - bomb_position[0] + new_game_state['self'][3][1] - bomb_position[1])
-            if (old_distance_to_bomb < distance_to_bomb):
-                events.append(FLEEING_FROM_BOMB)
-                bomb_dropped = False
-                counter = -1
-            if distance_to_bomb > 4:
-                events.append(FLEED_FROM_BOMB)
-            if new_game_state['self'][3][0] != bomb_position[0] or new_game_state['self'][3][1] != bomb_position[1]:
-                events.append(FLEED_FROM_BOMB)
-                bomb_dropped = False
-                counter = -1
-            else:
-                events.append(NOT_FLEED_FROM_BOMB)
-                counter += 1
-
+    if bomb_positions:
+        # Find the closest bomb in the previous state
+        old_distances = [np.abs(old_position[0] - bomb[0]) + np.abs(old_position[1] - bomb[1]) for bomb in bomb_positions]
+        closest_bomb_distance_old = min(old_distances)
+        
+        # Find the closest bomb in the new state
+        new_distances = [np.abs(new_position[0] - bomb[0]) + np.abs(new_position[1] - bomb[1]) for bomb in bomb_positions]
+        closest_bomb_distance_new = min(new_distances)
+        
+        # Fleeing logic
+        if closest_bomb_distance_new > closest_bomb_distance_old:
+            events.append(FLEEING_FROM_BOMB)
+        elif closest_bomb_distance_new < closest_bomb_distance_old:
+            events.append(NOT_FLEED_FROM_BOMB)
+        
+        # Check if agent has fled far enough from the bomb
+        if closest_bomb_distance_new > 4:
+            events.append(FLEED_FROM_BOMB)
         
     # state_to_features is defined in callbacks.py
     #self.transitions.append(Transition(state_to_features(old_game_state), self_action, state_to_features(new_game_state), reward_from_events(self, events)))
@@ -162,8 +152,8 @@ def reward_from_events(events: List[str], logger=None) -> int:
     """
     game_rewards = {
         OPPOSITE_TO_INSTRUCTION: -21, 
-        FOLLOWED_INSTRUCTION: 10,
-        e.INVALID_ACTION: -15,
+        FOLLOWED_INSTRUCTION: 5,
+        e.INVALID_ACTION: -20,
         e.WAITED: -10,
         e.BOMB_DROPPED: 1,
         e.CRATE_DESTROYED: 10,
