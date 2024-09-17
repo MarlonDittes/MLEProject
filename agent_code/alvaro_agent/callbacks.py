@@ -90,7 +90,116 @@ def value_of_bomb(location, grid, others):
             value += 1
     return value
 
+import numpy as np
+
+import numpy as np
+
+def surroundingFeatures(location, grid, bombs, others, explosion, coins):
+    """
+    This function creates a 7x7 grid with the agent on the center recording all information.
+    :param location: coordinates of agent (x, y)
+    :param grid: 16x16 grid of the field containing information about walls and crates
+    :param bombs: list of bombs with their timers [(x, y), t]
+    :param others: list of enemies, each with their coordinates on others[i][3]
+    :param explosion: 2D numpy array stating explosion information for each tile
+    :param coins: list of coordinates of coins [(x, y)]
+    """
+    # Initialize the 7x7 surrounding information grid with zeros (free tiles)
+    information = np.zeros((7, 7))
     
+    # Agent's location
+    x, y = location
+    
+    # Helper function to mark explosions in all 4 directions
+    def mark_explosion(bomb_x, bomb_y, bomb_timer):
+        # The bomb explodes in the 4 cardinal directions, unless blocked
+        directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]  # down, up, right, left
+        
+        # Mark the bomb's position
+        relative_bomb_x = bomb_x - x - 3 # -3 to avoid having to use abs
+        relative_bomb_y = bomb_y - y - 3
+        if 0 <= relative_bomb_x < 7 and 0 <= relative_bomb_y < 7:
+            information[relative_bomb_x, relative_bomb_y] = -2 if bomb_timer == 1 else -3
+        
+        # Spread the explosion in each direction up to 3 tiles
+        for dx, dy in directions:
+            for step in range(1, 4):  # Up to 3 tiles
+                new_x = bomb_x + dx * step
+                new_y = bomb_y + dy * step
+                
+                # Calculate relative position in the 7x7 matrix
+                relative_new_x = new_x - x + 3
+                relative_new_y = new_y - y + 3
+                
+                # If out of bounds in 16x16 grid, stop propagation in this direction
+                if new_x < 0 or new_x >= 16 or new_y < 0 or new_y >= 16:
+                    break
+                
+                # If out of bounds in the 7x7 matrix, we don't need to record it
+                if relative_new_x < 0 or relative_new_x >= 7 or relative_new_y < 0 or relative_new_y >= 7:
+                    continue
+                
+                # If the explosion hits a wall or crate, stop further propagation
+                if grid[new_x, new_y] == -1 or grid[new_x, new_y] == 1:
+                    break
+                
+                # Mark the explosion
+                if information[relative_new_x, relative_new_y]!= -4 and information[relative_new_x, relative_new_y]!=-5:
+                    information[relative_new_x, relative_new_y] = -2 if bomb_timer == 1 else -3
+
+    # Iterate over the 7x7 window centered around the agent's location
+    for i in range(-3, 4):
+        for j in range(-3, 4):
+            # Calculate the actual coordinates on the full 16x16 grid
+            grid_x = x + i
+            grid_y = y + j
+            
+            # Determine relative position in the 7x7 matrix
+            relative_x = i + 3
+            relative_y = j + 3
+
+            # If out of bounds, mark as -1 (same as wall) and continue
+            if grid_x < 0 or grid_x >= 16 or grid_y < 0 or grid_y >= 16:
+                information[relative_x, relative_y] = -1
+                continue
+            
+            # First  priority: If there's a bomb explosion timer, mark -2 or -3 based on explosion
+            if explosion[grid_x, grid_y] > 0:
+                if explosion[grid_x, grid_y] == 1:
+                    information[relative_x, relative_y] = -4  # Explosion stays for 1 turn
+                else:
+                    information[relative_x, relative_y] = -5  # Explosion stays for 2+ turns
+                continue  # Skip further checks
+
+            # Second priority: If there's an enemy in 'others', mark it as 2
+            if any((grid_x == other[3][0] and grid_y == other[3][1]) for other in others):
+                information[relative_x, relative_y] = 2
+                continue  # Skip further checks for this cell since enemy takes precedence
+            
+
+            
+            # Third priority: If there's a coin, mark it as 3
+            if (grid_x, grid_y) in coins:
+                information[relative_x, relative_y] = 3
+                continue  # Skip further checks since coin info takes precedence
+            
+            # Fourth priority: Check the grid for crates (1), walls (-1), or free tiles (0)
+            if grid[grid_x, grid_y] == 1:
+                information[relative_x, relative_y] = 1  # Crate
+            elif grid[grid_x, grid_y] == -1:
+                information[relative_x, relative_y] = -1  # Stone wall (not breakable)
+            else:
+                information[relative_x, relative_y] = 0  # Free tile
+    
+    # After processing the grid, now we mark bomb explosions in the 7x7 vision area
+    for bomb in bombs:
+        bomb_x, bomb_y, bomb_timer = bomb[0][0], bomb[0][1], bomb[1]
+        # If the bomb is within the agent's 7x7 vision area, apply its explosion pattern
+        if abs(bomb_x - x) <= 3 and abs(bomb_y - y) <= 3:
+            mark_explosion(bomb_x, bomb_y, bomb_timer)
+    
+    return information
+
 
 def setup(self):
     """
@@ -202,70 +311,18 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
     if game_state['field'][game_state['self'][3][0]][game_state['self'][3][1]-1] == -1:
         left = -1
     bomb_value = value_of_bomb(game_state['self'][3], game_state['field'], game_state['others'])
-
-    # map of bombs, work in progress
-    # bomb_map = np.ones((20, 20))
-
-    # for bomb in game_state['bombs']:
-        # if bomb[1] == 3:
-            # bomb_map[bomb[0]] = -3
-            # bomb_map[bomb[0][0] + 1, bomb[0][1]] = -3
-            # bomb_map[bomb[0][0] - 1, bomb[0][1]] = -3
-            # bomb_map[bomb[0][0], bomb[0][1] + 1] = -3
-            # bomb_map[bomb[0][0], bomb[0][1] - 1] = -3
-            # bomb_map[bomb[0][0] + 2, bomb[0][1]] = -3
-            # bomb_map[bomb[0][0] - 2, bomb[0][1]] = -3
-            # bomb_map[bomb[0][0], bomb[0][1] + 2] = -3
-            # bomb_map[bomb[0][0], bomb[0][1] - 2] = -3
-            # bomb_map[bomb[0][0] + 3, bomb[0][1]]
-        # elif bomb[1] == 2:
-            # bomb_map[bomb[0]] = -2
-            # bomb_map[bomb[0][0] + 1, bomb[0][1]] = -2
-            # bomb_map[bomb[0][0] - 1, bomb[0][1]] = -2
-            # bomb_map[bomb[0][0], bomb[0][1] + 1] = -2
-            # bomb_map[bomb[0][0], bomb[0][1] - 1] = -2
-            # bomb_map[bomb[0][0] + 2, bomb[0][1]] = -2
-            # bomb_map[bomb[0][0] - 2, bomb[0][1]] = -2
-            # bomb_map[bomb[0][0], bomb[0][1] + 2] = -2
-            # bomb_map[bomb[0][0], bomb[0][1] - 2] = -2
-            # bomb_map[bomb[0][0] + 3, bomb[0][1]] = -2
-            # bomb_map[bomb[0][0] - 3, bomb[0][1]] = -2
-            # bomb_map[bomb[0][0], bomb[0][1] + 3] = -2
-            # bomb_map[bomb[0][0], bomb[0][1] - 3] = -2
-
-        # elif bomb[1] == 1:
-            # bomb_map[bomb[0]] = -1
-            # bomb_map[bomb[0][0] + 1, bomb[0][1]] = -1
-            # bomb_map[bomb[0][0] - 1, bomb[0][1]] = -1
-            # bomb_map[bomb[0][0], bomb[0][1] + 1] = -1
-            # bomb_map[bomb[0][0], bomb[0][1] - 1] = -1
-            # bomb_map[bomb[0][0] + 2, bomb[0][1]] = -1
-            # bomb_map[bomb[0][0] - 2, bomb[0][1]] = -1
-            # bomb_map[bomb[0][0], bomb[0][1] + 2] = -1
-            # bomb_map[bomb[0][0], bomb[0][1] - 2] = -1
-            # bomb_map[bomb[0][0] + 3, bomb[0][1]] = -1
-            # bomb_map[bomb[0][0] - 3, bomb[0][1]] = -1
-            # bomb_map[bomb[0][0], bomb[0][1] + 3] = -1
-            # bomb_map[bomb[0][0], bomb[0][1] - 3] = -1
-
-        # elif bomb[1] == 0:
-            # bomb_map[bomb[0]] = 0
-            # bomb_map[bomb[0][0] + 1, bomb[0][1]] = 0
-            # bomb_map[bomb[0][0] - 1, bomb[0][1]] = 0
-            # bomb_map[bomb[0][0], bomb[0][1] + 1] = 0
-            # bomb_map[bomb[0][0], bomb[0][1] - 1] = 0
-            # bomb_map[bomb[0][0] + 2, bomb[0][1]] = 0
-            # bomb_map[bomb[0][0] - 2, bomb[0][1]] = 0
-            # bomb_map[bomb[0][0], bomb[0][1] + 2] = 0
-            # bomb_map[bomb[0][0], bomb[0][1] - 2] = 0
-            # bomb_map[bomb[0][0] + 3, bomb[0][1]] = 0
-            # bomb_map[bomb[0][0] - 3, bomb[0][1]] = 0
-            # bomb_map[bomb[0][0], bomb[0][1] + 3] = 0
-            # bomb_map[bomb[0][0], bomb[0][1] - 3] = 0
-
-
+    information7x7 = surroundingFeatures(game_state['self'][3], game_state['field'], game_state['bombs'], game_state['others'], game_state['explosion_map'], game_state['coins'])
     # features consist of current position, direction of nearest coin, info about surrounding tiles and value of dropping a bomb
-    features = (game_state['self'][3], d, up, down, right, left, bomb_value)
+    features = (
+        game_state['self'][3], d, up, down, right, left, bomb_value,
+        information7x7[0][0], information7x7[0][1], information7x7[0][2], information7x7[0][3], information7x7[0][4], information7x7[0][5], information7x7[0][6],
+        information7x7[1][0], information7x7[1][1], information7x7[1][2], information7x7[1][3], information7x7[1][4], information7x7[1][5], information7x7[1][6],
+        information7x7[2][0], information7x7[2][1], information7x7[2][2], information7x7[2][3], information7x7[2][4], information7x7[2][5], information7x7[2][6],
+        information7x7[3][0], information7x7[3][1], information7x7[3][2], information7x7[3][3], information7x7[3][4], information7x7[3][5], information7x7[3][6],
+        information7x7[4][0], information7x7[4][1], information7x7[4][2], information7x7[4][3], information7x7[4][4], information7x7[4][5], information7x7[4][6],
+        information7x7[5][0], information7x7[5][1], information7x7[5][2], information7x7[5][3], information7x7[5][4], information7x7[5][5], information7x7[5][6],
+        information7x7[6][0], information7x7[6][1], information7x7[6][2], information7x7[6][3], information7x7[6][4], information7x7[6][5], information7x7[6][6]
+    )
     return features
 
 def default_action_probabilities():
