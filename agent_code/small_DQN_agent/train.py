@@ -77,7 +77,7 @@ def reward_from_events(self, events: List[str]) -> int:
         e.MOVED_RIGHT: -1,
         e.MOVED_UP: -1,
         e.WAITED: -1,
-        e.BOMB_DROPPED: -100,
+        e.BOMB_DROPPED: -1,
         e.COIN_COLLECTED: 5,
         e.INVALID_ACTION: -3,
         MOVED_TOWARDS_COIN: 3
