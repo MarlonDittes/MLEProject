@@ -88,7 +88,7 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
     
     self.logger.info(self.model[state_to_features(old_game_state)])
     self.model[state_to_features(old_game_state)][action_index] += self.alpha * td_error
-    self.logger.info(self.alpha + td_error)
+    self.logger.info(self.alpha * td_error)
     self.logger.info(self.model[state_to_features(old_game_state)])
     
 
