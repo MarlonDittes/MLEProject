@@ -105,7 +105,7 @@ def surroundingFeatures(location, grid, bombs, others, explosion, coins):
     :param coins: list of coordinates of coins [(x, y)]
     """
     # Initialize the 7x7 surrounding information grid with zeros (free tiles)
-    information = np.zeros((7, 7))
+    information = np.zeros((3, 3))
     
     # Agent's location
     x, y = location
@@ -116,27 +116,27 @@ def surroundingFeatures(location, grid, bombs, others, explosion, coins):
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]  # down, up, right, left
         
         # Mark the bomb's position
-        relative_bomb_x = bomb_x - x - 3 # -3 to avoid having to use abs
-        relative_bomb_y = bomb_y - y - 3
-        if 0 <= relative_bomb_x < 7 and 0 <= relative_bomb_y < 7:
+        relative_bomb_x = bomb_x - x - 1 # -3 to avoid having to use abs
+        relative_bomb_y = bomb_y - y - 1
+        if 0 <= relative_bomb_x < 3 and 0 <= relative_bomb_y < 3:
             information[relative_bomb_x, relative_bomb_y] = -2 if bomb_timer == 1 else -3
         
         # Spread the explosion in each direction up to 3 tiles
         for dx, dy in directions:
-            for step in range(1, 4):  # Up to 3 tiles
+            for step in range(1, 2):  # Up to 3 tiles
                 new_x = bomb_x + dx * step
                 new_y = bomb_y + dy * step
                 
                 # Calculate relative position in the 7x7 matrix
-                relative_new_x = new_x - x + 3
-                relative_new_y = new_y - y + 3
+                relative_new_x = new_x - x + 1
+                relative_new_y = new_y - y + 1
                 
                 # If out of bounds in 16x16 grid, stop propagation in this direction
                 if new_x < 0 or new_x >= 16 or new_y < 0 or new_y >= 16:
                     break
                 
                 # If out of bounds in the 7x7 matrix, we don't need to record it
-                if relative_new_x < 0 or relative_new_x >= 7 or relative_new_y < 0 or relative_new_y >= 7:
+                if relative_new_x < 0 or relative_new_x >= 3 or relative_new_y < 0 or relative_new_y >= 3:
                     continue
                 
                 # If the explosion hits a wall or crate, stop further propagation
@@ -148,15 +148,15 @@ def surroundingFeatures(location, grid, bombs, others, explosion, coins):
                     information[relative_new_x, relative_new_y] = -2 if bomb_timer == 1 else -3
 
     # Iterate over the 7x7 window centered around the agent's location
-    for i in range(-3, 4):
-        for j in range(-3, 4):
+    for i in range(-1, 2):
+        for j in range(-1, 2):
             # Calculate the actual coordinates on the full 16x16 grid
             grid_x = x + i
             grid_y = y + j
             
             # Determine relative position in the 7x7 matrix
-            relative_x = i + 3
-            relative_y = j + 3
+            relative_x = i + 1
+            relative_y = j + 1
 
             # If out of bounds, mark as -1 (same as wall) and continue
             if grid_x < 0 or grid_x >= 16 or grid_y < 0 or grid_y >= 16:
@@ -195,7 +195,7 @@ def surroundingFeatures(location, grid, bombs, others, explosion, coins):
     for bomb in bombs:
         bomb_x, bomb_y, bomb_timer = bomb[0][0], bomb[0][1], bomb[1]
         # If the bomb is within the agent's 7x7 vision area, apply its explosion pattern
-        if abs(bomb_x - x) <= 3 and abs(bomb_y - y) <= 3:
+        if abs(bomb_x - x) <= 1 and abs(bomb_y - y) <= 1:
             mark_explosion(bomb_x, bomb_y, bomb_timer)
     
     return information
@@ -217,14 +217,14 @@ def setup(self):
     """
     # Hyperparameters
     self.alpha = 0.1   # Learning rate
-    self.gamma = 0.1  # Discount factor
-    self.epsilon = 0.1 # Exploration rate
+    self.gamma = 0.9  # Discount factor
+    self.epsilon = 0.2 # Exploration rate
 
     #RESET = True
     RESET = False
 
 
-    if not os.path.isfile("my-saved-model.pt") or RESET:
+    if not os.path.isfile("my-saved-model.pt") or RESET or self.train:
         self.logger.info("Setting up model from scratch.")
         q_table = defaultdict(default_action_probabilities)
         self.model = q_table
@@ -314,14 +314,10 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
     information7x7 = surroundingFeatures(game_state['self'][3], game_state['field'], game_state['bombs'], game_state['others'], game_state['explosion_map'], game_state['coins'])
     # features consist of current position, direction of nearest coin, info about surrounding tiles and value of dropping a bomb
     features = (
-        game_state['self'][3], d, up, down, right, left, bomb_value,
-        information7x7[0][0], information7x7[0][1], information7x7[0][2], information7x7[0][3], information7x7[0][4], information7x7[0][5], information7x7[0][6],
-        information7x7[1][0], information7x7[1][1], information7x7[1][2], information7x7[1][3], information7x7[1][4], information7x7[1][5], information7x7[1][6],
-        information7x7[2][0], information7x7[2][1], information7x7[2][2], information7x7[2][3], information7x7[2][4], information7x7[2][5], information7x7[2][6],
-        information7x7[3][0], information7x7[3][1], information7x7[3][2], information7x7[3][3], information7x7[3][4], information7x7[3][5], information7x7[3][6],
-        information7x7[4][0], information7x7[4][1], information7x7[4][2], information7x7[4][3], information7x7[4][4], information7x7[4][5], information7x7[4][6],
-        information7x7[5][0], information7x7[5][1], information7x7[5][2], information7x7[5][3], information7x7[5][4], information7x7[5][5], information7x7[5][6],
-        information7x7[6][0], information7x7[6][1], information7x7[6][2], information7x7[6][3], information7x7[6][4], information7x7[6][5], information7x7[6][6]
+        d, up, down, right, left, bomb_value,
+        information7x7[0][0], information7x7[0][1], information7x7[0][2], 
+        information7x7[1][0], information7x7[1][1], information7x7[1][2], 
+        information7x7[2][0], information7x7[2][1], information7x7[2][2]
     )
     return features
 

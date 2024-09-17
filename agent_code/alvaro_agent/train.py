@@ -61,7 +61,7 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
     
     # Own events:
     # compute difference between where we wanted it to move vs where it actually moved
-    previous_instruction = state_to_features(old_game_state)[1]
+    previous_instruction = state_to_features(old_game_state)[0]
     if previous_instruction != None:
         difference = tuple(a - b for a,b in zip(previous_instruction, new_game_state['self'][3]))
         
@@ -108,7 +108,7 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
     td_target = reward + self.gamma * self.model[state_to_features(new_game_state)][best_next_action]
     td_error = td_target - self.model[state_to_features(old_game_state)][action_index]
     self.logger.info(f'Old entry for {self_action}: {self.model[state_to_features(old_game_state)][action_index]}')
-    self.model[state_to_features(old_game_state)][action_index] += self.alpha + td_error
+    self.model[state_to_features(old_game_state)][action_index] += self.alpha * td_error
     self.logger.info(f'New entry for {self_action}: {self.model[state_to_features(old_game_state)][action_index]}')
     
 
@@ -135,7 +135,7 @@ def end_of_round(self, last_game_state: dict, last_action: str, events: List[str
     td_target = reward
     td_error = td_target - self.model[state_to_features(last_game_state)][action_index]
     self.logger.info(f'New entry for {last_action}: {self.model[state_to_features(last_game_state)][action_index]}')
-    self.model[state_to_features(last_game_state)][action_index] += self.alpha + td_error
+    self.model[state_to_features(last_game_state)][action_index] += self.alpha * td_error
     self.logger.info(f'Old entry for {last_action}: {self.model[state_to_features(last_game_state)][action_index]}')
 
     # Store the model
@@ -151,21 +151,21 @@ def reward_from_events(events: List[str], logger=None) -> int:
     certain behavior.
     """
     game_rewards = {
-        OPPOSITE_TO_INSTRUCTION: -21, 
-        FOLLOWED_INSTRUCTION: 5,
-        e.INVALID_ACTION: -20,
-        e.WAITED: -10,
-        e.BOMB_DROPPED: 1,
+        OPPOSITE_TO_INSTRUCTION: -5, 
+        FOLLOWED_INSTRUCTION: 3,
+        e.INVALID_ACTION: -3,
+        e.WAITED: -1,
+        e.BOMB_DROPPED: -1,
         e.CRATE_DESTROYED: 10,
-        e.COIN_COLLECTED: 50,
+        e.COIN_COLLECTED: 20,
         e.KILLED_OPPONENT: 90,
-        e.KILLED_SELF: -90,
+        e.KILLED_SELF: -20,
         e.GOT_KILLED: -90,
         e.OPPONENT_ELIMINATED: 50,
-        e.SURVIVED_ROUND: 0,
-        FLEED_FROM_BOMB: 2,
-        NOT_FLEED_FROM_BOMB: -10,
-        FLEEING_FROM_BOMB: 2
+        e.SURVIVED_ROUND: 0
+        #FLEED_FROM_BOMB: 2,
+        #NOT_FLEED_FROM_BOMB: -10
+        #FLEEING_FROM_BOMB: 2
     }
     reward_sum = 0
     for event in events:

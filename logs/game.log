@@ -1,0 +1,62 @@
+2024-09-17 18:47:59,951 [BombeRLeWorld] INFO: Initializing game world
+2024-09-17 18:47:59,979 [BombeRLeWorld] INFO: STARTING ROUND #1
+2024-09-17 18:47:59,982 [BombeRLeWorld] INFO: STARTING STEP 1
+2024-09-17 18:47:59,982 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action UP in 0.00s.
+2024-09-17 18:47:59,982 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:47:59,982 [BombeRLeWorld] INFO: Agent <alvaro_agent> picked up coin at (1, 14) and receives 1 point
+2024-09-17 18:48:00,082 [BombeRLeWorld] INFO: STARTING STEP 2
+2024-09-17 18:48:00,083 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action DOWN in 0.00s.
+2024-09-17 18:48:00,083 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:00,183 [BombeRLeWorld] INFO: STARTING STEP 3
+2024-09-17 18:48:00,184 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action RIGHT in 0.00s.
+2024-09-17 18:48:00,184 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:00,282 [BombeRLeWorld] INFO: STARTING STEP 4
+2024-09-17 18:48:00,283 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action RIGHT in 0.00s.
+2024-09-17 18:48:00,283 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:00,382 [BombeRLeWorld] INFO: STARTING STEP 5
+2024-09-17 18:48:00,383 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action UP in 0.00s.
+2024-09-17 18:48:00,383 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:00,383 [BombeRLeWorld] INFO: Agent <alvaro_agent> picked up coin at (3, 14) and receives 1 point
+2024-09-17 18:48:00,482 [BombeRLeWorld] INFO: STARTING STEP 6
+2024-09-17 18:48:00,483 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action UP in 0.00s.
+2024-09-17 18:48:00,483 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:00,582 [BombeRLeWorld] INFO: STARTING STEP 7
+2024-09-17 18:48:00,583 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action UP in 0.00s.
+2024-09-17 18:48:00,583 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:00,583 [BombeRLeWorld] INFO: Agent <alvaro_agent> picked up coin at (3, 12) and receives 1 point
+2024-09-17 18:48:00,683 [BombeRLeWorld] INFO: STARTING STEP 8
+2024-09-17 18:48:00,683 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action DOWN in 0.00s.
+2024-09-17 18:48:00,683 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:00,784 [BombeRLeWorld] INFO: STARTING STEP 9
+2024-09-17 18:48:00,784 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action DOWN in 0.00s.
+2024-09-17 18:48:00,784 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:00,884 [BombeRLeWorld] INFO: STARTING STEP 10
+2024-09-17 18:48:00,885 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action UP in 0.00s.
+2024-09-17 18:48:00,885 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:00,983 [BombeRLeWorld] INFO: STARTING STEP 11
+2024-09-17 18:48:00,984 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action DOWN in 0.00s.
+2024-09-17 18:48:00,984 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:01,084 [BombeRLeWorld] INFO: STARTING STEP 12
+2024-09-17 18:48:01,085 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action UP in 0.00s.
+2024-09-17 18:48:01,085 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:01,184 [BombeRLeWorld] INFO: STARTING STEP 13
+2024-09-17 18:48:01,185 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action DOWN in 0.00s.
+2024-09-17 18:48:01,185 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:01,284 [BombeRLeWorld] INFO: STARTING STEP 14
+2024-09-17 18:48:01,285 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action UP in 0.00s.
+2024-09-17 18:48:01,285 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:01,384 [BombeRLeWorld] INFO: STARTING STEP 15
+2024-09-17 18:48:01,385 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action DOWN in 0.00s.
+2024-09-17 18:48:01,385 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:01,487 [BombeRLeWorld] INFO: STARTING STEP 16
+2024-09-17 18:48:01,488 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action UP in 0.00s.
+2024-09-17 18:48:01,488 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:01,585 [BombeRLeWorld] INFO: STARTING STEP 17
+2024-09-17 18:48:01,586 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action DOWN in 0.00s.
+2024-09-17 18:48:01,586 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:01,685 [BombeRLeWorld] INFO: STARTING STEP 18
+2024-09-17 18:48:01,685 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action UP in 0.00s.
+2024-09-17 18:48:01,685 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.
+2024-09-17 18:48:01,786 [BombeRLeWorld] INFO: STARTING STEP 19
+2024-09-17 18:48:01,787 [BombeRLeWorld] INFO: Agent <alvaro_agent> chose action DOWN in 0.00s.
+2024-09-17 18:48:01,787 [BombeRLeWorld] INFO: Agent <alvaro_agent> stayed within acceptable think time.

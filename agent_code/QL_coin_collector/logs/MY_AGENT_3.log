@@ -1,0 +1,47 @@
+2024-08-24 21:59:11,604 [MY_AGENT_3_code] INFO: Loading model from saved state.
+2024-08-24 21:59:11,621 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:11,621 [MY_AGENT_3_code] DEBUG: Suitable target found at (3, 1)
+2024-08-24 21:59:11,719 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:11,720 [MY_AGENT_3_code] DEBUG: Suitable target found at (3, 1)
+2024-08-24 21:59:11,820 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:11,820 [MY_AGENT_3_code] DEBUG: Suitable target found at (3, 2)
+2024-08-24 21:59:11,920 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:11,920 [MY_AGENT_3_code] DEBUG: Suitable target found at (2, 3)
+2024-08-24 21:59:12,020 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:12,020 [MY_AGENT_3_code] DEBUG: Suitable target found at (2, 3)
+2024-08-24 21:59:12,121 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:12,121 [MY_AGENT_3_code] DEBUG: Suitable target found at (2, 3)
+2024-08-24 21:59:12,221 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:12,221 [MY_AGENT_3_code] DEBUG: Suitable target found at (2, 3)
+2024-08-24 21:59:12,320 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:12,321 [MY_AGENT_3_code] DEBUG: Suitable target found at (3, 4)
+2024-08-24 21:59:12,421 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:12,421 [MY_AGENT_3_code] DEBUG: Suitable target found at (3, 4)
+2024-08-24 21:59:12,521 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:12,521 [MY_AGENT_3_code] DEBUG: Suitable target found at (2, 3)
+2024-08-24 21:59:12,622 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:12,622 [MY_AGENT_3_code] DEBUG: Suitable target found at (3, 7)
+2024-08-24 21:59:12,721 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:12,721 [MY_AGENT_3_code] DEBUG: Suitable target found at (3, 7)
+2024-08-24 21:59:12,822 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:12,822 [MY_AGENT_3_code] DEBUG: Suitable target found at (4, 7)
+2024-08-24 21:59:12,922 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:12,922 [MY_AGENT_3_code] DEBUG: Suitable target found at (5, 7)
+2024-08-24 21:59:13,022 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:13,022 [MY_AGENT_3_code] DEBUG: Suitable target found at (6, 7)
+2024-08-24 21:59:13,122 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:13,122 [MY_AGENT_3_code] DEBUG: Suitable target found at (7, 8)
+2024-08-24 21:59:13,222 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:13,222 [MY_AGENT_3_code] DEBUG: Suitable target found at (7, 8)
+2024-08-24 21:59:13,323 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:13,323 [MY_AGENT_3_code] DEBUG: Suitable target found at (9, 9)
+2024-08-24 21:59:13,422 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:13,422 [MY_AGENT_3_code] DEBUG: Suitable target found at (9, 9)
+2024-08-24 21:59:13,522 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:13,522 [MY_AGENT_3_code] DEBUG: Suitable target found at (9, 9)
+2024-08-24 21:59:13,622 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:13,623 [MY_AGENT_3_code] DEBUG: Suitable target found at (9, 9)
+2024-08-24 21:59:13,723 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:13,723 [MY_AGENT_3_code] DEBUG: Suitable target found at (9, 9)
+2024-08-24 21:59:13,823 [MY_AGENT_3_code] DEBUG: Querying model for action.
+2024-08-24 21:59:13,823 [MY_AGENT_3_code] DEBUG: Suitable target found at (9, 9)
