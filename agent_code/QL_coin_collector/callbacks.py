@@ -75,20 +75,15 @@ def setup(self):
     """
     # Hyperparameters
     self.alpha = 0.1   # Learning rate
-    self.gamma = 0.1  # Discount factor
+    self.gamma = 0.99  # Discount factor
     self.epsilon = 0.1 # Exploration rate
-
-    #RESET = True
-    #RESET = False
-    #print(self.train)
 
     if not os.path.isfile("model.pt") or self.train:
         self.logger.info("Setting up model from scratch.")
-        q_table = defaultdict(default_action_probabilities)
-        self.model = q_table
+        self.q_table = defaultdict(default_action_probabilities)
     else:
         self.logger.info("Loading model from saved state.")
-        with open("model.pt", "rb") as file:
+        with open("q_table.pt", "rb") as file:
             self.model = pickle.load(file)
 
 
@@ -101,7 +96,6 @@ def act(self, game_state: dict) -> str:
     :param game_state: The dictionary that describes everything on the board.
     :return: The action to take as a string.
     """
-    #print(game_state["self"][3])
 
     if self.train and random.uniform(0, 1) < self.epsilon:
         self.logger.debug("Choosing action purely at random.")
@@ -111,8 +105,6 @@ def act(self, game_state: dict) -> str:
     self.logger.debug("Querying model for action.")
     features = state_to_features(game_state)
     return ACTIONS[np.argmax(self.model[features])]
-
-   
 
 
 def state_to_features(game_state: dict, logger=None) -> np.array:
@@ -152,8 +144,8 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
     return features
 
 def default_action_probabilities():
-    #weights = np.random.rand(len(ACTIONS))
-    #return weights / weights.sum()
+    weights = np.random.rand(len(ACTIONS))
+    return weights / weights.sum()
 
-    weights = np.zeros(len(ACTIONS))
-    return weights
+    #weights = np.zeros(len(ACTIONS))
+    #return weights

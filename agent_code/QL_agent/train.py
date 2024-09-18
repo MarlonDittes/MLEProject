@@ -6,13 +6,17 @@ from typing import List
 import events as e
 from .callbacks import state_to_features
 
-import numpy as np
+# This is only an example!
+Transition = namedtuple('Transition',
+                        ('state', 'action', 'next_state', 'reward'))
+
+# Hyper parameters -- DO modify
+TRANSITION_HISTORY_SIZE = 3  # keep only ... last transitions
+RECORD_ENEMY_TRANSITIONS = 1.0  # record enemy transitions with probability ...
 
 # Events
-FOLLOWED_INSTRUCTION = "FOLLOWED"
-OPPOSITE_TO_INSTRUCTION ="OPPOSITE"
+PLACEHOLDER_EVENT = "PLACEHOLDER"
 
-ACTIONS = ['UP', 'RIGHT', 'DOWN', 'LEFT', 'WAIT', 'BOMB']
 
 def setup_training(self):
     """
@@ -22,7 +26,9 @@ def setup_training(self):
 
     :param self: This object is passed to all callbacks and you can set arbitrary values.
     """
-    pass
+    # Example: Setup an array that will note transition tuples
+    # (s, a, r, s')
+    self.transitions = deque(maxlen=TRANSITION_HISTORY_SIZE)
 
 
 def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_state: dict, events: List[str]):
@@ -44,37 +50,13 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
     """
     self.logger.debug(f'Encountered game event(s) {", ".join(map(repr, events))} in step {new_game_state["step"]}')
 
-    old_state = state_to_features(old_game_state)
-    new_state = state_to_features(new_game_state)
-    action_index = ACTIONS.index(self_action)
+    # Idea: Add your own events to hand out rewards
+    if ...:
+        events.append(PLACEHOLDER_EVENT)
 
-    # Own events:
-    # compute difference between where we wanted it to move vs where it actually moved
-    previous_instruction = old_state
-    moved = tuple(a - b for a,b in zip(new_game_state["self"][3], old_game_state["self"][3]))
+    # state_to_features is defined in callbacks.py
+    self.transitions.append(Transition(state_to_features(old_game_state), self_action, state_to_features(new_game_state), reward_from_events(self, events)))
 
-    difference = tuple(a - b for a,b in zip(previous_instruction, moved))
-    if difference[0] == 0 and difference[1] == 0:
-        events.append(FOLLOWED_INSTRUCTION)
-    if difference[0] == 2 or difference[1] == 2:
-        events.append(OPPOSITE_TO_INSTRUCTION)
-
-
-    # update q-table (model)
-    reward = reward_from_events(events, self.logger)
-
-    old_q_value = self.q_table[old_state]
-    if new_state is None:
-        next_max_q = 0
-    else:
-        next_max_q = np.max(self.q_table[new_state])
-
-    # Bellman update
-    td_target = reward + self.gamma * next_max_q
-    td_error = td_target - old_q_value
-
-    self.q_table[old_state][action_index] += self.alpha * td_error
-    
 
 def end_of_round(self, last_game_state: dict, last_action: str, events: List[str]):
     """
@@ -89,17 +71,15 @@ def end_of_round(self, last_game_state: dict, last_action: str, events: List[str
 
     :param self: The same object that is passed to all of your callbacks.
     """
-    self.logger.debug(f'End of round: encountered events {", ".join(events)}')
-
-    # update q-table (model)
-    game_events_occurred(last_game_state, last_action, None, events)
+    self.logger.debug(f'Encountered event(s) {", ".join(map(repr, events))} in final step')
+    self.transitions.append(Transition(state_to_features(last_game_state), last_action, None, reward_from_events(self, events)))
 
     # Store the model
-    with open("q_table.pt", "wb") as file:
-        pickle.dump(self.q_table, file)
+    with open("my-saved-model.pt", "wb") as file:
+        pickle.dump(self.model, file)
 
 
-def reward_from_events(events: List[str], logger=None) -> int:
+def reward_from_events(self, events: List[str]) -> int:
     """
     *This is not a required function, but an idea to structure your code.*
 
@@ -107,18 +87,13 @@ def reward_from_events(events: List[str], logger=None) -> int:
     certain behavior.
     """
     game_rewards = {
-        FOLLOWED_INSTRUCTION: 3,
-        OPPOSITE_TO_INSTRUCTION: -5,
-        e.MOVED_DOWN: -1,
-        e.MOVED_LEFT: -1,
-        e.MOVED_RIGHT: -1,
-        e.MOVED_UP: -1,
-        e.WAITED: -1,
-        e.BOMB_DROPPED: -1
+        e.COIN_COLLECTED: 1,
+        e.KILLED_OPPONENT: 5,
+        PLACEHOLDER_EVENT: -.1  # idea: the custom event is bad
     }
     reward_sum = 0
     for event in events:
         if event in game_rewards:
             reward_sum += game_rewards[event]
-    logger.info(f"Awarded {reward_sum} for events {', '.join(events)}")
+    self.logger.info(f"Awarded {reward_sum} for events {', '.join(events)}")
     return reward_sum
