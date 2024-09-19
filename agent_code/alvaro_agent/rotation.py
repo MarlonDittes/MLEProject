@@ -4,13 +4,39 @@ def rotate_actions(position):
     x, y = position
     if x <= 8 and y <= 8:  # Upper-left quadrant
         actions = {'UP': 'UP', 'RIGHT': 'RIGHT', 'DOWN': 'DOWN', 'LEFT': 'LEFT', 'BOMB': 'BOMB', 'WAIT': 'WAIT'}
+        quadrant = 'upper-left'
     elif x <= 8 and y > 8:  # Upper-right quadrant
         actions = {'UP': 'LEFT', 'RIGHT': 'UP', 'DOWN': 'RIGHT', 'LEFT': 'DOWN', 'BOMB': 'BOMB', 'WAIT': 'WAIT'}
+        quadrant = 'upper-right'
     elif x > 8 and y <= 8:  # Lower-left quadrant
         actions = {'UP': 'RIGHT', 'RIGHT': 'DOWN', 'DOWN': 'LEFT', 'LEFT': 'UP', 'BOMB': 'BOMB', 'WAIT': 'WAIT'}
+        quadrant = 'lower-left'
     elif x > 8 and y > 8:  # Lower-right quadrant
         actions = {'UP': 'DOWN', 'RIGHT': 'LEFT', 'DOWN': 'UP', 'LEFT': 'RIGHT', 'BOMB': 'BOMB', 'WAIT': 'WAIT'}
-    return actions
+        quadrant = 'lower-right'
+    return {actions, quadrant}
+
+def rotate_action(action, quadrant):
+    if quadrant == 'upper-right':
+        actions = {'UP': 'LEFT', 'RIGHT': 'UP', 'DOWN': 'RIGHT', 'LEFT': 'DOWN', 'BOMB': 'BOMB', 'WAIT': 'WAIT'}
+    elif quadrant == 'lower-left':
+        actions = {'UP': 'RIGHT', 'RIGHT': 'DOWN', 'DOWN': 'LEFT', 'LEFT': 'UP', 'BOMB': 'BOMB', 'WAIT': 'WAIT'}
+    elif quadrant == 'lower-right':
+        actions = {'UP': 'DOWN', 'RIGHT': 'LEFT', 'DOWN': 'UP', 'LEFT': 'RIGHT', 'BOMB': 'BOMB', 'WAIT': 'WAIT'}
+    else:
+        actions = {'UP': 'UP', 'RIGHT': 'RIGHT', 'DOWN': 'DOWN', 'LEFT': 'LEFT', 'BOMB': 'BOMB', 'WAIT': 'WAIT'}
+    return actions[action]
+
+def unrotate_action(action, quadrant):
+    if quadrant == 'upper-right':
+        actions = {'UP': 'RIGHT', 'RIGHT': 'DOWN', 'DOWN': 'LEFT', 'LEFT': 'UP', 'BOMB': 'BOMB', 'WAIT': 'WAIT'}
+    elif quadrant == 'lower-left':
+        actions = {'UP': 'RIGHT', 'RIGHT': 'DOWN', 'DOWN': 'LEFT', 'LEFT': 'UP', 'BOMB': 'BOMB', 'WAIT': 'WAIT'}
+    elif quadrant == 'lower-right':
+        actions = {'UP': 'DOWN', 'RIGHT': 'LEFT', 'DOWN': 'UP', 'LEFT': 'RIGHT', 'BOMB': 'BOMB', 'WAIT': 'WAIT'}
+    else:
+        actions = {'UP': 'UP', 'RIGHT': 'RIGHT', 'DOWN': 'DOWN', 'LEFT': 'LEFT', 'BOMB': 'BOMB', 'WAIT': 'WAIT'}
+    return actions[action]
 
 def rotate_grid(grid, position):
     x, y = position
@@ -34,14 +60,24 @@ def rotate_position(position, quadrant):
         return 16 - x, 16 - y  # Rotating 180 degrees
     return position  # No rotation needed for upper-left
 
+def unrotate_position(position, quadrant):
+    x, y = position
+    if quadrant == 'upper-right':
+        return y, 16-x  # Rotating 90 degrees counterclockwise
+    elif quadrant == 'lower-left':
+        return 16-y, x  # Rotating 270 degrees counterclockwise (90 degrees clockwise)
+    elif quadrant == 'lower-right':
+        return 16 - x, 16 - y  # Rotating 180 degrees
+    return position  # No rotation needed for upper-left
+
 def get_quadrant(position):
     x, y = position
     if x <= 8 and y <= 8:
         return 'upper-left'
     elif x <= 8 and y > 8:
-        return 'upper-right'
-    elif x > 8 and y <= 8:
         return 'lower-left'
+    elif x > 8 and y <= 8:
+        return 'upper-right'
     elif x > 8 and y > 8:
         return 'lower-right'
 

@@ -54,6 +54,7 @@ def look_for_targets(free_space, start, targets, logger=None):
                 parent_dict[neighbor] = current
                 dist_so_far[neighbor] = dist_so_far[current] + 1
     if logger: logger.debug(f'Suitable target found at {best}')
+    if logger: logger.debug(f'Location: {start}')
     # Determine the first step towards the best found target tile
     current = best
     while True:
@@ -241,7 +242,6 @@ def act(self, game_state: dict) -> str:
     :param game_state: The dictionary that describes everything on the board.
     :return: The action to take as a string.
     """
-    #print(game_state["self"][3])
     self.epsilon = float ( DECAY/ (DECAY + game_state["round"])) * P_ZERO
     if self.train and random.uniform(0, 1) < self.epsilon:
         self.logger.debug("Choosing action purely at random.")
@@ -250,8 +250,13 @@ def act(self, game_state: dict) -> str:
 
     self.logger.debug("Querying model for action.")
     features = state_to_features(game_state, self.logger)
-    self.logger.debug(ACTIONS[np.argmax(self.model[features])])
-    return ACTIONS[np.argmax(self.model[features])]
+    quadrant = features[7]
+    unrotated_action = rotation.rotate_action(ACTIONS[np.argmax(self.model[features])], rotation.get_quadrant(game_state['self'][3]))
+    self.logger.debug(f'Unrotated action: {unrotated_action}')
+    self.logger.debug(f'Rotated action: {ACTIONS[np.argmax(self.model[features])]}')
+    self.logger.debug(f'Quadrant: {quadrant}')
+
+    return unrotated_action
 
    
 
@@ -273,48 +278,57 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
     # This is the dict before the game begins and after it ends
     if game_state is None:
         return None
+    quadrant = rotation.get_quadrant(game_state['self'][3])
+    if quadrant == 'upper-right':
+        intQuadrant = 1
+    elif quadrant == 'lower-left':
+        intQuadrant = 2
+    elif quadrant == 'lower-right':
+        intQuadrant = 3
+    else:
+        intQuadrant = 0
     # Rotate game state so that the agent is always in the top left
-    game_state = rotation.rotate_game_state(game_state, game_state['self'][3])
-    free_space = game_state["field"] == 0
-    others_pos = [xy for (n, s, b, xy) in game_state['others']]
+    rotated_game_state = rotation.rotate_game_state(game_state, game_state['self'][3])
+    free_space = rotated_game_state["field"] == 0
+    others_pos = [xy for (n, s, b, xy) in rotated_game_state['others']]
     for pos in others_pos:
         free_space[pos] = False
-    bomb_pos = [xy for (xy, t) in game_state["bombs"]]
+    bomb_pos = [xy for (xy, t) in rotated_game_state["bombs"]]
     for pos in bomb_pos:
         free_space[pos] = False
 
-    d = look_for_targets(free_space, game_state['self'][3], game_state["coins"], logger)
+    d = look_for_targets(free_space, rotated_game_state['self'][3], rotated_game_state["coins"], logger)
 
     # This will let the agent know if there is a crate or wall in front of it
-    if game_state['field'][game_state['self'][3][0]+1][game_state['self'][3][1]] == 1:
+    if rotated_game_state['field'][rotated_game_state['self'][3][0]+1][rotated_game_state['self'][3][1]] == 1:
         up = 1
-    if game_state['field'][game_state['self'][3][0]+1][game_state['self'][3][1]] == 0:
+    if rotated_game_state['field'][rotated_game_state['self'][3][0]+1][rotated_game_state['self'][3][1]] == 0:
         up = 0
-    if game_state['field'][game_state['self'][3][0]+1][game_state['self'][3][1]] == -1:
+    if rotated_game_state['field'][rotated_game_state['self'][3][0]+1][rotated_game_state['self'][3][1]] == -1:
         up = -1
-    if game_state['field'][game_state['self'][3][0]-1][game_state['self'][3][1]] == 1:
+    if rotated_game_state['field'][rotated_game_state['self'][3][0]-1][rotated_game_state['self'][3][1]] == 1:
         down = 1
-    if game_state['field'][game_state['self'][3][0]-1][game_state['self'][3][1]] == 0:
+    if rotated_game_state['field'][rotated_game_state['self'][3][0]-1][rotated_game_state['self'][3][1]] == 0:
         down = 0
-    if game_state['field'][game_state['self'][3][0]-1][game_state['self'][3][1]] == -1:
+    if rotated_game_state['field'][rotated_game_state['self'][3][0]-1][rotated_game_state['self'][3][1]] == -1:
         down = -1
-    if game_state['field'][game_state['self'][3][0]][game_state['self'][3][1]+1] == 1:
+    if rotated_game_state['field'][rotated_game_state['self'][3][0]][rotated_game_state['self'][3][1]+1] == 1:
         right = 1
-    if game_state['field'][game_state['self'][3][0]][game_state['self'][3][1]+1] == 0:
+    if rotated_game_state['field'][rotated_game_state['self'][3][0]][rotated_game_state['self'][3][1]+1] == 0:
         right = 0
-    if game_state['field'][game_state['self'][3][0]][game_state['self'][3][1]+1] == -1:
+    if rotated_game_state['field'][rotated_game_state['self'][3][0]][rotated_game_state['self'][3][1]+1] == -1:
         right = -1
-    if game_state['field'][game_state['self'][3][0]][game_state['self'][3][1]-1] == 1:
+    if rotated_game_state['field'][rotated_game_state['self'][3][0]][rotated_game_state['self'][3][1]-1] == 1:
         left = 1
-    if game_state['field'][game_state['self'][3][0]][game_state['self'][3][1]-1] == 0:
+    if rotated_game_state['field'][rotated_game_state['self'][3][0]][rotated_game_state['self'][3][1]-1] == 0:
         left = 0
-    if game_state['field'][game_state['self'][3][0]][game_state['self'][3][1]-1] == -1:
+    if rotated_game_state['field'][rotated_game_state['self'][3][0]][rotated_game_state['self'][3][1]-1] == -1:
         left = -1
-    bomb_value = value_of_bomb(game_state['self'][3], game_state['field'], game_state['others'])
-    information7x7 = surroundingFeatures(game_state['self'][3], game_state['field'], game_state['bombs'], game_state['others'], game_state['explosion_map'], game_state['coins'])
+    bomb_value = value_of_bomb(rotated_game_state['self'][3], rotated_game_state['field'], rotated_game_state['others'])
+    information7x7 = surroundingFeatures(rotated_game_state['self'][3], rotated_game_state['field'], rotated_game_state['bombs'], rotated_game_state['others'], rotated_game_state['explosion_map'], rotated_game_state['coins'])
     # features consist of current position, direction of nearest coin, info about surrounding tiles and value of dropping a bomb
     features = (
-        game_state['self'][3], d, up, down, right, left, bomb_value,
+        rotated_game_state['self'][3], d, up, down, right, left, bomb_value, intQuadrant,
         information7x7[0][0], information7x7[0][1], information7x7[0][2], information7x7[0][3],
         information7x7[1][0], information7x7[1][1], information7x7[1][2], information7x7[1][3],
         information7x7[2][0], information7x7[2][1], information7x7[2][2],  information7x7[2][3]

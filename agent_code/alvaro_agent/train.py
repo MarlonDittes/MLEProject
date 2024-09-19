@@ -125,16 +125,18 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
     :param events: The events that occurred when going from  `old_game_state` to `new_game_state`
     """
     self.logger.debug(f'Encountered game event(s) {", ".join(map(repr, events))} in step {new_game_state["step"]}')
+
     # Rotate game_state
     # if the call is redundant, it does nothing, since rotation of up-left is up-left
-    self.old_game_state = rotation.rotate_game_state(old_game_state, old_game_state['self'][3])
-    self.new_game_state = rotation.rotate_game_state(new_game_state, new_game_state['self'][3])
+    quadrant = rotation.get_quadrant(old_game_state['self'][3])
+    rotated_old_game_state = rotation.rotate_game_state(old_game_state, old_game_state['self'][3])
+    rotated_new_game_state = rotation.rotate_game_state(new_game_state, new_game_state['self'][3])
 
     # Own events:
     # compute difference between where we wanted it to move vs where it actually moved
-    previous_instruction = state_to_features(old_game_state)[1]
+    previous_instruction = state_to_features(rotated_old_game_state)[1]
     if previous_instruction != None:
-        difference = tuple(a - b for a,b in zip(previous_instruction, new_game_state['self'][3]))
+        difference = tuple(a - b for a,b in zip(previous_instruction, rotated_new_game_state['self'][3]))
         
         if difference[0] == 0 and difference[1] == 0:
             events.append(FOLLOWED_INSTRUCTION)
@@ -143,11 +145,11 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
             events.append(OPPOSITE_TO_INSTRUCTION)
     
     # Detect if agent is fleeing from bombs
-    old_position = old_game_state['self'][3]
-    new_position = new_game_state['self'][3]
+    old_position = rotated_old_game_state['self'][3]
+    new_position = rotated_new_game_state['self'][3]
     
     # Check for bombs in the environment
-    bomb_positions = [bomb[0] for bomb in old_game_state['bombs']]
+    bomb_positions = [bomb[0] for bomb in rotated_old_game_state['bombs']]
     
     if bomb_positions:
         # Find the closest bomb in the previous state
@@ -168,31 +170,34 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
         if closest_bomb_distance_new > 4:
             events.append(FLEED_FROM_BOMB)
         
-    if steppedIntoBomb(old_game_state['self'][3], new_game_state['self'][3], new_game_state['bombs']):
+    if steppedIntoBomb(rotated_old_game_state['self'][3], rotated_new_game_state['self'][3], rotated_new_game_state['bombs']):
         events.append(STEPPED_INTO_BOMB)
 
-    if bombNotDroppedNextToCrate(old_game_state, new_game_state):
+    if bombNotDroppedNextToCrate(rotated_old_game_state, rotated_new_game_state):
         events.append(BOMB_DROPPED_NEXT_TO_CRATE)
     # state_to_features is defined in callbacks.py
-    self.transitions.append(Transition(state_to_features(old_game_state), self_action, state_to_features(new_game_state), reward_from_events(events, self.logger)))
+    self.transitions.append(Transition(state_to_features(rotated_old_game_state), self_action, state_to_features(rotated_new_game_state), reward_from_events(events, self.logger)))
 
     # update q-table (model)
-    #Convert the action to the unrotated frame befoer updating the q-table
-    unrotated_actions = rotation.rotate_actions(old_game_state['self'][3])
-    unrotated_action = unrotated_actions[self_action] # get the action in the unrotated frame
+    
     action_index = ACTIONS.index(self_action)
-
-    best_next_action_index = np.argmax(self.model[state_to_features(new_game_state)])
+    rotated_action = rotation.rotate_action(self_action, rotation.get_quadrant(old_game_state['self'][3]))
+    rotated_action_index = ACTIONS.index(rotated_action)
+    best_next_action_index = np.argmax(self.model[state_to_features(rotated_new_game_state)])
+    best_next_action = rotation.unrotate_action(ACTIONS[best_next_action_index], rotation.get_quadrant(new_game_state['self'][3]))
     reward = reward_from_events(events, self.logger)
-    best_next_action = unrotated_actions[ACTIONS[best_next_action_index]]  # Convert to unrotated frame
 
     td_target = reward + self.gamma * self.model[state_to_features(new_game_state)][best_next_action_index]
     td_error = td_target - self.model[state_to_features(old_game_state)][action_index]
     self.logger.info(f'Old entry for {self_action}: {self.model[state_to_features(old_game_state)][action_index]}')
-    self.model[state_to_features(old_game_state)][action_index] += self.alpha * td_error
+    self.logger.info(f'Non rotated position: {old_game_state["self"][3]}. Rotated position: {rotated_old_game_state["self"][3]}')
+    self.logger.info(f'New non rotated position: {new_game_state["self"][3]}. New rotated position: {rotated_new_game_state["self"][3]}')
+
+    self.logger.info(f'Rotated action: {rotated_action}. Unrotated action: {action_index}. Self_action: {self_action}')
+    self.logger.info(f'Best next action: {best_next_action}.')
+    self.model[state_to_features(rotated_old_game_state)][rotated_action_index] += self.alpha * td_error
     self.logger.info(self.alpha + td_error)
     self.logger.info(f'New entry for {self_action}: {self.model[state_to_features(old_game_state)][action_index]}')
-    
 
 def end_of_round(self, last_game_state: dict, last_action: str, events: List[str]):
     """
@@ -210,11 +215,11 @@ def end_of_round(self, last_game_state: dict, last_action: str, events: List[str
     self.logger.debug(f'Encountered event(s) {", ".join(map(repr, events))} in final step')
         # Rotate game_state
     # if the call is redundant, it does nothing, since rotation of up-left is up-left
-    self.old_game_state = rotation.rotate_game_state(last_game_state, last_game_state['self'][3])
+    rotated_last_game_state = rotation.rotate_game_state(last_game_state, last_game_state['self'][3])
     self.transitions.append(Transition(state_to_features(last_game_state), last_action, None, reward_from_events(events, self.logger)))
     # Convert last action to unrotated form before updating the Q-table
-    unrotated_actions = rotation.rotate_actions(self.old_game_state['self'][3])
-    unrotated_last_action = unrotated_actions[last_action]  # Get the unrotated action
+    unrotated_actions = ACTIONS
+    unrotated_last_action = rotation.unrotate_action(last_action, rotation.get_quadrant(last_game_state['self'][3]))  # Get the unrotated action
     action_index = ACTIONS.index(unrotated_last_action)
 
     reward = reward_from_events(events, self.logger)
@@ -227,6 +232,8 @@ def end_of_round(self, last_game_state: dict, last_action: str, events: List[str
     self.logger.info(f'New entry for {last_action}: {self.model[state_to_features(last_game_state)][action_index]}')
     self.model[state_to_features(last_game_state)][action_index] += self.alpha + td_error
     self.logger.info(f'Old entry for {last_action}: {self.model[state_to_features(last_game_state)][action_index]}')
+    self.logger.info(f'Non rotated position: {last_game_state["self"][3]}. Rotated position: {rotated_last_game_state["self"][3]}')
+
 
     # Store the model
     with open("my-saved-model.pt", "wb") as file:
@@ -241,10 +248,10 @@ def reward_from_events(events: List[str], logger=None) -> int:
     certain behavior.
     """
     game_rewards = {
-        e.MOVED_DOWN: 0,
-        e.MOVED_LEFT: 0,
-        e.MOVED_RIGHT: 0,
-        e.MOVED_UP: 0,
+        e.MOVED_DOWN: -1,
+        e.MOVED_LEFT: -1,
+        e.MOVED_RIGHT: -1,
+        e.MOVED_UP: -1,
         OPPOSITE_TO_INSTRUCTION: -5, 
         FOLLOWED_INSTRUCTION: 3,
         e.INVALID_ACTION: -10,
