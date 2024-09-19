@@ -99,7 +99,7 @@ def setup(self):
     self.episode_rewards = []
 
     # Setup
-    if not os.path.isfile("q_table.pt") or self.train:
+    if not os.path.isfile("q_table.pt"):# or self.train:
         self.logger.info("Setting up model from scratch.")
         self.q_table = defaultdict(default_action_probabilities)
     else:
