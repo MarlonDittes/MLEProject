@@ -6,7 +6,7 @@ import numpy as np
 
 from random import shuffle
 from collections import defaultdict
-
+from . import rotation
 
 ACTIONS = ['UP', 'RIGHT', 'DOWN', 'LEFT', 'WAIT', 'BOMB']
 DECAY = 20000
@@ -273,7 +273,8 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
     # This is the dict before the game begins and after it ends
     if game_state is None:
         return None
-
+    # Rotate game state so that the agent is always in the top left
+    game_state = rotation.rotate_game_state(game_state, game_state['self'][3])
     free_space = game_state["field"] == 0
     others_pos = [xy for (n, s, b, xy) in game_state['others']]
     for pos in others_pos:

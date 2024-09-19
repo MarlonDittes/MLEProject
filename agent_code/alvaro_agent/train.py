@@ -7,6 +7,7 @@ import events as e
 from .callbacks import state_to_features
 
 import numpy as np
+from . import rotation
 
 # This is only an example!
 Transition = namedtuple('Transition',
@@ -23,6 +24,7 @@ FLEED_FROM_BOMB = "FLEED"
 NOT_FLEED_FROM_BOMB = "NOT_FLEED"
 FLEEING_FROM_BOMB = "FLEEING"
 STEPPED_INTO_BOMB = "ENTERED DANGER ZONE"
+BOMB_DROPPED_NEXT_TO_CRATE = "BOMB_NEXT_TO_CRATE"
 
 
 ACTIONS = ['UP', 'RIGHT', 'DOWN', 'LEFT', 'WAIT', 'BOMB']
@@ -40,8 +42,44 @@ def setup_training(self):
     self.transitions = deque(maxlen=TRANSITION_HISTORY_SIZE)
 
 def bombNotDroppedNextToCrate(old_game_state, new_game_state):
-    #TODO
-    return
+    """
+    Returns True if the agent (and only the agent) dropped a bomb next to a crate.
+    
+    :param old_game_state: The game state before the bomb drop.
+    :param new_game_state: The game state after the bomb drop.
+    :return: True if the agent dropped a bomb next to a crate, False otherwise.
+    """
+    
+    # Extract bomb and crate information from the old and new game states
+    old_bombs = [bomb[0] for bomb in old_game_state['bombs']]  # Get bomb positions from old game state
+    new_bombs = [bomb[0] for bomb in new_game_state['bombs']]  # Get bomb positions from new game state
+    crates = new_game_state['field']     # 2D array of the game field, 1 indicates a crate
+    agent_position = new_game_state['self'][3]  # Agent's current position (x, y)
+
+    # Check if a new bomb was added at the agent's position
+    new_bomb = None
+    for bomb in new_bombs:
+        if bomb not in old_bombs and bomb[0] == agent_position[0] and bomb[1] == agent_position[1]:
+            new_bomb = bomb
+            break
+
+    if new_bomb is None:  # No new bomb was dropped by the agent
+        return False
+
+    # Get the bomb's position (which should match agent's position)
+    bomb_x, bomb_y = new_bomb
+
+    # Check the 4 neighboring positions (up, down, left, right)
+    neighbors = [(bomb_x + dx, bomb_y + dy) for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]]
+
+    # Check if any neighboring position has a crate (represented by 1 in the field)
+    for x, y in neighbors:
+        if crates[x][y] == 1:  # 1 means a crate in the field
+            return True  # Bomb is next to a crate
+
+    # No bomb was dropped next to a crate
+    return False
+
 def steppedIntoBomb(old_position, new_position, bombs):
     """
     Checks if the agent has stepped into the blast radius of any bomb.
@@ -87,7 +125,11 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
     :param events: The events that occurred when going from  `old_game_state` to `new_game_state`
     """
     self.logger.debug(f'Encountered game event(s) {", ".join(map(repr, events))} in step {new_game_state["step"]}')
-    
+    # Rotate game_state
+    # if the call is redundant, it does nothing, since rotation of up-left is up-left
+    self.old_game_state = rotation.rotate_game_state(old_game_state, old_game_state['self'][3])
+    self.new_game_state = rotation.rotate_game_state(new_game_state, new_game_state['self'][3])
+
     # Own events:
     # compute difference between where we wanted it to move vs where it actually moved
     previous_instruction = state_to_features(old_game_state)[1]
@@ -128,15 +170,23 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
         
     if steppedIntoBomb(old_game_state['self'][3], new_game_state['self'][3], new_game_state['bombs']):
         events.append(STEPPED_INTO_BOMB)
+
+    if bombNotDroppedNextToCrate(old_game_state, new_game_state):
+        events.append(BOMB_DROPPED_NEXT_TO_CRATE)
     # state_to_features is defined in callbacks.py
     self.transitions.append(Transition(state_to_features(old_game_state), self_action, state_to_features(new_game_state), reward_from_events(events, self.logger)))
 
     # update q-table (model)
+    #Convert the action to the unrotated frame befoer updating the q-table
+    unrotated_actions = rotation.rotate_actions(old_game_state['self'][3])
+    unrotated_action = unrotated_actions[self_action] # get the action in the unrotated frame
     action_index = ACTIONS.index(self_action)
 
-    best_next_action = np.argmax(self.model[state_to_features(new_game_state)])
+    best_next_action_index = np.argmax(self.model[state_to_features(new_game_state)])
     reward = reward_from_events(events, self.logger)
-    td_target = reward + self.gamma * self.model[state_to_features(new_game_state)][best_next_action]
+    best_next_action = unrotated_actions[ACTIONS[best_next_action_index]]  # Convert to unrotated frame
+
+    td_target = reward + self.gamma * self.model[state_to_features(new_game_state)][best_next_action_index]
     td_error = td_target - self.model[state_to_features(old_game_state)][action_index]
     self.logger.info(f'Old entry for {self_action}: {self.model[state_to_features(old_game_state)][action_index]}')
     self.model[state_to_features(old_game_state)][action_index] += self.alpha * td_error
@@ -158,10 +208,14 @@ def end_of_round(self, last_game_state: dict, last_action: str, events: List[str
     :param self: The same object that is passed to all of your callbacks.
     """
     self.logger.debug(f'Encountered event(s) {", ".join(map(repr, events))} in final step')
+        # Rotate game_state
+    # if the call is redundant, it does nothing, since rotation of up-left is up-left
+    self.old_game_state = rotation.rotate_game_state(last_game_state, last_game_state['self'][3])
     self.transitions.append(Transition(state_to_features(last_game_state), last_action, None, reward_from_events(events, self.logger)))
-
-    # update q-table (model)
-    action_index = ACTIONS.index(last_action)
+    # Convert last action to unrotated form before updating the Q-table
+    unrotated_actions = rotation.rotate_actions(self.old_game_state['self'][3])
+    unrotated_last_action = unrotated_actions[last_action]  # Get the unrotated action
+    action_index = ACTIONS.index(unrotated_last_action)
 
     reward = reward_from_events(events, self.logger)
     # Append the reward to a file
@@ -206,7 +260,8 @@ def reward_from_events(events: List[str], logger=None) -> int:
         FLEED_FROM_BOMB: 4,
         NOT_FLEED_FROM_BOMB: -5,
         FLEEING_FROM_BOMB: 3,
-        STEPPED_INTO_BOMB: -2
+        STEPPED_INTO_BOMB: -2,
+        BOMB_DROPPED_NEXT_TO_CRATE: 5
     }
     reward_sum = 0
     for event in events:
