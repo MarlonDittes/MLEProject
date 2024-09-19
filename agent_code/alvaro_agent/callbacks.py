@@ -250,11 +250,9 @@ def act(self, game_state: dict) -> str:
 
     self.logger.debug("Querying model for action.")
     features = state_to_features(game_state, self.logger)
-    quadrant = features[7]
     unrotated_action = rotation.rotate_action(ACTIONS[np.argmax(self.model[features])], rotation.get_quadrant(game_state['self'][3]))
     self.logger.debug(f'Unrotated action: {unrotated_action}')
     self.logger.debug(f'Rotated action: {ACTIONS[np.argmax(self.model[features])]}')
-    self.logger.debug(f'Quadrant: {quadrant}')
 
     return unrotated_action
 
@@ -328,7 +326,7 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
     information7x7 = surroundingFeatures(rotated_game_state['self'][3], rotated_game_state['field'], rotated_game_state['bombs'], rotated_game_state['others'], rotated_game_state['explosion_map'], rotated_game_state['coins'])
     # features consist of current position, direction of nearest coin, info about surrounding tiles and value of dropping a bomb
     features = (
-        rotated_game_state['self'][3], d, up, down, right, left, bomb_value, intQuadrant,
+        rotated_game_state['self'][3], d, up, down, right, left, bomb_value,
         information7x7[0][0], information7x7[0][1], information7x7[0][2], information7x7[0][3],
         information7x7[1][0], information7x7[1][1], information7x7[1][2], information7x7[1][3],
         information7x7[2][0], information7x7[2][1], information7x7[2][2],  information7x7[2][3]
