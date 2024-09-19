@@ -4,7 +4,7 @@ import pickle
 from typing import List
 
 import events as e
-from .callbacks import state_to_features
+from .callbacks import state_to_features, save_metrics
 
 import numpy as np
 
@@ -44,13 +44,13 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
     """
     self.logger.debug(f'Encountered game event(s) {", ".join(map(repr, events))} in step {new_game_state["step"]}')
 
-    old_state = state_to_features(old_game_state)
-    new_state = state_to_features(new_game_state)
+    old_state = tuple(state_to_features(old_game_state))
+    new_state = tuple(state_to_features(new_game_state))
     action_index = ACTIONS.index(self_action)
 
     # Own events:
     # compute difference between where we wanted it to move vs where it actually moved
-    previous_instruction = old_state
+    previous_instruction = old_state[0:2]
     moved = tuple(a - b for a,b in zip(new_game_state["self"][3], old_game_state["self"][3]))
 
     difference = tuple(a - b for a,b in zip(previous_instruction, moved))
@@ -62,16 +62,15 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
 
     # update q-table (model)
     reward = reward_from_events(events, self.logger)
+    self.episode_rewards.append(reward)
 
-    old_q_value = self.q_table[old_state]
-    if new_state is None:
-        next_max_q = 0
-    else:
-        next_max_q = np.max(self.q_table[new_state])
+    old_q_value = self.q_table[old_state][action_index]
+    next_max_q = np.max(self.q_table[new_state])
 
     # Bellman update
     td_target = reward + self.gamma * next_max_q
     td_error = td_target - old_q_value
+    self.episode_td_error.append(td_error)
 
     self.q_table[old_state][action_index] += self.alpha * td_error
     
@@ -91,12 +90,42 @@ def end_of_round(self, last_game_state: dict, last_action: str, events: List[str
     """
     self.logger.debug(f'End of round: encountered events {", ".join(events)}')
 
+    last_state = tuple(state_to_features(last_game_state))
+    action_index = ACTIONS.index(last_action)
+
     # update q-table (model)
-    game_events_occurred(last_game_state, last_action, None, events)
+    reward = reward_from_events(events, self.logger)
+    self.episode_rewards.append(reward)
+
+    old_q_value = self.q_table[last_state][action_index]
+    next_max_q = 0
+
+    # Bellman update
+    td_target = reward + self.gamma * next_max_q
+    td_error = td_target - old_q_value
+    self.episode_td_error.append(td_error)
+
+    self.q_table[last_state][action_index] += self.alpha * td_error
 
     # Store the model
     with open("q_table.pt", "wb") as file:
         pickle.dump(self.q_table, file)
+
+    # Append to metrics
+    self.rewards.append(np.average(self.episode_rewards))
+    self.td_error.append(np.average(self.episode_td_error))
+    self.epsilon_history.append(self.epsilon)
+
+    # Reset per episode
+    self.episode_rewards = []
+    self.episode_td_error = []
+    
+    self.episode_number += 1  # Increment episode count
+    self.logger.info(f"Episode {self.episode_number} finished. Epsilon: {self.epsilon}")
+
+    # Save metrics
+    if self.episode_number == 300:
+        save_metrics(self, 'metrics.pkl')
 
 
 def reward_from_events(events: List[str], logger=None) -> int:

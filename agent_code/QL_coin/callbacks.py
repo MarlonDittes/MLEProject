@@ -75,16 +75,33 @@ def setup(self):
     """
     # Hyperparameters
     self.alpha = 0.1   # Learning rate
-    self.gamma = 0.99  # Discount factor
-    self.epsilon = 0.1 # Exploration rate
+    self.gamma = 0.9  # Discount factor
 
-    if not os.path.isfile("model.pt") or self.train:
+    # Epsilon Decay Parameters
+    self.epsilon_start = 1.0    # Initial exploration rate
+    self.epsilon_min = 0.01     # Minimum exploration rate
+    self.epsilon_decay_rate = 0.01  # How much to decay epsilon per episode
+    self.epsilon = self.epsilon_start  # Initialize epsilon
+
+    # Track episodes
+    self.episode_number = 0
+
+    # Plotting
+    self.td_error = []
+    self.rewards = []
+    self.epsilon_history = []
+
+    self.episode_td_error = []
+    self.episode_rewards = []
+
+    # Setup
+    if not os.path.isfile("q_table.pt") or self.train:
         self.logger.info("Setting up model from scratch.")
         self.q_table = defaultdict(default_action_probabilities)
     else:
         self.logger.info("Loading model from saved state.")
         with open("q_table.pt", "rb") as file:
-            self.model = pickle.load(file)
+            self.q_table = pickle.load(file)
 
 
 def act(self, game_state: dict) -> str:
@@ -96,15 +113,21 @@ def act(self, game_state: dict) -> str:
     :param game_state: The dictionary that describes everything on the board.
     :return: The action to take as a string.
     """
+    # Update epsilon with decay
+    if self.train:
+        self.epsilon = max(self.epsilon_min, self.epsilon_start - self.epsilon_decay_rate * self.episode_number)
 
+    self.logger.debug(f"Epsilon: {self.epsilon}")
+
+    # Epsilon-greedy action selection
     if self.train and random.uniform(0, 1) < self.epsilon:
         self.logger.debug("Choosing action purely at random.")
         # 80%: walk in any direction. 10% wait. 10% bomb.
         return np.random.choice(ACTIONS, p=[.2, .2, .2, .2, .1, .1])
 
     self.logger.debug("Querying model for action.")
-    features = state_to_features(game_state)
-    return ACTIONS[np.argmax(self.model[features])]
+    state = tuple(state_to_features(game_state))
+    return ACTIONS[np.argmax(self.q_table[state])]
 
 
 def state_to_features(game_state: dict, logger=None) -> np.array:
@@ -135,12 +158,17 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
 
     d = look_for_targets(free_space, game_state['self'][3], game_state["coins"], logger)
 
-    # only feature is the direction of nearest coin
+    # direction of nearest coin
     if d is not None:
         difference = tuple(a - b for a,b in zip(d, game_state["self"][3]))
-        features = (difference)
     else:
-        features = (0,0)
+        difference = (0,0)
+
+    features = np.array(
+        list(difference) + [0],
+        dtype=np.float32
+    )
+
     return features
 
 def default_action_probabilities():
@@ -149,3 +177,12 @@ def default_action_probabilities():
 
     #weights = np.zeros(len(ACTIONS))
     #return weights
+
+def save_metrics(self, filename='metrics.pkl'):
+    """Save the metrics to a pickle file."""
+    with open(filename, 'wb') as f:
+        pickle.dump({
+            'td_error': self.td_error,
+            'rewards': self.rewards,
+            'epsilon_history': self.epsilon_history
+        }, f)
