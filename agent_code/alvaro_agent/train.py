@@ -13,7 +13,7 @@ Transition = namedtuple('Transition',
                         ('state', 'action', 'next_state', 'reward'))
 
 # Hyper parameters -- DO modify
-TRANSITION_HISTORY_SIZE = 3  # keep only ... last transitions
+TRANSITION_HISTORY_SIZE = 1000  # keep only ... last transitions
 RECORD_ENEMY_TRANSITIONS = 1.0  # record enemy transitions with probability ...
 
 # Events
@@ -22,8 +22,8 @@ OPPOSITE_TO_INSTRUCTION ="OPPOSITE"
 FLEED_FROM_BOMB = "FLEED"
 NOT_FLEED_FROM_BOMB = "NOT_FLEED"
 FLEEING_FROM_BOMB = "FLEEING"
-counter = None
-distance_to_bomb = -1
+STEPPED_INTO_BOMB = "ENTERED DANGER ZONE"
+
 
 ACTIONS = ['UP', 'RIGHT', 'DOWN', 'LEFT', 'WAIT', 'BOMB']
 
@@ -39,6 +39,35 @@ def setup_training(self):
     # (s, a, r, s')
     self.transitions = deque(maxlen=TRANSITION_HISTORY_SIZE)
 
+def bombNotDroppedNextToCrate(old_game_state, new_game_state):
+    #TODO
+    return
+def steppedIntoBomb(old_position, new_position, bombs):
+    """
+    Checks if the agent has stepped into the blast radius of any bomb.
+    
+    :param old_position: Tuple (x, y), the agent's position before the move.
+    :param new_position: Tuple (x, y), the agent's position after the move.
+    :param bombs: List of tuples ((x, y), t) where (x, y) are the bomb coordinates and t is the countdown.
+    
+    :return: True if the agent stepped into a bomb's blast radius, False otherwise.
+    """
+    for bomb, countdown in bombs:
+        # Bomb explosion range is 3 tiles in each direction
+        bomb_x, bomb_y = bomb
+        
+        # Check if the old position was in the blast radius of a bomb
+        if bomb_x == old_position[0] and abs(bomb_y - old_position[1]) <= 3:
+            return False
+        if bomb_y == old_position[1] and abs(bomb_x - old_position[0]) <= 3:
+            return False
+        # Check if the new position is in the blast radius of a bomb
+        if bomb_x == new_position[0] and abs(bomb_y - new_position[1]) <= 3:  # Same column
+            return True
+        if bomb_y == new_position[1] and abs(bomb_x - new_position[0]) <= 3:  # Same row
+            return True
+    
+    return False
 
 def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_state: dict, events: List[str]):
     """
@@ -97,8 +126,10 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
         if closest_bomb_distance_new > 4:
             events.append(FLEED_FROM_BOMB)
         
+    if steppedIntoBomb(old_game_state['self'][3], new_game_state['self'][3], new_game_state['bombs']):
+        events.append(STEPPED_INTO_BOMB)
     # state_to_features is defined in callbacks.py
-    #self.transitions.append(Transition(state_to_features(old_game_state), self_action, state_to_features(new_game_state), reward_from_events(self, events)))
+    self.transitions.append(Transition(state_to_features(old_game_state), self_action, state_to_features(new_game_state), reward_from_events(events, self.logger)))
 
     # update q-table (model)
     action_index = ACTIONS.index(self_action)
@@ -108,7 +139,8 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
     td_target = reward + self.gamma * self.model[state_to_features(new_game_state)][best_next_action]
     td_error = td_target - self.model[state_to_features(old_game_state)][action_index]
     self.logger.info(f'Old entry for {self_action}: {self.model[state_to_features(old_game_state)][action_index]}')
-    self.model[state_to_features(old_game_state)][action_index] += self.alpha + td_error
+    self.model[state_to_features(old_game_state)][action_index] += self.alpha * td_error
+    self.logger.info(self.alpha + td_error)
     self.logger.info(f'New entry for {self_action}: {self.model[state_to_features(old_game_state)][action_index]}')
     
 
@@ -126,12 +158,16 @@ def end_of_round(self, last_game_state: dict, last_action: str, events: List[str
     :param self: The same object that is passed to all of your callbacks.
     """
     self.logger.debug(f'Encountered event(s) {", ".join(map(repr, events))} in final step')
-    #self.transitions.append(Transition(state_to_features(last_game_state), last_action, None, reward_from_events(self, events)))
+    self.transitions.append(Transition(state_to_features(last_game_state), last_action, None, reward_from_events(events, self.logger)))
 
     # update q-table (model)
     action_index = ACTIONS.index(last_action)
 
     reward = reward_from_events(events, self.logger)
+    # Append the reward to a file
+    with open("rewards.csv", "a") as file:
+        file.write(f"{reward}\n")
+        file.write(f"END OF GAME\n")
     td_target = reward
     td_error = td_target - self.model[state_to_features(last_game_state)][action_index]
     self.logger.info(f'New entry for {last_action}: {self.model[state_to_features(last_game_state)][action_index]}')
@@ -151,25 +187,33 @@ def reward_from_events(events: List[str], logger=None) -> int:
     certain behavior.
     """
     game_rewards = {
-        OPPOSITE_TO_INSTRUCTION: -21, 
-        FOLLOWED_INSTRUCTION: 5,
-        e.INVALID_ACTION: -20,
-        e.WAITED: -10,
-        e.BOMB_DROPPED: 1,
+        e.MOVED_DOWN: 0,
+        e.MOVED_LEFT: 0,
+        e.MOVED_RIGHT: 0,
+        e.MOVED_UP: 0,
+        OPPOSITE_TO_INSTRUCTION: -5, 
+        FOLLOWED_INSTRUCTION: 3,
+        e.INVALID_ACTION: -10,
+        e.WAITED: -2,
+        e.BOMB_DROPPED: -1,
         e.CRATE_DESTROYED: 10,
-        e.COIN_COLLECTED: 50,
-        e.KILLED_OPPONENT: 90,
-        e.KILLED_SELF: -90,
-        e.GOT_KILLED: -90,
+        e.COIN_COLLECTED: 40,
+        e.KILLED_OPPONENT: 200,
+        e.KILLED_SELF: -100,
+        e.GOT_KILLED: -40,
         e.OPPONENT_ELIMINATED: 50,
-        e.SURVIVED_ROUND: 0,
-        FLEED_FROM_BOMB: 2,
-        NOT_FLEED_FROM_BOMB: -10,
-        FLEEING_FROM_BOMB: 2
+        e.SURVIVED_ROUND: -1,
+        FLEED_FROM_BOMB: 4,
+        NOT_FLEED_FROM_BOMB: -5,
+        FLEEING_FROM_BOMB: 3,
+        STEPPED_INTO_BOMB: -2
     }
     reward_sum = 0
     for event in events:
         if event in game_rewards:
             reward_sum += game_rewards[event]
     logger.info(f"Awarded {reward_sum} for events {', '.join(events)}")
+        # Append the reward to a file
+    with open("rewards.csv", "a") as file:
+        file.write(f"{reward_sum}\n")
     return reward_sum
