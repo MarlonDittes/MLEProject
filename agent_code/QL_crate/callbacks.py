@@ -79,12 +79,12 @@ def setup(self):
     self.alpha = 0.1   # Learning rate
     self.gamma = 0.9  # Discount factor
 
-    self.episodes = 200
+    self.episodes = 4400
 
     # Epsilon Decay Parameters
-    self.epsilon_start = 1.0    # Initial exploration rate
+    self.epsilon_start = 1    # Initial exploration rate
     self.epsilon_min = 0.01     # Minimum exploration rate
-    self.epsilon_decay_rate = 0.01  # How much to decay epsilon per episode
+    self.epsilon_decay_rate = 0.00025  # How much to decay epsilon per episode
     self.epsilon = self.epsilon_start  # Initialize epsilon
 
     # Track episodes
@@ -98,8 +98,11 @@ def setup(self):
     self.episode_td_error = []
     self.episode_rewards = []
 
+    # Train from new start
+    self.reset = False
+
     # Setup
-    if not os.path.isfile("q_table.pt"):# or self.train:
+    if not os.path.isfile("q_table.pt") or (self.train and self.reset):
         self.logger.info("Setting up model from scratch.")
         self.q_table = defaultdict(default_action_probabilities)
     else:
@@ -155,6 +158,8 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
     self = game_state["self"][3]
     arena = game_state['field']
     coins = game_state["coins"]
+    explosion_map = game_state["explosion_map"]
+    bombs = game_state["bombs"]
 
     # setup free space for finding paths
     free_space = game_state["field"] == 0
@@ -173,11 +178,7 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
     else:
         to_coin = (0,0)
 
-    # distance to nearest coin
-    distances = [np.abs(x - self[0]) + np.abs(y - self[1]) for (x, y) in coins]
-    if distances:
-        min_distance_to_coin = min(distances)
-
+    
     # direction of nearest dead end
     cols = range(1, arena.shape[0] - 1)
     rows = range(1, arena.shape[0] - 1)
@@ -190,35 +191,10 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
     else:
         to_dead_end = (0,0)
 
-    # bomb value
-    adjacent_positions = [
-        (self[0] + 1, self[1]),  
-        (self[0] - 1, self[1]),  
-        (self[0], self[1] + 1),  
-        (self[0], self[1] - 1)   
-    ]
-    crates = [(x, y) for x in cols for y in rows if (arena[x, y] == 1)]
-    adjacent_crates = [pos for pos in adjacent_positions if pos in crates]
-
-    bomb_value = len(adjacent_crates)
-
-    # in danger
-    """
-    possible_danger = [(self[0] + i, self[1]) for i in range(1, s.BOMB_POWER+1)] + \
-           [(self[0] - i, self[1]) for i in range(1, s.BOMB_POWER+1)] + \
-           [(self[0], self[1] - i) for i in range(1, s.BOMB_POWER+1)] + \
-           [(self[0], self[1] + i) for i in range(1, s.BOMB_POWER+1)]
-    
-    in_danger = False
-    for pos in possible_danger:
-        if pos in bomb_positions:
-            if not is_path_blocked(self, pos, arena):
-                in_danger = True
-                break
-    """
-
     # direction of nearest safe tile
     bomb_positions = [pos for pos, _ in game_state['bombs']]
+    explosion_positions = np.argwhere(explosion_map == 1)
+
     def is_path_blocked(start, end, arena):
         """Check if the path from start to end is blocked by walls."""
         sx, sy = start
@@ -234,8 +210,10 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
         return False
     
     to_safety = (0,0)
+    danger_tiles = set()
+    for ex, ey in explosion_positions:
+        danger_tiles.add((ex, ey))
     if len(bomb_positions) > 0:
-        danger_tiles = set()
         for bx, by in bomb_positions:
             danger_tiles.add((bx, by))
 
@@ -264,8 +242,51 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
         else:
             to_safety = (0,0)
 
+    # is there imminent danger in any of the directions
+    danger = [False, False, False, False]  # UP, RIGHT, DOWN, LEFT
+    directions = [(0, -1), (1, 0), (0, 1), (-1, 0)]
+    
+    for i, (dx, dy) in enumerate(directions):
+        nx, ny = self[0] + dx, self[1] + dy
+        
+        if not (1 <= nx < s.ROWS-1 and 1 <= ny < s.COLS-1) or arena[nx, ny] == -1:
+            continue
+
+        # Check if there is an explosion
+        if explosion_map[nx, ny] == 1:
+            danger[i] = True
+        else:
+            # Check if there is a bomb with countdown == 0
+            for (bx, by), countdown in bombs:
+                if countdown == 0 and ((bx == nx and abs(by - ny) <= s.BOMB_POWER) or (by == ny and abs(bx - nx) <= s.BOMB_POWER)):
+                    if not is_path_blocked((bx, by), (nx, ny), arena):
+                        danger[i] = True
+
+    # have bomb?
+    have_bomb = game_state['self'][2]
+
+    #TODO: use these features?
+    # bomb value
+    adjacent_positions = [
+        (self[0] + 1, self[1]),  
+        (self[0] - 1, self[1]),  
+        (self[0], self[1] + 1),  
+        (self[0], self[1] - 1)   
+    ]
+    crates = [(x, y) for x in cols for y in rows if (arena[x, y] == 1)]
+    adjacent_crates = [pos for pos in adjacent_positions if pos in crates]
+
+    bomb_value = len(adjacent_crates)
+
+    # distance to nearest coin
+    distances = [np.abs(x - self[0]) + np.abs(y - self[1]) for (x, y) in coins]
+    if distances:
+        min_distance_to_coin = min(distances)
+    #TODO: end
+
+    # build feature array
     features = np.array(
-        list(to_coin) + list(to_dead_end) + [bomb_value] + list(to_safety),
+        list(to_coin) + list(to_dead_end) + list(to_safety) + [have_bomb] + list(danger),
         dtype=np.float32
     )
 
