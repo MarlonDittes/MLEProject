@@ -24,10 +24,9 @@ def look_for_targets(free_space, start, targets, logger=None):
         targets: list or array holding the coordinates of all target tiles.
         logger: optional logger object for debugging.
     Returns:
-        tuple: (coordinate of first step towards closest target, distance to closest target).
-               Returns (None, None) if no target can be reached.
+        coordinate of first step towards closest target or towards tile closest to any target.
     """
-    if len(targets) == 0: return None, None
+    if len(targets) == 0: return None
 
     frontier = [start]
     parent_dict = {start: start}
@@ -59,7 +58,7 @@ def look_for_targets(free_space, start, targets, logger=None):
     # Determine the first step towards the best found target tile
     current = best
     while True:
-        if parent_dict[current] == start: return current, best_dist
+        if parent_dict[current] == start: return current
         current = parent_dict[current]
 
 def setup(self):
@@ -80,12 +79,12 @@ def setup(self):
     self.alpha = 0.1   # Learning rate
     self.gamma = 0.9  # Discount factor
 
-    self.episodes = 1000
+    self.episodes = 4000
 
     # Epsilon Decay Parameters
     self.epsilon_start = 1    # Initial exploration rate
     self.epsilon_min = 0.01     # Minimum exploration rate
-    self.epsilon_decay_rate = 0.001  # How much to decay epsilon per episode
+    self.epsilon_decay_rate = 0.00025  # How much to decay epsilon per episode
     self.epsilon = self.epsilon_start  # Initialize epsilon
 
     # Track episodes
@@ -100,7 +99,7 @@ def setup(self):
     self.episode_rewards = []
 
     # Train from new start
-    self.reset = True
+    self.reset = False
 
     # Setup
     if not os.path.isfile("q_table.pt") or (self.train and self.reset):
@@ -175,15 +174,6 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
         free_space[pos] = False
 
     # direction of nearest coin
-    nearest_coin_direction, distance_to_coin = look_for_targets(free_space, self_pos, coins, logger)
-
-    if nearest_coin_direction is not None:
-        to_coin = tuple(a - b for a,b in zip(nearest_coin_direction, self_pos))
-    else:
-        to_coin = (-1,-1)   #not reachable
-
-    
-    # direction of best bomb placement reachable in max_steps steps
     def reachable_tiles(start_pos, arena, max_steps=5):
         x, y = start_pos
         reachable = set()
@@ -212,6 +202,19 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
                         
         return reachable
     
+    reachable = reachable_tiles(self_pos, arena, max_steps=15)
+    reachable_coins = [coin for coin in coins if coin in reachable]
+
+    nearest_coin_direction = look_for_targets(free_space, self_pos, reachable_coins, logger)
+
+    to_coin = (-1,-1)
+    if nearest_coin_direction is not None:
+        to_coin = tuple(a - b for a,b in zip(nearest_coin_direction, self_pos))
+    else:
+        to_coin = (-1,-1)   #not reachable
+
+    
+    # direction of best bomb placement reachable in max_steps steps
     def bomb_value_at_position(pos, arena):
         x, y = pos
         bomb_value = 0
@@ -263,13 +266,16 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
     reachable = list(reachable_tiles(self_pos, arena))
 
     # this init logic is needed so the agent doesn't oscillate
+    safe_to_bomb = False
     current_reachable = reachable_tiles(self_pos, arena, max_steps=4)
     current_explosion = bomb_explosion_range(self_pos, arena)
     safe_tiles = current_reachable - current_explosion
     if len(safe_tiles) > 0: # If we can escape the bomb after placement, we might recommend it
+        safe_to_bomb = True
         best_tile = self_pos
         best_bomb_value = bomb_value_at_position(self_pos, arena)
     else:
+        safe_to_bomb = False
         best_tile = None
         best_bomb_value = -1
 
@@ -287,7 +293,7 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
 
     if best_tile is not None:
         search = [best_tile, best_tile]
-        best_tile_direction, distance_to_tile = look_for_targets(free_space, self_pos, search, logger)
+        best_tile_direction = look_for_targets(free_space, self_pos, search, logger)
         if best_tile_direction is not None:
             to_bomb_place = tuple(a - b for a,b in zip(best_tile_direction, self_pos))
         else:
@@ -297,11 +303,19 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
 
     if to_bomb_place == (0,0) and best_bomb_value == 0: #if there was no good bomb spot found nearby, instead move to crate
         crates = [(x, y) for x in cols for y in rows if (arena[x, y] == 1)]
-        nearest_crate_direction, distance_to_tile = look_for_targets(free_space, self_pos, crates, logger)
+        nearest_crate_direction = look_for_targets(free_space, self_pos, crates, logger)
         if nearest_crate_direction is not None:
             to_bomb_place = tuple(a - b for a,b in zip(nearest_crate_direction, self_pos))
         else:
             to_bomb_place = (-1,-1)   #not reachable
+
+    if to_bomb_place == (-1,-1):    #no more crates? then hunt players
+        nearest_enemy_direction = look_for_targets(free_space, self_pos, others_pos, logger)
+        if nearest_enemy_direction is not None:
+            to_bomb_place = tuple(a - b for a,b in zip(nearest_enemy_direction, self_pos))
+        else:
+            to_bomb_place = (-1,-1)   #not reachable
+        
 
     # direction of nearest safe tile
     bomb_positions = [pos for pos, _ in game_state['bombs']]
@@ -348,7 +362,7 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
         free_tiles = set((x, y) for x in range(1, s.ROWS-1) for y in range(1, s.COLS-1) if free_space[x, y] == True)
         escape_tiles = safe_tiles & free_tiles
 
-        nearest_escape_direction, _ = look_for_targets(free_space, self_pos, list(escape_tiles), logger)
+        nearest_escape_direction = look_for_targets(free_space, self_pos, list(escape_tiles), logger)
         if nearest_escape_direction is not None:
             to_safety = tuple(a - b for a,b in zip(nearest_escape_direction, self_pos))
         else:
@@ -377,83 +391,18 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
                     if not is_path_blocked((bx, by), (nx, ny), arena):
                         danger[i] = True
     
-    # direction to attack nearest enemy
-    to_attack = (-1,-1)
-    dead_ends = [(x, y) for x in cols for y in rows if (arena[x, y] == 0)
-                 and ([arena[x + 1, y], arena[x - 1, y], arena[x, y + 1], arena[x, y - 1]].count(0) == 1)]
-    others = game_state["others"]
-    others_pos = [player[3] for player in others]
-    if len(others) > 0:
-        # If there is another player left, may move towards them
-        nearest_enemy_direction, distance_to_nearest_enemy = look_for_targets(free_space, self_pos, others_pos, logger)
-        if nearest_enemy_direction is not None:
-            to_attack = tuple(a - b for a,b in zip(nearest_enemy_direction, self_pos))
-        else:
-            to_attack = (-1,-1)   #not reachable
+    # enemy close and safe to bomb?
+    adjacent_positions = [(self_pos[0] + 1, self_pos[1]), (self_pos[0] - 1, self_pos[1]), (self_pos[0], self_pos[1] + 1), (self_pos[0], self_pos[1] - 1)]
+    enemy_close = False
+    for adj in adjacent_positions:
+        if adj in others_pos:
+            enemy_close = True
 
-
-        if distance_to_nearest_enemy <= 10:
-            reachable = reachable_tiles(self_pos, arena, max_steps=100)
-            reachable_dead_ends = [dead_end for dead_end in dead_ends if dead_end in reachable]
-
-            hallway_entrances = []
-            for dead_end in reachable_dead_ends:
-                queue = deque([dead_end])
-                visited = set()  # Track visited tiles
-
-                while queue:
-                    cx, cy = queue.popleft()
-                    visited.add((cx, cy))
-
-                    # Check all directions from the current tile
-                    for dx, dy in directions:
-                        nx, ny = cx + dx, cy + dy
-
-                        # Check if the new position is within bounds and free
-                        if 1 <= nx < s.COLS - 1 and 1 <= ny < s.ROWS - 1 and arena[nx, ny] == 0:
-                            # Count free neighboring tiles
-                            free_neighbors = sum(
-                                1 for ddx, ddy in directions 
-                                if 1 <= nx + ddx < s.COLS - 1 and 1 <= ny + ddy < s.ROWS - 1 and arena[nx + ddx, ny + ddy] == 0
-                            )
-
-                            # Return the first tile found with more than one free neighbor
-                            if free_neighbors > 2:
-                                if any(tile in others_pos for tile in list(visited)): 
-                                    hallway_entrances.append((nx, ny))
-                                break
-
-                            # Continue exploring if not visited
-                            if (nx, ny) not in visited:
-                                queue.append((nx, ny))
-
-            nearest_trap_direction, _ = look_for_targets(free_space, self_pos, hallway_entrances, logger)
-            if nearest_trap_direction is not None:
-                to_attack = tuple(a - b for a,b in zip(nearest_trap_direction, self_pos))
-
-    coin_nearness = 0
-    if distance_to_coin is not None:
-        if distance_to_coin == 1:
-            coin_nearness = 2
-        elif 2 <= distance_to_coin <= 10:
-            coin_nearness = 1
-
-    tile_nearness = 0
-    if distance_to_tile is not None:
-        if distance_to_tile < 5:
-            tile_nearness = 1
-
-    enemy_nearness = 0
-    if len(others) > 0:
-        if distance_to_nearest_enemy is not None:
-            if distance_to_nearest_enemy == 1:
-                enemy_nearness = 2
-            elif 2 <= distance_to_nearest_enemy <= 10:
-                enemy_nearness = 1
+    scare_enemy = enemy_close and safe_to_bomb and have_bomb
 
     # build feature array
     features = np.array(
-        list(to_coin) + list(to_bomb_place) + list(to_safety) + [have_bomb] + list(danger) + list(to_attack) + [coin_nearness, tile_nearness, enemy_nearness],
+        list(to_coin) + list(to_bomb_place) + list(to_safety) + [have_bomb] + list(danger) + [scare_enemy],
         dtype=np.float32
     )
 

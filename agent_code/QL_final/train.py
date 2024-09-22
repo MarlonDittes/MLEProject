@@ -19,17 +19,10 @@ GOOD_BOMB = "GOOD_BOMB"
 BECAME_SAFE = "BECAME_SAFE"
 BECAME_UNSAFE = "BECAME_UNSAFE"
 TO_SAFETY = "TO_SAFETY"
-OPPOSITE_TO_SAFETY = "OPPOSITE_TO_SAFETY"
+NOT_TO_SAFETY = "NOT_TO_SAFETY"
 ENSURED_DEATH = "ENSURED_DEATH"
-BOMB_WHILE_UNSAFE = "BOMB_WHILE_UNSAFE"
 
-
-TO_ATTACK = "TO_ATTACK"
-OPPOSITE_TO_ATTACK = "OPPOSITE_TO_ATTACK"
-ATTACK_BOMB = "ATTACK_BOMB"
 SCARE_ENEMY = "SCARE_ENEMY"
-USELESS_BOMB = "USELESS_BOMB"
-
 
 # Actions
 ACTIONS = ['UP', 'RIGHT', 'DOWN', 'LEFT', 'WAIT', 'BOMB']
@@ -70,20 +63,14 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
 
     # Own events:
     agent_movement = tuple(a - b for a,b in zip(new_game_state["self"][3], old_game_state["self"][3]))
-    # distances
-    coin_nearness, tile_nearness, enemy_nearness = old_state[13:16]
     # went towards coin?
     to_coin = old_state[0:2]
     if not(to_coin[0] == -1 and to_coin[1] == -1):
         coin_following = tuple(a - b for a,b in zip(to_coin, agent_movement))
         if coin_following[0] == 0 and coin_following[1] == 0:
             events.append(TO_COIN)
-            if coin_nearness > 0:
-                events.append(TO_COIN)
         if coin_following[0] == 2 or coin_following[1] == 2:
             events.append(OPPOSITE_TO_COIN)
-            if coin_nearness > 0:
-                events.append(OPPOSITE_TO_COIN)
 
     # went towards good bomb position
     to_bomb_pos = old_state[2:4]
@@ -91,13 +78,9 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
         bomb_pos_following = tuple(a - b for a,b in zip(to_bomb_pos, agent_movement))
         if bomb_pos_following[0] == 0 and bomb_pos_following[1] == 0:
             events.append(TO_BOMB_POS)
-            if tile_nearness > 0:
-                events.append(TO_BOMB_POS)
         if bomb_pos_following[0] == 2 or bomb_pos_following[1] == 2:
             if old_state[6]:    #punish not going there if we could place a bomb
                 events.append(OPPOSITE_TO_BOMB_POS)
-                if tile_nearness > 0:
-                    events.append(OPPOSITE_TO_BOMB_POS)
 
     if to_bomb_pos[0] == 0 and to_bomb_pos[1] == 0:
         if old_state[6] and not new_state[6]:
@@ -117,42 +100,19 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
         safety_following = tuple(a - b for a,b in zip(to_safety, agent_movement))
         if safety_following[0] == 0 and safety_following[1] == 0:
             events.append(TO_SAFETY)
-        if safety_following[0] == 2 or safety_following[1] == 2:
-            events.append(OPPOSITE_TO_SAFETY)
-        if old_state[6] and not new_state[6]:   #placed bomb while we needed to get to safety
-            events.append(BOMB_WHILE_UNSAFE) 
+        else:
+            events.append(NOT_TO_SAFETY)
 
     new_to_safety = new_state[4:6]
     if not(to_safety[0] == -1 and to_safety[1] == -1):
         if new_to_safety[0] == -1 and new_to_safety[1] == -1:
             events.append(ENSURED_DEATH)
 
-    # went to attack?
-    to_attack = old_state[11:13]
-    if not(to_attack[0] == -1 and to_attack[1] == -1):
-        attack_following = tuple(a - b for a,b in zip(to_coin, agent_movement))
-        if attack_following[0] == 0 and attack_following[1] == 0:
-            events.append(TO_ATTACK)
-            if enemy_nearness > 0:
-                events.append(TO_ATTACK)
-        if attack_following[0] == 2 or attack_following[1] == 2:
-            events.append(OPPOSITE_TO_ATTACK)
-            if enemy_nearness > 0:
-                events.append(OPPOSITE_TO_ATTACK)
-    
-    if to_attack[0] == 0 and to_attack[0] == 0:
-        if old_state[6] and not new_state[6]:
-            events.append(ATTACK_BOMB) 
-
-    if enemy_nearness == 2:
-        if old_state[6] and not new_state[6]:
+    # scared off enemy with bomb?
+    if old_state[6] and not new_state[6]:
+        if old_state[11]:
             events.append(SCARE_ENEMY)
 
-    if to_bomb_pos[0] == -1 and to_bomb_pos[1] == -1 and enemy_nearness < 2:
-        events.append(USELESS_BOMB)
-
-
-    # TODO: chose good spot for bomb?
 
     # update q-table (model)
     reward = reward_from_events(events, self.logger)
@@ -238,28 +198,24 @@ def reward_from_events(events: List[str], logger=None) -> int:
         e.BOMB_DROPPED: -1,
         e.INVALID_ACTION: -5,
 
-        TO_COIN: 7,
-        OPPOSITE_TO_COIN: -14,
+        e.COIN_COLLECTED: 15,
+        TO_COIN: 10,
+        OPPOSITE_TO_COIN: -20,
 
         TO_BOMB_POS: 3,
         OPPOSITE_TO_BOMB_POS: -6,
-        GOOD_BOMB: 20,
+        GOOD_BOMB: 25,
 
-        BECAME_SAFE: 25,
-        #BECAME_UNSAFE: -50,
+        BECAME_SAFE: 10,
+        BECAME_UNSAFE: -15,
         TO_SAFETY: 10,
-        OPPOSITE_TO_SAFETY: -20,
-        ENSURED_DEATH: -100,
-        BOMB_WHILE_UNSAFE: -50,
+        NOT_TO_SAFETY: -20,
+        ENSURED_DEATH: -60,
 
-        e.GOT_KILLED: -100,
-        e.KILLED_SELF: -100,
-
-        TO_ATTACK: 5,
-        OPPOSITE_TO_ATTACK: -10,
-        ATTACK_BOMB: 65,
-        SCARE_ENEMY: 15,
-        USELESS_BOMB: -50
+        e.GOT_KILLED: -60,
+        e.KILLED_SELF: -60,
+        
+        SCARE_ENEMY: 50
     }
     reward_sum = 0
     for event in events:
