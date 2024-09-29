@@ -66,7 +66,7 @@ def setup(self):
     Initializes the DQNAgent for training or playing.
     """
     # Define the input and output dimensions for the DQNAgent
-    input_dim = 15
+    input_dim = 12          # Number of features
     output_dim = len(ACTIONS)
 
     # Initialize the DQN agent
@@ -166,15 +166,6 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
         free_space[pos] = False
 
     # direction of nearest coin
-    nearest_coin_direction = look_for_targets(free_space, self_pos, coins, logger)
-
-    if nearest_coin_direction is not None:
-        to_coin = tuple(a - b for a,b in zip(nearest_coin_direction, self_pos))
-    else:
-        to_coin = (-1,-1)   #not reachable
-
-    
-    # direction of best bomb placement reachable in max_steps steps
     def reachable_tiles(start_pos, arena, max_steps=5):
         x, y = start_pos
         reachable = set()
@@ -203,6 +194,19 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
                         
         return reachable
     
+    reachable = reachable_tiles(self_pos, arena, max_steps=15)
+    reachable_coins = [coin for coin in coins if coin in reachable]
+
+    nearest_coin_direction = look_for_targets(free_space, self_pos, reachable_coins, logger)
+
+    to_coin = (-1,-1)
+    if nearest_coin_direction is not None:
+        to_coin = tuple(a - b for a,b in zip(nearest_coin_direction, self_pos))
+    else:
+        to_coin = (-1,-1)   #not reachable
+
+    
+    # direction of best bomb placement reachable in max_steps steps
     def bomb_value_at_position(pos, arena):
         x, y = pos
         bomb_value = 0
@@ -254,13 +258,16 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
     reachable = list(reachable_tiles(self_pos, arena))
 
     # this init logic is needed so the agent doesn't oscillate
+    safe_to_bomb = False
     current_reachable = reachable_tiles(self_pos, arena, max_steps=4)
     current_explosion = bomb_explosion_range(self_pos, arena)
     safe_tiles = current_reachable - current_explosion
     if len(safe_tiles) > 0: # If we can escape the bomb after placement, we might recommend it
+        safe_to_bomb = True
         best_tile = self_pos
         best_bomb_value = bomb_value_at_position(self_pos, arena)
     else:
+        safe_to_bomb = False
         best_tile = None
         best_bomb_value = -1
 
@@ -293,6 +300,14 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
             to_bomb_place = tuple(a - b for a,b in zip(nearest_crate_direction, self_pos))
         else:
             to_bomb_place = (-1,-1)   #not reachable
+
+    if to_bomb_place == (-1,-1):    #no more crates? then hunt players
+        nearest_enemy_direction = look_for_targets(free_space, self_pos, others_pos, logger)
+        if nearest_enemy_direction is not None:
+            to_bomb_place = tuple(a - b for a,b in zip(nearest_enemy_direction, self_pos))
+        else:
+            to_bomb_place = (-1,-1)   #not reachable
+        
 
     # direction of nearest safe tile
     bomb_positions = [pos for pos, _ in game_state['bombs']]
@@ -368,29 +383,18 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
                     if not is_path_blocked((bx, by), (nx, ny), arena):
                         danger[i] = True
     
+    # enemy close and safe to bomb?
+    adjacent_positions = [(self_pos[0] + 1, self_pos[1]), (self_pos[0] - 1, self_pos[1]), (self_pos[0], self_pos[1] + 1), (self_pos[0], self_pos[1] - 1)]
+    enemy_close = False
+    for adj in adjacent_positions:
+        if adj in others_pos:
+            enemy_close = True
 
-    #TODO: use these features?
-    # bomb value
-    adjacent_positions = [
-        (self_pos[0] + 1, self_pos[1]),  
-        (self_pos[0] - 1, self_pos[1]),  
-        (self_pos[0], self_pos[1] + 1),  
-        (self_pos[0], self_pos[1] - 1)   
-    ]
-    crates = [(x, y) for x in cols for y in rows if (arena[x, y] == 1)]
-    adjacent_crates = [pos for pos in adjacent_positions if pos in crates]
-
-    bomb_value = len(adjacent_crates)
-
-    # distance to nearest coin
-    distances = [np.abs(x - self_pos[0]) + np.abs(y - self_pos[1]) for (x, y) in coins]
-    if distances:
-        min_distance_to_coin = min(distances)
-    #TODO: end
+    scare_enemy = enemy_close and safe_to_bomb and have_bomb
 
     # build feature array
     features = np.array(
-        list(to_coin) + list(to_bomb_place) + list(to_safety) + [have_bomb] + list(danger),
+        list(to_coin) + list(to_bomb_place) + list(to_safety) + [have_bomb] + list(danger) + [scare_enemy],
         dtype=np.float32
     )
 

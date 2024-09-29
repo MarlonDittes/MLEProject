@@ -19,8 +19,10 @@ GOOD_BOMB = "GOOD_BOMB"
 BECAME_SAFE = "BECAME_SAFE"
 BECAME_UNSAFE = "BECAME_UNSAFE"
 TO_SAFETY = "TO_SAFETY"
-OPPOSITE_TO_SAFETY = "OPPOSITE_TO_SAFETY"
+NOT_TO_SAFETY = "NOT_TO_SAFETY"
 ENSURED_DEATH = "ENSURED_DEATH"
+
+SCARE_ENEMY = "SCARE_ENEMY"
 
 # Actions
 ACTIONS = ['UP', 'RIGHT', 'DOWN', 'LEFT', 'WAIT', 'BOMB']
@@ -99,7 +101,7 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
         if safety_following[0] == 0 and safety_following[1] == 0:
             events.append(TO_SAFETY)
         if safety_following[0] == 2 or safety_following[1] == 2:
-            events.append(OPPOSITE_TO_SAFETY)
+            events.append(NOT_TO_SAFETY)
 
     new_to_safety = new_state[4:6]
     if not(to_safety[0] == -1 and to_safety[1] == -1):
@@ -107,7 +109,10 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
             events.append(ENSURED_DEATH)
 
 
-    # TODO: chose good spot for bomb?
+      # scared off enemy with bomb?
+    if old_state[6] and not new_state[6]:
+        if old_state[11]:
+            events.append(SCARE_ENEMY)
 
     # update q-table (model)
     reward = reward_from_events(events, self.logger)
@@ -155,10 +160,10 @@ def end_of_round(self, last_game_state: dict, last_action: str, events: List[str
     self.episode_td_error.append(td_error)
 
     self.q_table[last_state][action_index] += self.alpha * td_error
-    with open("rewardsSmallDQN.csv", "a") as file:
+    with open("rewardsFinalDQN.csv", "a") as file:
         file.write(f"{reward}\n")
         file.write(f"END OF GAME\n")
-    with open("winnerSmallDQN.csv", "a") as file:
+    with open("winnerFinalDQN.csv", "a") as file:
         if e.SURVIVED_ROUND in events:
             file.write(f"1\n")
         else:
@@ -200,30 +205,31 @@ def reward_from_events(events: List[str], logger=None) -> int:
         e.BOMB_DROPPED: -1,
         e.INVALID_ACTION: -5,
 
-        TO_COIN: 5,
+        e.COIN_COLLECTED: 15,
+        TO_COIN: 10,
         OPPOSITE_TO_COIN: -20,
 
-        TO_BOMB_POS: 1.5,
-        OPPOSITE_TO_BOMB_POS: -3,
-        GOOD_BOMB: 18,
+        TO_BOMB_POS: 3,
+        OPPOSITE_TO_BOMB_POS: -6,
+        GOOD_BOMB: 25,
 
         BECAME_SAFE: 10,
         BECAME_UNSAFE: -15,
-        TO_SAFETY: 6,
-        OPPOSITE_TO_SAFETY: -7,
-        ENSURED_DEATH: -50,
+        TO_SAFETY: 10,
+        NOT_TO_SAFETY: -20,
+        ENSURED_DEATH: -60,
 
-        e.GOT_KILLED: -50,
-        e.KILLED_SELF: -50,
-
-        e.SURVIVED_ROUND: 100
+        e.GOT_KILLED: -60,
+        e.KILLED_SELF: -60,
+        
+        SCARE_ENEMY: 50
     }
     reward_sum = 0
     for event in events:
         if event in game_rewards:
             reward_sum += game_rewards[event]
     logger.info(f"Awarded {reward_sum} for events {', '.join(events)}")
-    with open("rewardsSmallDQN.csv", "a") as file:
+    with open("rewardsFinalDQN.csv", "a") as file:
         file.write(f"{reward_sum}\n")
 
     return reward_sum
