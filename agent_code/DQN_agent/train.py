@@ -69,17 +69,17 @@ def reward_from_events(self, events: List[str]) -> int:
         e.MOVED_UP: -1,
         e.MOVED_DOWN: -1,
         e.WAITED: -1,
-        e.INVALID_ACTION: -3,
-        e.BOMB_DROPPED: -10,  #?
-        e.BOMB_EXPLODED: 0, #?
-        e.CRATE_DESTROYED: 3,
-        e.COIN_FOUND: 0, #?
-        e.COIN_COLLECTED: 15,
-        e.KILLED_OPPONENT: 0, #?
-        e.KILLED_SELF: -10,
-        e.GOT_KILLED: -10,
-        e.OPPONENT_ELIMINATED: 0, #?
-        e.SURVIVED_ROUND: 10
+        e.INVALID_ACTION: -5,
+        e.BOMB_DROPPED: -5,
+        e.BOMB_EXPLODED: 0,
+        e.CRATE_DESTROYED: 10,
+        e.COIN_FOUND: 5,
+        e.COIN_COLLECTED: 20,
+        e.KILLED_OPPONENT: 50,
+        e.KILLED_SELF: -50,
+        e.GOT_KILLED: -20,
+        e.OPPONENT_ELIMINATED: 30,
+        e.SURVIVED_ROUND: 20
     }
 
     reward_sum = 0
