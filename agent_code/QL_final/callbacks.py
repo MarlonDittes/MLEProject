@@ -79,12 +79,12 @@ def setup(self):
     self.alpha = 0.1   # Learning rate
     self.gamma = 0.9  # Discount factor
 
-    self.episodes = 40000
+    self.episodes = 4000
 
     # Epsilon Decay Parameters
-    self.epsilon_start = 0    # Initial exploration rate
-    self.epsilon_min = 0     # Minimum exploration rate
-    self.epsilon_decay_rate = 0.000025  # How much to decay epsilon per episode
+    self.epsilon_start = 1    # Initial exploration rate
+    self.epsilon_min = 0.01     # Minimum exploration rate
+    self.epsilon_decay_rate = 0.00025  # How much to decay epsilon per episode
     self.epsilon = self.epsilon_start  # Initialize epsilon
 
     # Track episodes
