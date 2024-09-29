@@ -66,46 +66,19 @@ def setup(self):
     Initializes the DQNAgent for training or playing.
     """
     # Define the input and output dimensions for the DQNAgent
-    input_dim = 12          # Number of features
+    input_dim = 12
     output_dim = len(ACTIONS)
 
     # Initialize the DQN agent
     self.agent = DQNAgent(state_size=input_dim, action_size=output_dim)
-    # Hyperparameters
-    self.alpha = 0.1   # Learning rate
-    self.gamma = 0.9  # Discount factor
-
-    self.episodes = 2100
-    self.explore_episodes = self.episodes - 100
-
-    # Epsilon Decay Parameters
-    self.epsilon_start = 1    # Initial exploration rate
-    self.epsilon_min = 0.01     # Minimum exploration rate
-    self.epsilon_decay_rate = 0.0005  # How much to decay epsilon per episode
-    self.epsilon = self.epsilon_start  # Initialize epsilon
-
-    # Track episodes
-    self.episode_number = 0
-
-    # Plotting
-    self.td_error = []
-    self.rewards = []
-    self.epsilon_history = []
-
-    self.episode_td_error = []
-    self.episode_rewards = []
-
-    # Train from new start
-    self.reset = True
-
-    # Setup
-    if not os.path.isfile("q_table.pt") or (self.train and self.reset):
-        self.logger.info("Setting up model from scratch.")
-        self.q_table = defaultdict(default_action_probabilities)
-    else:
+    self.count = 0
+    
+    # Load the model if available and not in training mode
+    if not self.train and os.path.isfile("my-saved-model.pt"):
         self.logger.info("Loading model from saved state.")
-        with open("q_table.pt", "rb") as file:
-            self.q_table = pickle.load(file)
+        self.agent.load("my-saved-model.pt")
+    else:
+        self.logger.info("Setting up model from scratch.")
 
 
 
@@ -113,21 +86,14 @@ def act(self, game_state: dict) -> str:
     """
     The agent selects an action using epsilon-greedy strategy via the DQN agent.
     """
-        # Update epsilon with decay
-    if self.train:
-        self.epsilon = max(self.epsilon_min, self.epsilon_start - self.epsilon_decay_rate * self.episode_number)
-        self.logger.debug(f"Epsilon: {self.epsilon}")
-
-    # Epsilon-greedy action selection
-    if self.train and random.uniform(0, 1) < self.epsilon and self.episode_number <= self.explore_episodes:
-        self.logger.debug("Choosing action purely at random.")
-        # 80%: walk in any direction. 10% wait. 10% bomb.
-        return np.random.choice(ACTIONS, p=[.2, .2, .2, .2, .1, .1])
     # Convert game state to feature vector
-    state = tuple(state_to_features(game_state, self.logger))
-    self.logger.debug(f"State: {state}")
-    self.logger.debug(f"Action: {ACTIONS[np.argmax(self.q_table[state])]}")
-    return ACTIONS[np.argmax(self.q_table[state])]
+    state = state_to_features(game_state)
+
+    # Get the action from the DQN agent
+    action_index = self.agent.act(state)
+
+    # Return the action corresponding to the chosen index
+    return ACTIONS[action_index]
 
 
 def state_to_features(game_state: dict, logger=None) -> np.array:
@@ -399,18 +365,3 @@ def state_to_features(game_state: dict, logger=None) -> np.array:
     )
 
     return features
-
-def default_action_probabilities():
-    weights = np.random.rand(len(ACTIONS))
-    return weights / weights.sum()
-
-    #weights = np.zeros(len(ACTIONS))
-    #return weights
-def save_metrics(self, filename='metrics.pkl'):
-    """Save the metrics to a pickle file."""
-    with open(filename, 'wb') as f:
-        pickle.dump({
-            'td_error': self.td_error,
-            'rewards': self.rewards,
-            'epsilon_history': self.epsilon_history
-        }, f)

@@ -20,7 +20,7 @@ class DQN(nn.Module):
         return self.fc3(x)  # Return Q-values for all actions
 
 class DQNAgent:
-    def __init__(self, state_size, action_size, alpha=0.001, gamma=0.99, epsilon=1.0, epsilon_min=0.1, epsilon_decay=0.999):
+    def __init__(self, state_size, action_size, alpha=0.001, gamma=0.99, epsilon=1.0, epsilon_min=0.1, epsilon_decay=0.99945):
         self.state_size = state_size  # Size of the input feature vector
         self.action_size = action_size  # Number of actions
         self.gamma = gamma  # Discount factor
@@ -62,6 +62,7 @@ class DQNAgent:
 
         minibatch = random.sample(self.memory, self.batch_size)
         batch_rewards = []  # To store rewards for the current batch
+        batch_losses = []
 
         for state, action, reward, next_state, done in minibatch:
             state = torch.FloatTensor(state).unsqueeze(0)
@@ -82,12 +83,15 @@ class DQNAgent:
             self.optimizer.step()
 
             # Record the loss for plotting
-            self.losses.append(loss.item())
+            #self.losses.append(loss.item())
+            batch_losses.append(loss.item())
             batch_rewards.append(reward)
 
         # Calculate and store average reward for this replay batch
         avg_reward = np.mean(batch_rewards)
         self.rewards.append(avg_reward)
+        avg_loss = np.mean(batch_losses)
+        self.losses.append(avg_loss)
 
         # Decay the exploration rate
         if self.epsilon > self.epsilon_min:

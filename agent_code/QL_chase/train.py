@@ -19,7 +19,7 @@ GOOD_BOMB = "GOOD_BOMB"
 BECAME_SAFE = "BECAME_SAFE"
 BECAME_UNSAFE = "BECAME_UNSAFE"
 TO_SAFETY = "TO_SAFETY"
-OPPOSITE_TO_SAFETY = "OPPOSITE_TO_SAFETY"
+NOT_TO_SAFETY = "NOT_TO_SAFETY"
 ENSURED_DEATH = "ENSURED_DEATH"
 BOMB_WHILE_UNSAFE = "BOMB_WHILE_UNSAFE"
 
@@ -117,8 +117,8 @@ def game_events_occurred(self, old_game_state: dict, self_action: str, new_game_
         safety_following = tuple(a - b for a,b in zip(to_safety, agent_movement))
         if safety_following[0] == 0 and safety_following[1] == 0:
             events.append(TO_SAFETY)
-        if safety_following[0] == 2 or safety_following[1] == 2:
-            events.append(OPPOSITE_TO_SAFETY)
+        else:
+            events.append(NOT_TO_SAFETY)
         if old_state[6] and not new_state[6]:   #placed bomb while we needed to get to safety
             events.append(BOMB_WHILE_UNSAFE) 
 
@@ -238,29 +238,32 @@ def reward_from_events(events: List[str], logger=None) -> int:
         e.BOMB_DROPPED: -1,
         e.INVALID_ACTION: -5,
 
-        TO_COIN: 7,
-        OPPOSITE_TO_COIN: -14,
+        e.COIN_COLLECTED: 15,
+        TO_COIN: 10,
+        OPPOSITE_TO_COIN: -20,
 
         TO_BOMB_POS: 3,
         OPPOSITE_TO_BOMB_POS: -6,
-        GOOD_BOMB: 20,
+        GOOD_BOMB: 25,
 
-        BECAME_SAFE: 25,
-        #BECAME_UNSAFE: -50,
+        BECAME_SAFE: 10,
+        BECAME_UNSAFE: -15,
         TO_SAFETY: 10,
-        OPPOSITE_TO_SAFETY: -20,
-        ENSURED_DEATH: -100,
+        NOT_TO_SAFETY: -20,
+        ENSURED_DEATH: -60,
+
         BOMB_WHILE_UNSAFE: -50,
 
-        e.GOT_KILLED: -100,
-        e.KILLED_SELF: -100,
+        e.GOT_KILLED: -60,
+        e.KILLED_SELF: -60,
 
         TO_ATTACK: 5,
         OPPOSITE_TO_ATTACK: -10,
         ATTACK_BOMB: 65,
-        SCARE_ENEMY: 15,
+        SCARE_ENEMY: 50,
         USELESS_BOMB: -50
     }
+    
     reward_sum = 0
     for event in events:
         if event in game_rewards:
